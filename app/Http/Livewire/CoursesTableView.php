@@ -59,6 +59,7 @@ class CoursesTableView extends TableView
     protected function actionsByRow()
     {
         return [
+            new RedirectAction('courses.register', 'Register course', 'clipboard'),
             new RedirectAction('courses.show', 'See course', 'maximize-2'),
             new RedirectAction('courses.edit', 'Edit course', 'edit'),
             new DeleteAction(),

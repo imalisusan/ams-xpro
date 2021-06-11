@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,10 @@ Route::get('/', function () {
 });
 Route::resources([
     'courses' => CourseController::class,
-   
+    'courseusers' => CourseUserController::class,
 ]);
 
-Route::get('/courses',[CourseController::class, 'index'])->name('courses.index');
+Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
    
     
