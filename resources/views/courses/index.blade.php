@@ -28,7 +28,7 @@
                 <div
                     class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                     <body>
-                       {{ $course->name }}
+                        @livewire('courses-table-view')
                     </body>
                     <div class="my-4 work-sans">
                     </div>
