@@ -3,8 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\Course;
+use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
+use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
 class CoursesTableView extends TableView
@@ -51,6 +53,15 @@ class CoursesTableView extends TableView
             $course->description,
             $course->year,
             $course->credits,
+        ];
+    }
+
+    protected function actionsByRow()
+    {
+        return [
+            new RedirectAction('courses.show', 'See course', 'maximize-2'),
+            new RedirectAction('courses.edit', 'Edit course', 'edit'),
+            new DeleteAction(),
         ];
     }
 

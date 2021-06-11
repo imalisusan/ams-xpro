@@ -7,9 +7,9 @@
                 <a href="{{ route('courses.edit', $course->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider">Edit</a>&nbsp;
                     @csrf
                     @method('DELETE')
-                        @role('administrator')
+                        
                         <input type="submit" value="Delete" class="bg-white   text-red-500 rounded transition duration-300  focus:outline-none place-self-center">
-                        @endrole
+                        
             </form>
         </h2>
     </x-slot>
@@ -26,33 +26,56 @@
 
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
-                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Name</h2>
-                                    <p class="leading-relaxed text-base">{{ $course->name }}
-
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Code</h2>
+                                    <p class="leading-relaxed text-base">{{ $course->code }}
                                     </p>
                                 </div>
                             </div>
 
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
-                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Detail
-
-                                    </h2>
-                                    <p class="leading-relaxed text-base">
-                                        {{  $course->detail }}
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Name</h2>
+                                    <p class="leading-relaxed text-base">{{ $course->name }}
                                     </p>
                                 </div>
                             </div>
 
-
-
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Description
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{  $course->description }}
+                                    </p>
+                                </div>
+                            </div>
+                       
                         </div>
 
                         <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Year
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{  $course->year }}
+                                    </p>
+                                </div>
+                            </div>
 
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
-                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Started on
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Credits
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{  $course->credits }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Created on
                                     </h2>
                                     <p class="leading-relaxed text-base">
                                         {{ $course->created_at->calendar() }}
