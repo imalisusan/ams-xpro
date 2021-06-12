@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,10 @@ Route::get('/', function () {
 Route::resources([
     'courses' => CourseController::class,
     'courseusers' => CourseUserController::class,
+    'attendance' => AttendanceController::class,
 ]);
 
+Route::get('/register/{id}', [AttendanceController::class, 'register'])->name('attendance.register');
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
    
