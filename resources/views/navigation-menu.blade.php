@@ -20,6 +20,10 @@
                         {{ __('Courses') }}
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{ route('attendance.index') }}" :active="request()->routeIs('attendance.index')">
+                        {{ __('Attendance') }}
+                    </x-jet-nav-link>
+
                 </div>
             </div>
 
