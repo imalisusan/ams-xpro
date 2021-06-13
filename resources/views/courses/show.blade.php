@@ -18,6 +18,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-md rounded px-8 flex flex-col">
                 <section class=" text-gray-700 body-font">
+                    <br><br>
+                        <div class="relative" style=" float:right;">
+                                <a href="{{ route('coursemarks.create') }}" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition
+                                duration-300 hover:bg-blue-700 hover:text-white focus:outline-none place-self-center" >Add Marks </a>
+                        </div>
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-8">
                      
                     </h2>
@@ -88,7 +93,17 @@
                     </div>
                 </section>
 
+                <div
+                    class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                    <body>
+                        @livewire('course-students-table-view')
+                    </body>
+                    <div class="my-4 work-sans">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+ 
+                
 </x-app-layout>

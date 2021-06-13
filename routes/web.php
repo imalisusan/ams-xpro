@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\CourseModuleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +23,15 @@ Route::get('/', function () {
 Route::resources([
     'courses' => CourseController::class,
     'courseusers' => CourseUserController::class,
+    'coursemodules' => CourseModuleController::class,
+    'coursemarks' => CourseMarkController::class,
 ]);
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
    
-    
+Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

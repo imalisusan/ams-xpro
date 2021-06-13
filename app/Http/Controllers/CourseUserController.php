@@ -21,5 +21,11 @@ class CourseUserController extends Controller
      
         return redirect()->route('courses.index')->with('success','You\'ve registered for the course successfully.');
     }
+
+    public function registered_courses(Request $request)
+    {
+        return view('courses.personal');
+     
+    }
      
 }

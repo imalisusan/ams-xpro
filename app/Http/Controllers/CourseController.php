@@ -29,9 +29,9 @@ class CourseController extends Controller
         return redirect()->route('courses.index')->with('success','Course created successfully.');
     }
      
-    public function show(Course $course)
+    public function show(Request $request, Course $course)
     {
-        return view('courses.show',compact('course'));
+        return view('courses.show', compact('course'));
     } 
      
     public function edit(Course $course)
@@ -51,5 +51,28 @@ class CourseController extends Controller
         $course->delete();
     
         return redirect()->route('courses.index')->with('success','Course deleted successfully');
+    }
+
+    public function show_students(Request $request)
+    {
+        if ($request->ajax()) {
+            $users = User::all();
+
+            return DataTables::of($employees)
+                ->addIndexColumn()
+                ->addColumn('action', function ($user) {
+                    //$show_action = '<a href='.route('user.show', $employee->id)." class='hover:no-underline mx-1 px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none'>View</a>";
+                    //$edit_action = '<a href='.route('employees.edit', $employee->id)." class='hover:no-underline mx-1 px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none'>Edit</a>";
+
+                    //return $show_action.' '.$edit_action;
+                })
+                ->addColumn('created_at', function ($user) {
+                    return $user->created_at->toDayDateTimeString();
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('courses.show');
     }
 }
