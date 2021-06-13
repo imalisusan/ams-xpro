@@ -21,4 +21,9 @@ class Course extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function course_user()
+    {
+        return $this->hasMany(CourseUser::class);
+    }
 }

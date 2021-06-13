@@ -26,7 +26,8 @@ Route::resources([
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
    
-    
+Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
+
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
