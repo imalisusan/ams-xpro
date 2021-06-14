@@ -1,8 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 use App\Models\Attendance;
+use App\Models\Course;
+use App\Models\CourseUser;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreAttendanceRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AttendanceController extends Controller
 {
@@ -11,9 +16,11 @@ class AttendanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('attendance.index');
+        $attendance = Attendance::latest()->paginate(20);
+
+        return view('attendance.index', compact('attendance'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -33,7 +40,7 @@ class AttendanceController extends Controller
      */
     public function register()
     {
-        return view('attendance.register');
+        return view("attendance.register");
     }
 
     /**
@@ -42,10 +49,15 @@ class AttendanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAttendanceRequest $request, CourseUser $course)
     {
-        $name = $request->totalhours;
-        return redirect()->route('attendance.index')->with('success','Attendance recorded successfully.');
+
+        $validated = $request->input();
+        $user_id = Auth::user()->id;
+        $validated['user_id'] = $user_id;
+        Attendance::create($validated);
+
+        return redirect()->route('attendance.index')->with('success','Attendance created successfully.');
     }
 
     /**
@@ -67,7 +79,7 @@ class AttendanceController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -77,9 +89,9 @@ class AttendanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+    
     }
 
     /**
