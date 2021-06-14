@@ -23,9 +23,7 @@ class MyCoursesTableView extends TableView
      */
     public function repository(): Builder
     {
-        $id = Auth::user()->id;
         return CourseUser::query()->where('user_id', Auth::user()->id);
-        //Course::query()->where('user_id', Auth::user()->id);
     }
 
     /**
