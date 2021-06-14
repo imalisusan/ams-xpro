@@ -42,14 +42,12 @@ class CourseController extends Controller
                 ['course_module_id', '=', $coursemodule->id],
                 ['user_id', '=', Auth::user()->id],
             ])->first();
-            
-            $coursemodule['score'] = 34;
+            $coursemodule['score'] = $coursemark->score;
 
             $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
             $total = $total + $marks;
             $total = number_format((float)$total, 2, '.', ''); 
         }
-        dd($coursemodules);
         return view('courses.show', compact('course', 'coursemodules', 'total'));
     } 
      

@@ -20,7 +20,7 @@
                 <section class=" text-gray-700 body-font">
                     <br><br>
                         <div class="relative" style=" float:right;">
-                                <a href="{{ route('coursemarks.create') }}" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition
+                                <a href="{{ route('coursemarks.create', $course->id) }}" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition
                                 duration-300 hover:bg-blue-700 hover:text-white focus:outline-none place-self-center" >Add Marks </a>
                         </div>
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-8">

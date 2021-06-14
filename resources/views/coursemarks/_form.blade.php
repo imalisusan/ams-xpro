@@ -1,6 +1,22 @@
 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
     <div class="-mx-3 md:flex mb-6">
         <div class="md:w-1/2 px-3">
+            <x-label for="student name*" class="block uppercase text-xs font-bold mb-2" />
+            <div class="relative">
+                <select name="user_id" placeholder="Select a student" class="form-select block
+                appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8
+                rounded">
+                    <option>Select an option</option>
+                    @foreach($students as $student)
+                        <option value="{{ $student->id }}"  @if ((isset($coursemark) &&  $coursemark->user_id == ($student->id ) || old('student_id') == $student->id )) 
+                            selected @endif >{{ $student->name  }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <x-error field="code" class="text-red-600" />
+        </div>
+
+        <div class="md:w-1/2 px-3">
             <x-label for="course module name*" class="block uppercase text-xs font-bold mb-2" />
             <div class="relative">
                 <select name="course_module_id" placeholder="Select a question type" class="form-select block
@@ -8,14 +24,15 @@
                 rounded">
                     <option>Select an option</option>
                     @foreach($coursemodules as $coursemodule)
-                        <option value="{{ $coursemodule->id }}"  @if ((isset($coursemodule) &&  $coursemodule->coursemodule_id == ($coursemodule->id ) || old('coursemodule_id') == $coursemodule->id )) 
+                        <option value="{{ $coursemodule->id }}"  @if ((isset($coursemark) &&  $coursemark->course_module_id == ($coursemodule->id ) || old('coursemodule_id') == $coursemodule->id )) 
                             selected @endif >{{ $coursemodule->name  }}</option>
                     @endforeach
                 </select>
             </div>
             <x-error field="code" class="text-red-600" />
         </div>
-
+    </div>
+    <div class="-mx-3 md:flex mb-6">
         <div class="md:w-1/2 px-3">
             <x-label for="score*" class="block uppercase text-xs font-bold mb-2" />
                 <input type="number" name="score" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
@@ -25,7 +42,6 @@
         </div>
     </div>
     <input hidden type="number" value="2" name="course_id">
-    <input hidden type="number" value="1" name="user_id">
 
         <div class="md:flex place-self-center">
             <button type="submit" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition
