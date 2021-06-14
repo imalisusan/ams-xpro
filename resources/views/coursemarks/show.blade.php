@@ -26,7 +26,7 @@
 
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
-                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Course</h2>
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Course Name</h2>
                                     <p class="leading-relaxed text-base">{{ $coursemark->course->name }}
                                     </p>
                                 </div>
@@ -37,7 +37,15 @@
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Weight
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                        {{  $coursemark->weight }}
+                                        {{  $coursemark->course_module->weight }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Added On</h2>
+                                    <p class="leading-relaxed text-base">{{ $coursemark->created_at->calendar() }}
                                     </p>
                                 </div>
                             </div>
@@ -48,18 +56,22 @@
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Module Name</h2>
-                                    <p class="leading-relaxed text-base">{{ $coursemark->name }}
+                                    <p class="leading-relaxed text-base">{{ $coursemark->course_module->name }}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Score
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{  $coursemark->score }} /{{ $coursemark->course_module->maximum_score }}
                                     </p>
                                 </div>
                             </div>
 
-                            <div class="flex  mb-10 lg:items-start items-center">
-                                <div class="flex-grow">
-                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Created At</h2>
-                                    <p class="leading-relaxed text-base">{{ $coursemark->created_at->calendar() }}
-                                    </p>
-                                </div>
-                            </div>
+                           
 
 
                         </div>

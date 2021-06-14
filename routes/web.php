@@ -28,6 +28,8 @@ Route::resources([
 ]);
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
+Route::get('coursemarks/{course}/create',[CourseMarkController::class, 'create'])->name('coursemarks.create');
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
    
 Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');

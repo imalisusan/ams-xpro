@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CourseModule;
+use App\Models\User;
+use App\Models\Course;
 use App\Models\CourseMark;
+use App\Models\CourseModule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseMarkRequest;
@@ -17,14 +19,16 @@ class CourseMarkController extends Controller
         return view('coursemarks.index', compact('coursemarks'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
-    public function create()
+    public function create(Course $course)
     {
-        $coursemodules = CourseModule::all();
-        return view('coursemarks.create', compact('coursemodules'));
+        $coursemodules = CourseModule::where('course_id', $course->id)->get();
+        $users = User::all();
+        return view('coursemarks.create', compact('coursemodules', 'users', 'course'));
     }
     
     public function store(StoreCourseMarkRequest $request)
     {
+        dd($request);
         $validated = $request->validated();
         CourseMark::create($validated);
      
@@ -38,8 +42,9 @@ class CourseMarkController extends Controller
      
     public function edit(CourseMark $coursemark)
     {
-        $coursemodules = CourseModule::all();
-        return view('coursemarks.edit',compact('coursemark', 'coursemodules'));
+        $coursemodules = CourseModule::where('course_id', $coursemark->course->id)->get();
+        $users = User::all();
+        return view('coursemarks.edit',compact('coursemark', 'coursemodules', 'users'));
     }
     
  

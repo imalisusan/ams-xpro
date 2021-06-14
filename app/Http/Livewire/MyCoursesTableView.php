@@ -23,9 +23,7 @@ class MyCoursesTableView extends TableView
      */
     public function repository(): Builder
     {
-        $id = Auth::user()->id;
         return CourseUser::query()->where('user_id', Auth::user()->id);
-        //Course::query()->where('user_id', Auth::user()->id);
     }
 
     /**
@@ -38,9 +36,10 @@ class MyCoursesTableView extends TableView
         return [
             Header::title('Code')->sortBy('course.code'),
             Header::title('Name')->sortBy('course.name'),
-            Header::title('Description')->sortBy('course.description'),
-            Header::title('Year')->sortBy('course.year'),
-            Header::title('Credits')->sortBy('course.credits'),
+            Header::title('Year')->sortBy('year'),
+            Header::title('Credits')->sortBy('credits'),
+            Header::title('Group')->sortBy('group'),
+            Header::title('Semester')->sortBy('semester'),
             ];
     }
 
@@ -50,13 +49,14 @@ class MyCoursesTableView extends TableView
      * @param $model Current model for each row
      */
     public function row(CourseUser $courseuser): array
-    {
+    {   
         return [
             $courseuser->course->code,
             $courseuser->course->name,
-            $courseuser->course->description,
             $courseuser->course->year,
             $courseuser->course->credits,
+            $courseuser->course->group,
+            $courseuser->course->semester,
         ];
     }
 

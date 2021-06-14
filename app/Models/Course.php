@@ -15,6 +15,8 @@ class Course extends Model
         'description',
         'year',
         'credits',
+        'group',
+        'semester',
     ];
 
     public function users()

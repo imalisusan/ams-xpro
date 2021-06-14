@@ -20,7 +20,7 @@
     <div class="-mx-3 md:flex mb-6">
         <div class="md:w-1/2 px-3 mb-6 md:mb-0">
             <x-label for="year*" class="block uppercase text-xs font-bold mb-2" />
-            <input type="year" name="year" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+            <input type="number" name="year" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
             rounded py-3
             px-4 mb-3" value="{{ isset($course) ? $course->year :old('year') }}" style="border:1px solid rgb(104, 104, 104);">
 
@@ -32,6 +32,24 @@
             rounded py-3
             px-4 mb-3" value="{{ isset($course) ? $course->credits :old('credits') }}" style="border:1px solid rgb(104, 104, 104);">
             <x-error field="credits" class="text-red-600" />
+        </div>
+    </div>
+
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <x-label for="group*" class="block uppercase text-xs font-bold mb-2" />
+            <input type="text" name="group" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+            rounded py-3
+            px-4 mb-3" value="{{ isset($course) ? $course->group :old('group') }}" style="border:1px solid rgb(104, 104, 104);">
+
+            <x-error field="group" class="text-red-600" />
+        </div>
+        <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <x-label for="semester*" class="block uppercase text-xs font-bold mb-2" />
+            <input type="text" name="semester" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+            rounded py-3
+            px-4 mb-3" value="{{ isset($course) ? $course->semester :old('semester') }}" style="border:1px solid rgb(104, 104, 104);">
+            <x-error field="semester" class="text-red-600" />
         </div>
     </div>
 
