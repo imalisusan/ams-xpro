@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\CourseModuleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/', function () {
 Route::resources([
     'courses' => CourseController::class,
     'courseusers' => CourseUserController::class,
+    'coursemodules' => CourseModuleController::class,
 ]);
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
