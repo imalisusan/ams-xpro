@@ -46,7 +46,7 @@
         </div>
         <div class="md:w-1/2 px-3 mb-6 md:mb-0">
             <x-label for="semester*" class="block uppercase text-xs font-bold mb-2" />
-            <input type="number" name="semester" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+            <input type="text" name="semester" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
             rounded py-3
             px-4 mb-3" value="{{ isset($course) ? $course->semester :old('semester') }}" style="border:1px solid rgb(104, 104, 104);">
             <x-error field="semester" class="text-red-600" />
