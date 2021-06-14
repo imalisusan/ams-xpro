@@ -29,6 +29,8 @@ class StoreCourseRequest extends FormRequest
             'description' => 'required',
             'year' => 'required',
             'credits' => 'required',
+            'group' => 'required',
+            'semester' => 'required',
         ];
     }
 }

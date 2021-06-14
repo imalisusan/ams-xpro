@@ -36,9 +36,10 @@ class MyCoursesTableView extends TableView
         return [
             Header::title('Code')->sortBy('course.code'),
             Header::title('Name')->sortBy('course.name'),
-            Header::title('Description')->sortBy('course.description'),
-            Header::title('Year')->sortBy('course.year'),
-            Header::title('Credits')->sortBy('course.credits'),
+            Header::title('Year')->sortBy('year'),
+            Header::title('Credits')->sortBy('credits'),
+            Header::title('Group')->sortBy('group'),
+            Header::title('Semester')->sortBy('semester'),
             ];
     }
 
@@ -52,9 +53,10 @@ class MyCoursesTableView extends TableView
         return [
             $courseuser->course->code,
             $courseuser->course->name,
-            $courseuser->course->description,
             $courseuser->course->year,
             $courseuser->course->credits,
+            $courseuser->course->group,
+            $courseuser->course->semester,
         ];
     }
 

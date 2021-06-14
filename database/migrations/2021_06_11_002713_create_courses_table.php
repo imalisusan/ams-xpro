@@ -17,9 +17,11 @@ class CreateCoursesTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('year');
             $table->integer('credits');
+            $table->string('group');
+            $table->string('semester');
             $table->timestamps();
         });
     }
