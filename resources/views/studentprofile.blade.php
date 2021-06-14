@@ -16,11 +16,11 @@
 
                 <tr class = "content-center">
                         <td class="border px-4 py-2 ">Admission Number</td>
-                        <td class="border px-4 py-2"><span>{{$user->RegID}}</span></td>
+                        <td class="border px-4 py-2"><span>{{$user->reg_id}}</span></td>
                 </tr>
                 <tr>
                         <td class="border px-4 py-2">Course Name</td>
-                        <td class="border px-4 py-2"><span>{{$user->coursename}}</span></td>
+                        <td class="border px-4 py-2"><span>{{$user->course_name}}</span></td>
                         </tr>
                         <tr>
                         <td class="border px-4 py-2">Name</td>
@@ -30,10 +30,10 @@
                         <td class="border px-4 py-2"><span>{{$user->email}}</span></td>
                         </tr><tr>
                         <td class="border px-4 py-2">Date of birth</td>
-                        <td class="border px-4 py-2"><span>{{$user->DOB}}</span></td>
+                        <td class="border px-4 py-2"><span>{{$user->dob}}</span></td>
                         </tr><tr>
                         <td class="border px-4 py-2">Phone Number</td>
-                        <td class="border px-4 py-2"><span>{{$user->PhoneNo}}</span></td>
+                        <td class="border px-4 py-2"><span>{{$user->phone_no}}</span></td>
                         </tr>
 
  </table>

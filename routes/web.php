@@ -20,7 +20,7 @@ use App\Http\Controllers\CourseModuleController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
 Route::resources([
     'courses' => CourseController::class,
