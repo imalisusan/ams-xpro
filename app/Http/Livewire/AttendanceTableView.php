@@ -3,6 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Attendance;
+use App\Models\User;
+use App\Models\CourseUser;
+use App\Models\Course;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
@@ -19,7 +22,7 @@ class AttendanceTableView extends TableView
      */
     public function repository(): Builder
     {
-         return Attendance::query();
+        return Attendance::query();
     }
 
     /**
@@ -30,11 +33,11 @@ class AttendanceTableView extends TableView
     public function headers(): array
     {
         return [
+            Header::title('Student ID')->sortBy('user_id'),
             Header::title('Total Hours')->sortBy('totalhours'),
             Header::title('Absent Classes')->sortBy('name'),
             Header::title('Absent Hours')->sortBy('absenthours'),
             Header::title('Percent Absent')->sortBy('percentabsent'),
-            Header::title('Credits')->sortBy('credits'),
             ];
     }
 
@@ -46,10 +49,11 @@ class AttendanceTableView extends TableView
     public function row(Attendance $attendance): array
     {
         return [
+            $attendance->user_id,
             $attendance->totalhours,
             $attendance->absentclasses,
             $attendance->absenthours,
-            $attendance->precentabsent,
+            $attendance->percentabsent,
         ];
     }
 
