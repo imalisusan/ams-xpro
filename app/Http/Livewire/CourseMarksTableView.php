@@ -13,7 +13,7 @@ class CourseMarksTableView extends TableView
 {
     protected $paginate = 20;
 
-    //public $searchBy = ['code', 'name', 'year'];
+    public $searchBy = ['course_module.name', 'user.name', 'score'];
     /**
      * Sets a initial query with the data to fill the table
      *
@@ -32,6 +32,7 @@ class CourseMarksTableView extends TableView
     public function headers(): array
     {
         return [
+            Header::title('Course')->sortBy('course.name'),
             Header::title('Module')->sortBy('course_module.name'),
             Header::title('Student Name')->sortBy('user.name'),
             Header::title('Score')->sortBy('score'),
@@ -46,6 +47,7 @@ class CourseMarksTableView extends TableView
     public function row(CourseMark $coursemark): array
     {
         return [
+            $coursemark->course->name,
             $coursemark->course_module->name,
             $coursemark->user->name,
             $coursemark->score,
