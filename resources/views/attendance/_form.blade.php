@@ -2,9 +2,9 @@
     <div class="-mx-3 md:flex mb-6">
         <div class="md:w-1/2 px-3">
             <x-label for="Total Hours*" class="block uppercase text-xs font-bold mb-2" />
-            <input type="text" name="Total Hours" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+            <input type="number" step="0.01" name="totalhours" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
             rounded py-3
-            px-4 mb-3" value="{{isset($attendance) ? $attendance->code : old('totalhours') }}">
+            px-4 mb-3" value="{{isset($attendance) ? $attendance->totalhours : old('totalhours') }}">
             <x-error field="totalhours" class="text-red-600" />
         </div>
 
