@@ -11,10 +11,20 @@ class Attendance extends Model
 
     protected $fillable = [
         'totalhours',
-    ];
+        'user_id',
+        'percentabsent',
+        'absenthours',
+        'absentclasses',
 
+    ];
+    
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
 }
