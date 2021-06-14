@@ -25,7 +25,7 @@ Route::resources([
     'attendance' => AttendanceController::class,
 ]);
 
-Route::get('/register/{id}', [AttendanceController::class, 'register'])->name('attendance.register');
+Route::get('/studentattendance', [AttendanceController::class, 'register'])->name('attendance.register');
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
    
