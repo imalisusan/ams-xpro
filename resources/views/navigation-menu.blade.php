@@ -1,19 +1,37 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between h-16 object-contain">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                    <a href="{{ route('student.profile') }}">
+                        <img src="{{ url('https://strathmore.edu/wp-content/themes/michigan/images/logo.png') }}" class="block h-12 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex  text-align:center">
+                    <x-jet-nav-link href="{{ route('student.profile') }}" :active="request()->routeIs('student.profile')">
+                        {{ __('Home') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Coursework') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Self-Registration') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Fees Details') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Attendance') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Progress Report') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Exam Card') }}
                     </x-jet-nav-link>
 
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -59,7 +77,7 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
-                    <x-jet-dropdown align="right" width="48">
+                    <x-jet-dropdown style="align:right; width:48;" >
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -127,7 +145,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Welcome to your student profile') }}
             </x-jet-responsive-nav-link>
         </div>
 

@@ -1,7 +1,9 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <a href="{{ route('dashboard') }}">
+                    <img src="https://strathmore.edu/wp-content/themes/michigan/images/logo.png" ></a>
+                    </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
