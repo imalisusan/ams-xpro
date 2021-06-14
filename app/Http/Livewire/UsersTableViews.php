@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Models\CourseUser;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
@@ -45,6 +46,7 @@ class UsersTableViews extends TableView
     {
         return [
             $user->name,
+
         ];
     }
 
