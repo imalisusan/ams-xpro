@@ -38,7 +38,8 @@ class CourseModuleController extends Controller
      
     public function edit(CourseModule $coursemodule)
     {
-        return view('coursemodules.edit',compact('coursemodule'));
+        $courses = Course::all();
+        return view('coursemodules.edit',compact('coursemodule', 'courses'));
     }
     
  

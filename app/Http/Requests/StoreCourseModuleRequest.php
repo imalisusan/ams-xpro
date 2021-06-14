@@ -27,6 +27,7 @@ class StoreCourseModuleRequest extends FormRequest
             'course_id' => 'required',
             'name' => 'required',
             'weight' => 'required',
+            'maximum_score' => 'required',
         ];
     }
 }

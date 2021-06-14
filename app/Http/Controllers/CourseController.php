@@ -31,7 +31,7 @@ class CourseController extends Controller
      
     public function show(Request $request, Course $course)
     {
-        return view('courses.show');
+        return view('courses.show', compact('course'));
     } 
      
     public function edit(Course $course)

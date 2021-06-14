@@ -25,6 +25,7 @@ class StoreCourseMarkRequest extends FormRequest
     {
         return [
             'course_id' => 'required',
+            'course_module_id' => 'required',
             'user_id' => 'required',
             'score' => 'required',
         ];

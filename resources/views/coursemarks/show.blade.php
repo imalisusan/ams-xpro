@@ -3,8 +3,8 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Course Module Details') }}&nbsp;&nbsp;
           
-            <form class="inline" action="{{  route('coursemodules.destroy', $coursemodule->id) }}" method="POST">                        
-                <a href="{{ route('coursemodules.edit', $coursemodule->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider">Edit</a>&nbsp;
+            <form class="inline" action="{{  route('coursemarks.destroy', $coursemark->id) }}" method="POST">                        
+                <a href="{{ route('coursemarks.edit', $coursemark->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider">Edit</a>&nbsp;
                     @csrf
                     @method('DELETE')
                         
@@ -27,7 +27,7 @@
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Course</h2>
-                                    <p class="leading-relaxed text-base">{{ $coursemodule->course->name }}
+                                    <p class="leading-relaxed text-base">{{ $coursemark->course->name }}
                                     </p>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Weight
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                        {{  $coursemodule->weight }}
+                                        {{  $coursemark->weight }}
                                     </p>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Module Name</h2>
-                                    <p class="leading-relaxed text-base">{{ $coursemodule->name }}
+                                    <p class="leading-relaxed text-base">{{ $coursemark->name }}
                                     </p>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Created At</h2>
-                                    <p class="leading-relaxed text-base">{{ $coursemodule->created_at->calendar() }}
+                                    <p class="leading-relaxed text-base">{{ $coursemark->created_at->calendar() }}
                                     </p>
                                 </div>
                             </div>

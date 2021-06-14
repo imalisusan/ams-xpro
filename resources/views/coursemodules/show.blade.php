@@ -41,6 +41,17 @@
                                     </p>
                                 </div>
                             </div>
+
+                            
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Maximum Score
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{  $coursemodule->maximum_score }}
+                                    </p>
+                                </div>
+                            </div>
                        
                         </div>
 

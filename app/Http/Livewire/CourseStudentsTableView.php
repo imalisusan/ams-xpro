@@ -2,18 +2,20 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\CourseModule;
+use App\Models\User;
+use App\Models\Course;
+use App\Models\CourseUser;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
-class CourseModulesTableView extends TableView
+class CourseStudentsTableView extends TableView
 {
     protected $paginate = 20;
 
-    public $searchBy = ['course.name', 'name', 'weight'];
+    //public $searchBy = ['course.name', 'name', 'weight'];
     /**
      * Sets a initial query with the data to fill the table
      *
@@ -21,7 +23,9 @@ class CourseModulesTableView extends TableView
      */
     public function repository(): Builder
     {
-         return CourseModule::query();
+        $users = User::all();
+
+         return User::query();
     }
 
     /**
@@ -32,10 +36,10 @@ class CourseModulesTableView extends TableView
     public function headers(): array
     {
         return [
-            Header::title('Course Name')->sortBy('course.name'),
-            Header::title('Name')->sortBy('name'),
-            Header::title('Weight')->sortBy('weight'),
-            Header::title('Maximu Score')->sortBy('maximum_score'),
+            Header::title('Student Name'),
+            Header::title('Module 1'),
+            Header::title('Module 2'),
+            Header::title('Actions'),
             ];
     }
 
@@ -44,13 +48,12 @@ class CourseModulesTableView extends TableView
      *
      * @param $model Current model for each row
      */
-    public function row(CourseModule $coursemodule): array
+    public function row(User $user): array
     {
         return [
-            $coursemodule->course->name,
-            $coursemodule->name,
-            $coursemodule->weight,
-            $coursemodule->maximum_score,
+            $user->name,
+            $user->name,
+            $user->name,
         ];
     }
 

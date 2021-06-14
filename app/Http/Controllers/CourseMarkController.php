@@ -38,7 +38,8 @@ class CourseMarkController extends Controller
      
     public function edit(CourseMark $coursemark)
     {
-        return view('coursemarks.edit',compact('coursemark'));
+        $coursemodules = CourseModule::all();
+        return view('coursemarks.edit',compact('coursemark', 'coursemodules'));
     }
     
  

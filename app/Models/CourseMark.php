@@ -12,7 +12,8 @@ class CourseMark extends Model
     protected $fillable = [
         'course_id',
         'user_id',
-        'score,'
+        'course_module_id',
+        'score',
     ];
 
     public function user()
@@ -23,6 +24,11 @@ class CourseMark extends Model
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function course_module()
+    {
+        return $this->belongsTo(CourseModule::class);
     }
 
 }

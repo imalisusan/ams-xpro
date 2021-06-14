@@ -15,7 +15,8 @@ class CreateCourseMarksTable extends Migration
     {
         Schema::create('course_marks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->constarined();
+            $table->foreignId('course_id')->constrained();
+            $table->foreignId('course_module_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->integer('score');
             $table->timestamps();

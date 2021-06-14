@@ -93,84 +93,17 @@
                     </div>
                 </section>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <!-- component -->
-        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
-            
-            <div
-                class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
-                <table class="min-w" id="studentsTable"> <br>
-                    <h1 class="font-semibold text-xl text-gray-800 leading-tight">Students Registered</h1> <br> <br>
-                    <thead>
-                        <tr>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                Student Name</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                                Module 1</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                                Module 2</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                                Total</th>
-                            <th
-                                class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                                Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="bg-white"> </tbody>
-                </table>
-            </div>    
-                <div class="my-4 work-sans">
+                <div
+                    class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+                    <body>
+                        @livewire('course-students-table-view')
+                    </body>
+                    <div class="my-4 work-sans">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
-<script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
-    crossorigin="anonymous"></script>
-
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-<script type="text/javascript">
-        $(document).ready(function() {
-        var table = $('#studentsTable').DataTable({
-            serverSide: true,
-            ajax: "{{ route('courses.show', $course->id) }}",
-            columns: [
-                {
-                    data: 'student_name',
-                    name: 'student_name'
-                },
-                {
-                    data: 'student_name',
-                    name: 'student_name'
-                },
-                {
-                    data: 'student_name',
-                    name: 'student_name'
-                },
-                {
-                    data: 'student_name',
-                    name: 'student_name'
-                },
-                {
-                    data: 'student_name',
-                    name: 'student_name'
-                },
-            ],
-            pagingType: "simple_numbers",
-            pageLength: 20,
-        }).columns.adjust().responsive;
-        });
-</script>
+ 
+                
 </x-app-layout>

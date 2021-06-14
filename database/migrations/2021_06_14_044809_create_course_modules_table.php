@@ -18,6 +18,7 @@ class CreateCourseModulesTable extends Migration
             $table->foreignId('course_id')->constarined();
             $table->string('name')->constrained();
             $table->decimal('weight');
+            $table->integer('maximum_score');
             $table->timestamps();
         });
     }

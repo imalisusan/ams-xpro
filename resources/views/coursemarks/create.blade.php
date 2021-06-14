@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('New Course Module') }}
+            {{ __('New Course Mark') }}
         </h2>
     </x-slot>
     <div class="py-12">
@@ -9,9 +9,9 @@
             
 
             <div>
-                <form action="{{ route('coursemodules.store') }}" method="POST">
+                <form action="{{ route('coursemarks.store') }}" method="POST">
                     @csrf
-                @include('coursemodules._form')
+                @include('coursemarks._form')
                 </form>
             </div>
         </div>

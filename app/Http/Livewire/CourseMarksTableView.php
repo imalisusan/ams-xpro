@@ -2,18 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\CourseModule;
+use App\Models\CourseMark;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
-class CourseModulesTableView extends TableView
+class CourseMarksTableView extends TableView
 {
     protected $paginate = 20;
 
-    public $searchBy = ['course.name', 'name', 'weight'];
+    //public $searchBy = ['code', 'name', 'year'];
     /**
      * Sets a initial query with the data to fill the table
      *
@@ -21,7 +21,7 @@ class CourseModulesTableView extends TableView
      */
     public function repository(): Builder
     {
-         return CourseModule::query();
+         return CourseMark::query();
     }
 
     /**
@@ -32,10 +32,9 @@ class CourseModulesTableView extends TableView
     public function headers(): array
     {
         return [
-            Header::title('Course Name')->sortBy('course.name'),
-            Header::title('Name')->sortBy('name'),
-            Header::title('Weight')->sortBy('weight'),
-            Header::title('Maximu Score')->sortBy('maximum_score'),
+            Header::title('Module')->sortBy('course_module.name'),
+            Header::title('Student Name')->sortBy('user.name'),
+            Header::title('Score')->sortBy('score'),
             ];
     }
 
@@ -44,21 +43,20 @@ class CourseModulesTableView extends TableView
      *
      * @param $model Current model for each row
      */
-    public function row(CourseModule $coursemodule): array
+    public function row(CourseMark $coursemark): array
     {
         return [
-            $coursemodule->course->name,
-            $coursemodule->name,
-            $coursemodule->weight,
-            $coursemodule->maximum_score,
+            $coursemark->course_module->name,
+            $coursemark->user->name,
+            $coursemark->score,
         ];
     }
 
     protected function actionsByRow()
     {
         return [
-            new RedirectAction('coursemodules.show', 'See coursemodule', 'maximize-2'),
-            new RedirectAction('coursemodules.edit', 'Edit course', 'edit'),
+            new RedirectAction('coursemarks.show', 'See coursemark', 'maximize-2'),
+            new RedirectAction('coursemarks.edit', 'Edit coursemark', 'edit'),
             new DeleteAction(),
         ];
     }

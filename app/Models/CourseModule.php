@@ -13,6 +13,7 @@ class CourseModule extends Model
         'course_id',
         'name',
         'weight',
+        'maximum_score',
     ];
 
     public function course()
