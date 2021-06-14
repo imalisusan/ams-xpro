@@ -17,9 +17,21 @@ class CourseUserController extends Controller
         $user_id = Auth::user()->id;
         $validated['user_id'] = $user_id;
         $validated['course_id'] = $course->id;
-        CourseUser::create($validated);
+        $saved = CourseUser::where([
+            ['course_id', '=', $validated['course_id']],
+            ['user_id', '=', $validated['user_id']],
+        ])->first();
+        if($saved == NULL)
+        {
+            CourseUser::create($validated);
      
-        return redirect()->route('courses.index')->with('success','You\'ve registered for the course successfully.');
+            return redirect()->route('courses.index')->with('success','You\'ve registered for the course successfully.');
+        }
+        else
+        {
+            return redirect()->route('courses.index')->with('success','You\'re already registered for this course.');
+        }
+        
     }
 
     public function registered_courses(Request $request)
