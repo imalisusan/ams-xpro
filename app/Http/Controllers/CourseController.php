@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\CourseMark;
+use App\Models\CourseModule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreCourseRequest;
 
 class CourseController extends Controller
@@ -31,7 +34,23 @@ class CourseController extends Controller
      
     public function show(Request $request, Course $course)
     {
-        return view('courses.show', compact('course'));
+        $coursemodules = CourseModule::where('course_id', $course->id)->get();
+        $total = NULL;
+        foreach($coursemodules as $coursemodule)
+        {
+            $coursemark = CourseMark::where([
+                ['course_module_id', '=', $coursemodule->id],
+                ['user_id', '=', Auth::user()->id],
+            ])->first();
+            
+            $coursemodule['score'] = 34;
+
+            $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
+            $total = $total + $marks;
+            $total = number_format((float)$total, 2, '.', ''); 
+        }
+        dd($coursemodules);
+        return view('courses.show', compact('course', 'coursemodules', 'total'));
     } 
      
     public function edit(Course $course)

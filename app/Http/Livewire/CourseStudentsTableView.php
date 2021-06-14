@@ -52,7 +52,7 @@ class CourseStudentsTableView extends TableView
     {
         return [
             $user->name,
-            $user->name,
+            $user->cour,
             $user->name,
         ];
     }

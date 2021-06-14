@@ -50,7 +50,7 @@ class MyCoursesTableView extends TableView
      * @param $model Current model for each row
      */
     public function row(CourseUser $courseuser): array
-    {
+    {   
         return [
             $courseuser->course->code,
             $courseuser->course->name,
