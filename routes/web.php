@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\PageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+//Route::get('/dashboard', [PageController::class,'index']);
+
+//Auth::routes();
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::get('/studentprofile',[StudentController::class,'show'])->name('student.profile');
+});
+
+
+
+//Route::get(uri: '/{page}', action:'PageController')->name(name:'page');
+
