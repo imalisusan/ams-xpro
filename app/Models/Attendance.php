@@ -17,10 +17,11 @@ class Attendance extends Model
         'absentclasses',
 
     ];
-   
-    public function attendance()
+    public function users()
     {
-        return $this->hasMany(Attendance::class);
+        return $this->belongsTo(User::class);
     }
+   
+    
 
 }
