@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseMarkController;
+use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\CourseModuleController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +22,21 @@ use App\Http\Controllers\PageController;
 Route::get('/', function () {
     return view('login');
 });
+Route::resources([
+    'courses' => CourseController::class,
+    'courseusers' => CourseUserController::class,
+    'coursemodules' => CourseModuleController::class,
+    'coursemarks' => CourseMarkController::class,
+]);
+
+Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
+Route::get('coursemarks/{course}/create',[CourseMarkController::class, 'create'])->name('coursemarks.create');
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+   
+Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
+
+});
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -24,16 +44,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-//Route::get('/dashboard', [PageController::class,'index']);
-
-//Auth::routes();
-
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/studentprofile',[StudentController::class,'show'])->name('student.profile');
 });
-
-
-
-//Route::get(uri: '/{page}', action:'PageController')->name(name:'page');
 
