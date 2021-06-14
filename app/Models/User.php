@@ -69,8 +69,8 @@ class User extends Authenticatable
         return $this->hasMany(CourseUser::class);
     }
      
-    public function users()
+    public function attendance()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Attendance::class);
     }
 }
