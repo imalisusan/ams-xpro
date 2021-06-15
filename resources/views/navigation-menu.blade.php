@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('student.profile') }}">
-                        <img src="{{ url('https://strathmore.edu/wp-content/themes/michigan/images/logo.png') }}" class="block h-12 w-auto" />
+                        <img src="{{ url('https://strathmore.edu/wp-content/uploads/2019/08/University-Logo-Black-12.png') }}" class="block h-12 w-auto" />
                     </a>
                 </div>
 

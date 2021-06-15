@@ -15,7 +15,7 @@ class EditUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('reg_id')->unique()->after('id');
-            $table->integer('phone_no')->after('email');
+            $table->text('phone_no')->after('email');
             $table->string('dob');
             $table->string('course_name');
         });

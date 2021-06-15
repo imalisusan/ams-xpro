@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <a href="{{ route('dashboard') }}">
-                    <img src="https://strathmore.edu/wp-content/themes/michigan/images/logo.png" ></a>
+                    <img src="https://strathmore.edu/wp-content/uploads/2019/08/University-Logo-Black-12.png"  class="block h-20 w-auto"></a>
                     </a>
         </x-slot>
 
@@ -11,14 +11,34 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
+            <div class="mt-4">
+                <x-jet-label for="reg_id" value="{{ __('Admission Number') }}" />
+                <x-jet-input id="reg_id" class="block mt-1 w-full" type="number" name="reg_id" :value="old('reg_id')" required autofocus  />
+            </div>
+
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="phone_no" value="{{ __('Phone Number') }}" />
+                <x-jet-input id="phone_no" class="block mt-1 w-full" type="text" name="phone_no" :value="old('phone_no')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="dob" value="{{ __('Date of Birth') }}" />
+                <x-jet-input id="dob" class="block mt-1 w-full" type="date" name="dob" :value="old('dob')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="course_name" value="{{ __('Course Name') }}" />
+                <x-jet-input id="course_name" class="block mt-1 w-full" type="text" name="course_name" :value="old('course_name')" required />
             </div>
 
             <div class="mt-4">
