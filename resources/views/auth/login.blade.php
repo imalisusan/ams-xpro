@@ -1,7 +1,9 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <a href="{{ route('dashboard') }}">
+                    <img src="https://strathmore.edu/wp-content/uploads/2019/08/University-Logo-Black-12.png"  class="block h-20 w-auto"></a>
+                    </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
@@ -33,12 +35,14 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __('Create Account') }}
+                </a> &nbsp; &nbsp;
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
                 </x-jet-button>
