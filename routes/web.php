@@ -46,6 +46,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    Route::get('/studentprofile',[StudentController::class,'show'])->name('student.profile');
+    Route::get('/student/profile',[StudentController::class,'show'])->name('student.profile');
 });
 

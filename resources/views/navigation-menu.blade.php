@@ -33,7 +33,7 @@
                             
                             <x-slot name="content">
                                     <x-jet-dropdown-link href="{{ route('courses.index') }}">
-                                        {{ __('Courses') }}
+                                        {{ __('Self Registration') }}
                                     </x-jet-dropdown-link>
                         
                                     <x-jet-dropdown-link href="{{ route('courses.personal') }}">
