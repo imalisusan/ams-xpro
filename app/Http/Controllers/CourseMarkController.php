@@ -21,7 +21,7 @@ class CourseMarkController extends Controller
     
     public function create(Course $course)
     {
-        $coursemodules = CourseModule::all();
+        $coursemodules = CourseModule::where('course_id', $course->id)->get();
         $students = User::all();
         return view('coursemarks.create', compact('coursemodules', 'students', 'course'));
     }
