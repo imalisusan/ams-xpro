@@ -3,17 +3,19 @@
 namespace App\Http\Livewire;
 
 use App\Models\Course;
+use App\Models\CourseUser;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
+use Illuminate\Support\Facades\Auth;
 use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
-class CoursesTableView extends TableView
+class MyCoursesTableView extends TableView
 {
     protected $paginate = 20;
 
-    public $searchBy = ['code', 'name', 'year'];
+    public $searchBy = ['course.code', 'course.name', 'course.year'];
     /**
      * Sets a initial query with the data to fill the table
      *
@@ -21,7 +23,7 @@ class CoursesTableView extends TableView
      */
     public function repository(): Builder
     {
-         return Course::query();
+        return CourseUser::query()->where('user_id', Auth::user()->id);
     }
 
     /**
@@ -32,8 +34,8 @@ class CoursesTableView extends TableView
     public function headers(): array
     {
         return [
-            Header::title('Code')->sortBy('code'),
-            Header::title('Name')->sortBy('name'),
+            Header::title('Code')->sortBy('course.code'),
+            Header::title('Name')->sortBy('course.name'),
             Header::title('Year')->sortBy('year'),
             Header::title('Credits')->sortBy('credits'),
             Header::title('Group')->sortBy('group'),
@@ -46,25 +48,22 @@ class CoursesTableView extends TableView
      *
      * @param $model Current model for each row
      */
-    public function row(Course $course): array
-    {
+    public function row(CourseUser $courseuser): array
+    {   
         return [
-            $course->code,
-            $course->name,
-            $course->year,
-            $course->credits,
-            $course->group,
-            $course->semester,
+            $courseuser->course->code,
+            $courseuser->course->name,
+            $courseuser->course->year,
+            $courseuser->course->credits,
+            $courseuser->course->group,
+            $courseuser->course->semester,
         ];
     }
 
     protected function actionsByRow()
     {
         return [
-            new RedirectAction('courses.register', 'Register course', 'clipboard'),
             new RedirectAction('courses.show', 'See course', 'maximize-2'),
-            new RedirectAction('courses.edit', 'Edit course', 'edit'),
-            new DeleteAction(),
         ];
     }
 

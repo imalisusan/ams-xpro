@@ -27,6 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'reg_id',
+        'phone_no',
+        'dob',
+        'course_name',
     ];
 
     /**
@@ -68,9 +72,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(CourseUser::class);
     }
-     
+  
     public function attendance()
     {
         return $this->hasMany(Attendance::class);
+    }
+    public function marks()
+    {
+        return $this->hasMany(CourseMark::class);
     }
 }

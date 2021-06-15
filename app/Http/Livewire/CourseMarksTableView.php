@@ -2,18 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Course;
+use App\Models\CourseMark;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
-class CoursesTableView extends TableView
+class CourseMarksTableView extends TableView
 {
     protected $paginate = 20;
 
-    public $searchBy = ['code', 'name', 'year'];
+    public $searchBy = ['course_module.name', 'user.name', 'score'];
     /**
      * Sets a initial query with the data to fill the table
      *
@@ -21,7 +21,7 @@ class CoursesTableView extends TableView
      */
     public function repository(): Builder
     {
-         return Course::query();
+         return CourseMark::query();
     }
 
     /**
@@ -32,12 +32,10 @@ class CoursesTableView extends TableView
     public function headers(): array
     {
         return [
-            Header::title('Code')->sortBy('code'),
-            Header::title('Name')->sortBy('name'),
-            Header::title('Year')->sortBy('year'),
-            Header::title('Credits')->sortBy('credits'),
-            Header::title('Group')->sortBy('group'),
-            Header::title('Semester')->sortBy('semester'),
+            Header::title('Course')->sortBy('course.name'),
+            Header::title('Module')->sortBy('course_module.name'),
+            Header::title('Student Name')->sortBy('user.name'),
+            Header::title('Score')->sortBy('score'),
             ];
     }
 
@@ -46,26 +44,22 @@ class CoursesTableView extends TableView
      *
      * @param $model Current model for each row
      */
-    public function row(Course $course): array
+    public function row(CourseMark $coursemark): array
     {
         return [
-            $course->code,
-            $course->name,
-            $course->year,
-            $course->credits,
-            $course->group,
-            $course->semester,
+            $coursemark->course->name,
+            $coursemark->course_module->name,
+            $coursemark->user->name,
+            $coursemark->score,
         ];
     }
 
     protected function actionsByRow()
     {
         return [
-            new RedirectAction('courses.register', 'Register course', 'clipboard'),
-            new RedirectAction('courses.show', 'See course', 'maximize-2'),
-            new RedirectAction('courses.edit', 'Edit course', 'edit'),
+            new RedirectAction('coursemarks.show', 'See coursemark', 'maximize-2'),
+            new RedirectAction('coursemarks.edit', 'Edit coursemark', 'edit'),
             new DeleteAction(),
         ];
     }
-
 }
