@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRegIDColumnToUsers extends Migration
+class EditUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,10 @@ class AddRegIDColumnToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('RegID')->unique()->after('id');
+            $table->string('reg_id')->unique()->after('id');
+            $table->integer('phone_no')->after('email');
+            $table->string('dob');
+            $table->string('course_name');
         });
     }
 
@@ -26,7 +29,10 @@ class AddRegIDColumnToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropcolumn('RegID');
+            $table->dropcolumn('reg_id');
+            $table->dropcolumn('phone_no');
+            $table->dropcolumn('dob');
+            $table->dropcolumn('course_name');
         });
     }
 }
