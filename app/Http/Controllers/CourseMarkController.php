@@ -28,7 +28,6 @@ class CourseMarkController extends Controller
     
     public function store(StoreCourseMarkRequest $request)
     {
-        dd($request);
         $validated = $request->validated();
         CourseMark::create($validated);
      
