@@ -7,13 +7,13 @@
                 appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8
                 rounded">
                     <option>Select an option</option>
-                    @foreach($students as $student)
-                        <option value="{{ $student->id }}"  @if ((isset($coursemark) &&  $coursemark->user_id == ($student->id ) || old('student_id') == $student->id )) 
-                            selected @endif >{{ $student->name  }}</option>
+                    @foreach($users as $user)
+                        <option value="{{ $user->id }}"  @if ((isset($coursemark) &&  $coursemark->user_id == ($user->id ) || old('user_id') == $user->id )) 
+                            selected @endif >{{ $user->name  }}</option>
                     @endforeach
                 </select>
             </div>
-            <x-error field="code" class="text-red-600" />
+            <x-error field="user_id" class="text-red-600" />
         </div>
 
         <div class="md:w-1/2 px-3">
@@ -24,12 +24,12 @@
                 rounded">
                     <option>Select an option</option>
                     @foreach($coursemodules as $coursemodule)
-                        <option value="{{ $coursemodule->id }}"  @if ((isset($coursemark) &&  $coursemark->course_module_id == ($coursemodule->id ) || old('coursemodule_id') == $coursemodule->id )) 
+                        <option value="{{ $coursemodule->id }}"  @if ((isset($coursemark) &&  $coursemark->course_module_id == ($coursemodule->id ) || old('course_module_id') == $coursemodule->id )) 
                             selected @endif >{{ $coursemodule->name  }}</option>
                     @endforeach
                 </select>
             </div>
-            <x-error field="code" class="text-red-600" />
+            <x-error field="course_module_id" class="text-red-600" />
         </div>
     </div>
     <div class="-mx-3 md:flex mb-6">
@@ -41,7 +41,7 @@
                 <x-error field="score" class="text-red-600" />
         </div>
     </div>
-    <input hidden type="number" value="{{ $course->id }}" name="course_id">
+    <input hidden type="number" value="{{ isset($coursemark) ? $coursemark->course_id :old($course->id) }}" name="course_id">
 
         <div class="md:flex place-self-center">
             <button type="submit" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition

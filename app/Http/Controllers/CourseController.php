@@ -36,17 +36,24 @@ class CourseController extends Controller
     {
         $coursemodules = CourseModule::where('course_id', $course->id)->get();
         $total = NULL;
-        foreach($coursemodules as $coursemodule)
+        if($coursemodules)
         {
-            $coursemark = CourseMark::where([
-                ['course_module_id', '=', $coursemodule->id],
-                ['user_id', '=', Auth::user()->id],
-            ])->first();
-            $coursemodule['score'] = $coursemark->score;
+            foreach($coursemodules as $coursemodule)
+            {
+                $coursemark = CourseMark::where([
+                    ['course_module_id', '=', $coursemodule->id],
+                    ['user_id', '=', Auth::user()->id],
+                ])->first();
+                if($coursemark)
+                {
+                    $coursemodule['score'] = $coursemark->score;
 
-            $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
-            $total = $total + $marks;
-            $total = number_format((float)$total, 2, '.', ''); 
+                    $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
+                    $total = $total + $marks;
+                    $total = number_format((float)$total, 2, '.', ''); 
+                }
+               
+            }
         }
         return view('courses.show', compact('course', 'coursemodules', 'total'));
     } 

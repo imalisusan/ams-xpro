@@ -22,12 +22,13 @@ class CourseMarkController extends Controller
     public function create(Course $course)
     {
         $coursemodules = CourseModule::where('course_id', $course->id)->get();
-        $students = User::all();
-        return view('coursemarks.create', compact('coursemodules', 'students', 'course'));
+        $users = User::all();
+        return view('coursemarks.create', compact('coursemodules', 'users', 'course'));
     }
     
     public function store(StoreCourseMarkRequest $request)
     {
+        dd($request);
         $validated = $request->validated();
         CourseMark::create($validated);
      
@@ -41,8 +42,9 @@ class CourseMarkController extends Controller
      
     public function edit(CourseMark $coursemark)
     {
-        $coursemodules = CourseModule::all();
-        return view('coursemarks.edit',compact('coursemark', 'coursemodules'));
+        $coursemodules = CourseModule::where('course_id', $coursemark->course->id)->get();
+        $users = User::all();
+        return view('coursemarks.edit',compact('coursemark', 'coursemodules', 'users'));
     }
     
  
