@@ -41,6 +41,8 @@
                 <x-error field="score" class="text-red-600" />
         </div>
     </div>
+    <input hidden type="number" value="{{ $course->id }}" name="course_id">
+
         <div class="md:flex place-self-center">
             <button type="submit" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition
             duration-300 hover:bg-blue-700 hover:text-white focus:outline-none place-self-center">Save Course Mark</button>
