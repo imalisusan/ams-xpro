@@ -35,7 +35,8 @@ class CourseModulesTableView extends TableView
             Header::title('Course Name')->sortBy('course.name'),
             Header::title('Name')->sortBy('name'),
             Header::title('Weight')->sortBy('weight'),
-            Header::title('Maximu Score')->sortBy('maximum_score'),
+            Header::title('Maximum Score')->sortBy('maximum_score'),
+            Header::title('Actions'),
             ];
     }
 
