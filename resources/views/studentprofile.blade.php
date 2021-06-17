@@ -1,20 +1,20 @@
 <x-app-layout>
 <header>
 <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center object-contain">
+        <h2 class="font-semibold text-xl text-black-900 leading-tight text-center object-contain">
             {{ __('STUDENT PROFILE') }}
         </h2>
     </x-slot>
     </header>
    
-    <div class="py-12 " >
+    <div class="py-12" >
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg h-80">
                 <div id="image" style="float:left; padding:50px;">
                     <img src="{{ asset('assets/images/profile.svg') }}" class="block h-40 w-auto" />
                 </div>
                 
-    <table align="right" style="float:right;margin-right:20px;">
+    <table align="right"  style="float:right;margin-right:20px;">
         <br>
         <h1 class="text-center"> Welcome {{ $user->name }} <h1>
                
