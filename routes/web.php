@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\ProgressReportController;
 use \App\Http\Controllers\ExamCardController;
+use App\Http\Controllers\FeeStructureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/exam-card', [ExamCardController::class, 'show'])->name("");
     Route::get('/progress-report', [])->name("");
 });
+
+Route::resource('feestructures',FeeStructureController::class);
+Route::get('feestructures/download/{feestructure}',[FeeStructureController::class,'download'])->name('feestructures.download');
