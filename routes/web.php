@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\CourseModuleController;
+use App\Http\Controllers\FeeStructureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/student/profile',[StudentController::class,'show'])->name('student.profile');
 });
 
+Route::resource('feestructures',FeeStructureController::class);
+Route::get('feestructures/download/{feestructure}',[FeeStructureController::class,'download'])->name('feestructures.download');
