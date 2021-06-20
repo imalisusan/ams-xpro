@@ -11,7 +11,12 @@
         "dompdf/dompdf": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
+<<<<<<< HEAD
         "guzzlehttp/guzzle": "^7.3",
+=======
+        "goodnesskay/laravelpdfviewer": "^1.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+>>>>>>> 166c063 (Laraview)
         "laravel-views/laravel-views": "^2.2",
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.40",

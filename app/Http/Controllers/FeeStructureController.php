@@ -41,15 +41,15 @@ class FeeStructureController extends Controller
      */
     public function store(Request $request)
     {
-        $feestructure= new FeeStructure();
         request()->validate([
             'file'  => 'required|mimes:pdf,doc,docx,zip|max:2048',
           ]);
-
+    
           if ($request->file('file')) {
-            $file=$request->file;
+            $feestructure= new feestructure();
+            $file=$request->file('file');
             $filename=time().'.'.$file->getClientOriginalExtension();
-            $request->file->store('feestructures/'.$filename);
+            $request->file->move('storage/feestructures/', $filename);
 
             $feestructure->file_name= $filename;
           }
@@ -73,14 +73,14 @@ class FeeStructureController extends Controller
      */
     public function show($id)
     {
-        //$feestructures = FeeStructure::find($id);
-        $feestructures = FeeStructure::where('id', $id)->get();
+        $feestructure = FeeStructure::find($id);
+        /* $feestructures = FeeStructure::where('id', $id)->get();
         
         if ($feestructures) {
 
             $feestructure=$feestructures->first();
             
-        } 
+        }  */
 
         return view('feestructures.view',compact('feestructure'));
     }
@@ -118,9 +118,9 @@ class FeeStructureController extends Controller
     {
         //
     }
-    public function download($file)
+    public function download($file_path)
     {
-        
+        return response()->download('storage/feestructures/'.$file_path);
     }
 
 }

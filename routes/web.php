@@ -58,4 +58,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 Route::resource('feestructures',FeeStructureController::class);
-Route::get('feestructures/download/{feestructure}',[FeeStructureController::class,'download'])->name('feestructures.download');
+Route::get('feestructures/download/{file_path}',[FeeStructureController::class,'download'])->name('feestructures.download');
