@@ -27,7 +27,7 @@
                                                       <p>{{$feestructure->file_path}}</p>
                                                 </div>
                                                 <div class="card-body border bg-white shadow-sm">
-                                                    <h3 class="card-title"><a href=" {{ route('feestructures.store') }}">Download</a></h3>
+                                                    <h3 class="card-title"><a href=" {{ route('feestructures.download',['file_path'=>$feestructure->file_path]) }}">Download</a></h3>
                                                 </div>  
                                             @endif                                               
                                     </div>
@@ -45,7 +45,7 @@
                                                       <p>{{$feestructure->file_path}}</p>
                                                 </div>
                                                 <div class="card-body border bg-white shadow-sm">
-                                                    <h3 class="card-title"><a href=" {{ route('feestructures.store') }}">Download</a></h3>
+                                                    <h3 class="card-title"><a href=" {{ route('feestructures.download',['file_path'=>$feestructure->file_path]) }}">Download</a></h3>
                                                 </div>  
                                             @endif                                               
                                     </div>
