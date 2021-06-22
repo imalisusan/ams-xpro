@@ -20,7 +20,6 @@ class ProgressReportController extends Controller
         foreach ($courses as $course) 
         {
             $coursemodules = CourseModule::where('course_id', $course->id)->get();
-            dd($coursemodules);
             $total = NULL;
             if($coursemodules)
                 {
@@ -30,6 +29,7 @@ class ProgressReportController extends Controller
                             ['course_module_id', '=', $coursemodule->id],
                             ['user_id', '=', Auth::user()->id],
                         ])->first();
+                        dd($coursemark);
                         if($coursemark)
                         {
                             $coursemodule['score'] = $coursemark->score;
