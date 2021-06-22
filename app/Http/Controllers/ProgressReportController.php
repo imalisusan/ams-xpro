@@ -14,7 +14,8 @@ class ProgressReportController extends Controller
     public function index(Request $request)
 
     {
-        $courses = Course::all();
+        $courses = CourseUser::where('user_id', Auth::user()->id)->get();
+        //$courses = Course::all();
         foreach ($courses as $course) 
         {
             $coursemodules = CourseModule::where('course_id', $course->id)->get();
