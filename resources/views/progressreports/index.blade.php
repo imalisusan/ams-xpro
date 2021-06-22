@@ -42,6 +42,12 @@
                                            <th
                                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
                                            Year</th>
+                                            <th
+                                           class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           Credits</th>
+                                            <th
+                                           class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           Score</th>
                                         </tr>
                                     </thead>
         
@@ -55,6 +61,12 @@
                                         <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
                                         {{ $course->course->year }}</td>
+                                        <td
+                                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                        {{ $course->course->credits }}</td>
+                                        <td
+                                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                        {{ $course->total}}</td>
                                     </tr>
 
                                      @endforeach
