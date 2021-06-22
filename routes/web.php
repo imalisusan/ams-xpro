@@ -49,6 +49,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/student/profile',[StudentController::class,'show'])->name('student.profile');
     Route::get('/student/progress',[ProgressReportController::class,'index'])->name('student.progress');
+    Route::get('progressreports/download', [ProgressReportController::class, 'pdfexport'])->name('progressreport.download');
 });
-Route::get('progressreports/download', 'ProgressReportController@pdfexport')->name('progressreport.download);
+
 
