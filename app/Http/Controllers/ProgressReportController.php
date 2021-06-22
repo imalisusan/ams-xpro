@@ -40,7 +40,7 @@ class ProgressReportController extends Controller
                     
                     }
                 }
-            dd($course);
+            //dd($course);
         }
         return view('progressreports.index', compact('courses'));
         
