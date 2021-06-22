@@ -16,10 +16,9 @@ class ProgressReportController extends Controller
 
     {
         $courses = CourseUser::where('user_id', Auth::user()->id)->get();
-        //$courses = Course::all();
         foreach ($courses as $course) 
         {
-            $coursemodules = CourseModule::where('course_id', $course->id)->get();
+            $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
             $total = NULL;
             if($coursemodules)
                 {
