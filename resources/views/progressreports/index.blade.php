@@ -66,7 +66,7 @@
                                         {{ $course->course->credits }}</td>
                                         <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
-                                        {{ $course->total}}</td>
+                                        {{ $course->total }}</td>
                                     </tr>
 
                                      @endforeach
