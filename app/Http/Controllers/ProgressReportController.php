@@ -29,21 +29,22 @@ class ProgressReportController extends Controller
                             ['course_module_id', '=', $coursemodule->id],
                             ['user_id', '=', Auth::user()->id],
                         ])->first();
-                        dd($coursemark);
+                        
                         if($coursemark)
                         {
                             $coursemodule['score'] = $coursemark->score;
-
                             $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
                             $total = $total + $marks;
                             //$course['total'] = number_format((float)$total, 2, '.', ''); 
                             $total = number_format((float)$total, 2, '.', ''); 
                             
                         }
+                        
+                        dd($coursemark);
                     
                     }
                 }
-            dd($total);
+            //dd($total);
             //dd($course);
         }
         return view('progressreports.index', compact('courses'));
