@@ -37,11 +37,12 @@ class ProgressReportController extends Controller
                             $total = $total + $marks;
                             //$course['total'] = number_format((float)$total, 2, '.', ''); 
                             $total = number_format((float)$total, 2, '.', ''); 
-                            dd($total);
+                            
                         }
                     
                     }
                 }
+            dd($total);
             //dd($course);
         }
         return view('progressreports.index', compact('courses'));
