@@ -29,7 +29,7 @@ class ProgressReportController extends Controller
                             ['course_module_id', '=', $coursemodule->id],
                             ['user_id', '=', Auth::user()->id],
                         ])->first();
-                        
+                        dd($coursemark);
                         if($coursemark)
                         {
                             $coursemodule['score'] = $coursemark->score;
@@ -41,7 +41,7 @@ class ProgressReportController extends Controller
                         }
                     }
                 }
-            dd($total);
+            //dd($total);
             //dd($course);
         }
         return view('progressreports.index', compact('courses'));
