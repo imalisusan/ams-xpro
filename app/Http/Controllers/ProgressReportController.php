@@ -35,17 +35,14 @@ class ProgressReportController extends Controller
                             $coursemodule['score'] = $coursemark->score;
                             $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
                             $total = $total + $marks;
-                            //$course['total'] = number_format((float)$total, 2, '.', ''); 
-                            $total = number_format((float)$total, 2, '.', ''); 
+                            $course['total'] = number_format((float)$total, 2, '.', ''); 
+                            //$total = number_format((float)$total, 2, '.', ''); 
                             
                         }
-                        
-                        dd($coursemark);
-                    
                     }
                 }
             //dd($total);
-            //dd($course);
+            dd($course);
         }
         return view('progressreports.index', compact('courses'));
         
