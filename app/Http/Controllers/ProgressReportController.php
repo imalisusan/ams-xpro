@@ -20,6 +20,7 @@ class ProgressReportController extends Controller
         foreach ($courses as $course) 
         {
             $coursemodules = CourseModule::where('course_id', $course->id)->get();
+            dd($coursemodules);
             $total = NULL;
             if($coursemodules)
                 {
