@@ -7,8 +7,9 @@ use App\Models\CourseUser;
 use Illuminate\Http\Request;
 use App\Models\CourseMark;
 use App\Models\CourseModule;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Support\Facades\Auth;
-
+use PDF;
 
 class ProgressReportController extends Controller
 {
@@ -40,6 +41,15 @@ class ProgressReportController extends Controller
         }
         return view('progressreports.index', compact('courses'));
         
+    }
+    public function pdfexport($name)
+
+    {
+        $course = $course::find($name);
+        $pdf = PDF;;loadview('progressreort.pdf')->setpaper('a4', 'potrait');
+        $filename = $course->name;
+        return $pdf->stream($filename . '.pdf');
+
     }
     
 }
