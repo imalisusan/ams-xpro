@@ -14,6 +14,7 @@ class CourseMark extends Model
         'user_id',
         'course_module_id',
         'score',
+        'total',
     ];
 
     public function user()
