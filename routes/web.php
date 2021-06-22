@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\CourseModuleController;
+use App\Http\Controllers\ProgressReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/student/profile',[StudentController::class,'show'])->name('student.profile');
+    Route::get('/student/progress',[ProgressReportController::class,'index'])->name('student.progress');
 });
 
