@@ -71,7 +71,7 @@
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
                                         {{ $course->total }}</td>
                                         <td
-                                        <a href="{{url('progressreport/pdfexport/' .$course->course->name  )}}" class="btn btn-primary btn-xs">Download PDF</a>
+                                        <a href="{{route('progressreport/download', Auth::user()->id  )}}" class="btn btn-primary btn-xs">Download PDF</a>
                                         </td>
 
                                     </tr>
@@ -94,3 +94,4 @@
     </div>
 
 </x-app-layout>
+n
