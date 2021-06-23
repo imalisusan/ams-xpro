@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\CourseModuleController;
+use App\Http\Controllers\FeeStatementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::resources([
     'courseusers' => CourseUserController::class,
     'coursemodules' => CourseModuleController::class,
     'coursemarks' => CourseMarkController::class,
+    'feestatement' => FeeStatementController::class,
 ]);
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
@@ -47,5 +49,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/student/profile',[StudentController::class,'show'])->name('student.profile');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+    Route::get('fees/feestatement', [FeeStatementController::class, 'index'])->name('fees.feestatement');
 });
 
