@@ -11,7 +11,7 @@
 }
 
 .styled-table thead tr {
-    background-color: #009879;
+    background-color: #D92B30;
     color: #ffffff;
     text-align: left;
 }
@@ -30,17 +30,21 @@
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #D92B30;
 }
 .styled-table tbody tr.active-row {
     font-weight: bold;
-    color: #009879;
+    color: #D92B30;
 }
 </style>
 </head>
 
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Progress Report') }} 
+        <h1 class="styled-table th" style="font-size:15px;">
+             Strathmore University
+        </h1>
+        
+        <h2 class="styled-table th" style="color:#324B90">
+        Progress Report- {{ Auth::user()->reg_id }}- {{ Auth::user()->name}} 
         </h2>
 
     <table class="styled-table">
@@ -50,6 +54,7 @@
             <th>Year</th>
             <th>Credits</th>
             <th>Score</th>
+            <th>Grade</th>
         </tr>
     </thead>
     <tbody>
@@ -59,12 +64,15 @@
             <td> {{ $course->course->year }}</td>
             <td> {{ $course->course->credits }}</td>
             <td> {{ $course->total }}</td>
+            <td> {{ $course->grade }}</td>
         </tr>
         @endforeach
        
         <tr class="active-row">
             <td>Average GPA</td>
             <td>{{$gpa}}</td>
+            <td>Mean Grade</td>
+            <td>{{$gpa_grade}}</td>
         </tr>
       
     </tbody>
