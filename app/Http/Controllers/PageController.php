@@ -8,6 +8,6 @@ class PageController extends Controller
 {
     public function __invoke($page)
     {
-        return view(view:'pages.' .$page );
+        
     }
 }
