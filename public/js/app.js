@@ -3802,12 +3802,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
-$("#file-upload").css("opacity", "0");
-$("#file-browser").click(function (e) {
-  e.preventDefault();
-  $("#file-upload").trigger("click");
-});
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

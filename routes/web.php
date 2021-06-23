@@ -52,3 +52,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 Route::resource('feestructures',FeeStructureController::class);
 Route::get('feestructures/download/{file_path}',[FeeStructureController::class,'download'])->name('feestructures.download');
+Route::post('feestructures/update/{feestructure}',[FeeStructureController::class,'update'])->name('feestructures.update');
+Route::get('feestructures/delete/{feestructure}',[FeeStructureController::class,'destroy'])->name('feestructures.delete');
