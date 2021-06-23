@@ -2,50 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Course;
-use App\Models\CourseUser;
-use Illuminate\Http\Request;
 use App\Models\CourseMark;
+use App\Models\CourseUser;
 use App\Models\CourseModule;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Helpers\Util;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ProgressReportController extends Controller
 {
     public function index(Request $request)
-
     {
-        $courses = CourseUser::where('user_id', Auth::user()->id)->get();
-        //$courses = Course::all();
-        foreach ($courses as $course) 
-        {
-            $coursemodules = CourseModule::where('course_id', $course->id)->get();
-            $total = NULL;
-            if($coursemodules)
-                {
-                    foreach($coursemodules as $coursemodule)
-                    {
-                        $coursemark = CourseMark::where([
-                            ['course_module_id', '=', $coursemodule->id],
-                            ['user_id', '=', Auth::user()->id],
-                        ])->first();
-                        
-                        if($coursemark)
-                        {
-                            $coursemodule['score'] = $coursemark->score;
-                            $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
-                            $total = $total + $marks;
-                            $course['total'] = number_format((float)$total, 2, '.', ''); 
-                            //$total = number_format((float)$total, 2, '.', ''); 
-                            
-                        }
-                    }
-                }
-            //dd($total);
-            dd($course);
-        }
-        return view('progressreports.index', compact('courses'));
+        $courses = Util::get_coursemarks();
+        $gpa = Util::get_gpa();
+        $gpa_grade = Util::get_gpa_grade($gpa);
+        return view('progressreports.index', compact('courses', 'gpa', 'gpa_grade'));
         
     }
     
+    public function pdfexport(User $user)
+    {
+        $courses = Util::get_coursemarks();
+        $gpa = Util::get_gpa();
+        $gpa_grade = Util::get_gpa_grade($gpa);
+
+        $pdf = PDF::loadView('progressreports.pdf', compact('courses', 'gpa', 'gpa_grade'));
+        return $pdf->download('progressreport.pdf');
+    }
+    
 }
+
