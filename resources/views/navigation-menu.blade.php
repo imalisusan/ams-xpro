@@ -6,15 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('student.profile') }}">
-<<<<<<< HEAD
-                        <img
-                            src="{{ url('https://strathmore.edu/wp-content/uploads/2019/08/University-Logo-Black-12.png') }}"
-                            class="block h-12 w-auto"
-                            alt="Strathmore University Logo"
-                        />
-=======
                         <img src="{{ asset('assets/images/SU-Logo.svg') }}" class="block h-12 w-auto" />
->>>>>>> ce7b073 (Fees Statement Module)
                     </a>
                 </div>
 
@@ -76,7 +68,7 @@
                             </x-slot>
                             
                             <x-slot name="content">
-                                    <x-jet-dropdown-link>
+                                    <x-jet-dropdown-link href="{{ route('fees.feestatement')}}">
                                         {{ __('Fee Statement') }}
                                     </x-jet-dropdown-link>
 
@@ -88,6 +80,7 @@
                     </div> 
                     <!-- End of Fees Details Links -->
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
                     <!-- Fees Details Links -->
@@ -119,6 +112,8 @@
                     <!-- End of Fees Details Links -->
 
 >>>>>>> ce7b073 (Fees Statement Module)
+=======
+>>>>>>> dd21608 (Update navigation-menu.blade.php)
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Attendance') }}
                     </x-jet-nav-link>
