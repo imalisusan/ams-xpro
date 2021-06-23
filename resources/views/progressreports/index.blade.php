@@ -18,8 +18,10 @@
             <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
                 <div
                     class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
-                    <div class="flex justify-between">
-                       
+                    <div class="flex justify-between" style="float:left;">
+                    <a type="button"  href="{{route('progressreport.download', Auth::user()->id  )}}" 
+                            class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
+                            Download PDF</a>
                     </div>
                 </div>
                 <div
@@ -29,9 +31,7 @@
                             <div
                                 class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                                 <table class="min-w" id="marksTable"> 
-                                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                                        Progress Report
-                                    </h2><br>
+                                <br>
                                     <thead>
                                         <tr>
                                             <th
@@ -46,9 +46,6 @@
                                             <th
                                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
                                            Score</th>
-                                           <th
-                                           class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                                           Action</th>
                                         </tr>
                                     </thead>
 
@@ -70,9 +67,6 @@
                                         <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
                                         {{ $course->total }}</td>
-                                        <td
-                                        <a href="{{route('progressreport.download', Auth::user()->id  )}}" class="btn btn-primary btn-xs">Download PDF</a>
-                                        </td>
 
                                     </tr>
 
