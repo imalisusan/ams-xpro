@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Helpers\Util;
 use App\Models\CourseMark;
 use App\Models\CourseUser;
 use App\Models\CourseModule;
@@ -11,113 +10,73 @@ use Illuminate\Support\Facades\Auth;
 
 
 class Util {
-    static public function get_coursemarks()
+
+    public static function get_course_units()
      {
-        $courses = CourseUser::where('user_id', Auth::user()->id)->get();
-        $gpa_total = NULL; 
-        $gpa = NULL;
-        foreach ($courses as $course) 
-        {
-            $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
-            $total = NULL;
-            if($coursemodules)
-                {
-                    foreach($coursemodules as $coursemodule)
-                    {
-                        $coursemark = CourseMark::where([
-                            ['course_module_id', '=', $coursemodule->id],
-                            ['user_id', '=', Auth::user()->id],
-                        ])->first();
-                        if($coursemark)
-                        {
-                            $coursemodule['score'] = $coursemark->score;
-                            $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
-                            $total = $total + $marks;
-                            $course['total'] = number_format((float)$total, 2, '.', ''); 
-                            $course['grade'] = Util::get_grade($course['total']);
-                        }
-                    }
-                    $gpa_total = $gpa_total + $course['total']; 
-                }
-        } 
-        
-        return $courses;
-        
+         return CourseUser::where('user_id', Auth::user()->id)->get();
      }
 
-     static public function get_grade($mark)
+     public static function get_grade($mark): string
      {
         switch ($mark) {
             case ($mark > 69):
-                $grade = "A";
-                break;
+                return "A";
             case ($mark > 59):
-                $grade = "B";
-                break;
+                return "B";
             case ($mark > 49):
-                $grade = "C";
-                break;
+                return "C";
             case ($mark > 39):
-                $grade = "D";
-                break;
+                return "D";
             case ($mark < 40):
-                $grade = "E";
-                break;
-                    
+                return "E";
             default:
-                $grade = "Null";
-                break;
+                return "Null";
         }
-
-        return $grade;
-        
      }
 
-     static public function get_gpa()
+     public static function get_gpa()
      {
-        $gpa_total = Util::get_gpa_total();
-        $courses = Util::get_coursemarks();
-        $no_of_courses = count($courses);
-        $gpa = $gpa_total / $no_of_courses;
-        return $gpa;
+         try
+         {
+             $gpa_total = self::get_gpa_total();
+             $courses = self::get_course_units();
+             $no_of_courses = count($courses);
+             return $gpa_total / $no_of_courses;
+         } catch (\Exception $e) {
+             return 0;
+         }
      }
 
-     static public function get_gpa_grade($gpa)
-     {
-        $gpa_grade = Util::get_grade($gpa);
-        return $gpa_grade;
-     }
-
-     static public function get_gpa_total()
+     public static function get_gpa_total(): int
      {
         $courses = CourseUser::where('user_id', Auth::user()->id)->get();
-        $gpa_total = NULL; 
-        $gpa = NULL;
-        foreach ($courses as $course) 
+        $gpa_total = 0;
+        foreach ($courses as $course)
         {
-            $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
-            $total = NULL;
-            if($coursemodules)
+            $course_modules = CourseModule::where('course_id', $course->course_id)->get();
+            $total = 0;
+            if($course_modules)
                 {
-                    foreach($coursemodules as $coursemodule)
+                    foreach($course_modules as $course_module)
                     {
-                        $coursemark = CourseMark::where([
-                            ['course_module_id', '=', $coursemodule->id],
+                        $course_mark = CourseMark::where([
+                            ['course_module_id', '=', $course_module->id],
                             ['user_id', '=', Auth::user()->id],
                         ])->first();
-                        if($coursemark)
+                        if($course_mark)
                         {
-                            $coursemodule['score'] = $coursemark->score;
-                            $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
-                            $total = $total + $marks;
-                            $course['total'] = number_format((float)$total, 2, '.', ''); 
-                            $course['grade'] = Util::get_grade($course['total']);
+                            $course_module['score'] = $course_mark->score;
+                            $marks =  ($course_module['score'] * ( $course_module['weight'] * 100)) /  $course_module['maximum_score'];
+                            $total += $marks;
+                            $course['total'] = number_format((float)$total, 2, '.', '');
+                            $course['grade'] = self::get_grade($course['total']);
                         }
                     }
-                    $gpa_total =  $gpa_total + $course['total']; 
+                    $gpa_total += $course['total'];
                 }
-        } 
+        }
+
         return  $gpa_total;
      }
 
-    }
+}

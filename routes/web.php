@@ -8,6 +8,7 @@ use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\ProgressReportController;
+use \App\Http\Controllers\ExamCardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ use App\Http\Controllers\ProgressReportController;
 Route::get('/', function () {
     return view('auth.login');
 });
+
 Route::resources([
     'courses' => CourseController::class,
     'courseusers' => CourseUserController::class,
@@ -30,20 +32,16 @@ Route::resources([
     'coursemarks' => CourseMarkController::class,
 ]);
 
-Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
-Route::get('coursemarks/{course}/create',[CourseMarkController::class, 'create'])->name('coursemarks.create');
+Route::get('/register/{course}', [CourseUserController::class, 'store'])->name('courses.register');
+Route::get('coursemarks/{course}/create', [CourseMarkController::class, 'create'])->name('coursemarks.create');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-   
-Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
-
+    Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
 });
-
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
@@ -53,3 +51,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/exam-card', [ExamCardController::class, 'show'])->name("");
+    Route::get('/progress-report', [])->name("");
+});

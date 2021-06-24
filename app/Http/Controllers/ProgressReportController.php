@@ -16,22 +16,21 @@ class ProgressReportController extends Controller
 {
     public function index(Request $request)
     {
-        $courses = Util::get_coursemarks();
+        $courses = Util::get_course_units();
         $gpa = Util::get_gpa();
-        $gpa_grade = Util::get_gpa_grade($gpa);
+        $gpa_grade = Util::get_grade($gpa);
         return view('progressreports.index', compact('courses', 'gpa', 'gpa_grade'));
-        
+
     }
-    
+
     public function pdfexport(User $user)
     {
-        $courses = Util::get_coursemarks();
+        $courses = Util::get_course_units();
         $gpa = Util::get_gpa();
-        $gpa_grade = Util::get_gpa_grade($gpa);
+        $gpa_grade = Util::get_grade($gpa);
 
         $pdf = PDF::loadView('progressreports.pdf', compact('courses', 'gpa', 'gpa_grade'));
         return $pdf->download('progressreport.pdf');
     }
-    
 }
 

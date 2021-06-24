@@ -11,7 +11,7 @@
         "dompdf/dompdf": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.3",
         "laravel-views/laravel-views": "^2.2",
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.40",
@@ -22,6 +22,7 @@
         "livewire/livewire": "^2.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
