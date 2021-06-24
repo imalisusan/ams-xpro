@@ -15,8 +15,9 @@ class FeeStatement extends Model
         'user_id',
         'date',
         'document_number',
-        'document-type',
+        'document_type',
         'amount',
+        'type',
     ];
 
     public function feestatement()

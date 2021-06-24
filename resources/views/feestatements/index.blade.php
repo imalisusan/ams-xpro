@@ -7,9 +7,15 @@
         </x-slot>
     </header>
    
-    <div class="py-12 " >
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg h-80">
+    <div class="py-12 " style="height:100%;">
+        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8" >
+            
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg h-4/5" >
+                <br> &nbsp;&nbsp; &nbsp;
+                <a type="button" href="{{ route('feestatement.create') }}"
+            class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
+            Add Fee Statement</a>
+            <br><br>
             <form action="", method = "get"> 
                 <table class="mx-20">
                 <tr>
@@ -35,8 +41,11 @@
                 </tbody>
                 
                 </table>
+                <br>
+                <br>
             </form>
         </div>
+    
     </div>
  </div>
 </x-app-layout>
