@@ -7,7 +7,11 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\CourseModuleController;
+use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\ProgressReportController;
+
+
+use App\Http\Controllers\FeeStatementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +32,7 @@ Route::resources([
     'courseusers' => CourseUserController::class,
     'coursemodules' => CourseModuleController::class,
     'coursemarks' => CourseMarkController::class,
+    'feestatement' => FeeStatementController::class,
 ]);
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
@@ -52,4 +57,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('progressreports/download', [ProgressReportController::class, 'pdfexport'])->name('progressreport.download');
 });
 
+Route::resource('feestructures',FeeStructureController::class);
+Route::get('feestructures/download/{file_path}',[FeeStructureController::class,'download'])->name('feestructures.download');
+Route::post('feestructures/update/{feestructure}',[FeeStructureController::class,'update'])->name('feestructures.update');
+Route::get('feestructures/delete/{feestructure}',[FeeStructureController::class,'destroy'])->name('feestructures.delete');
+Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+    Route::get('fees/feestatement', [FeeStatementController::class, 'index'])->name('fees.feestatement');
+});
 
