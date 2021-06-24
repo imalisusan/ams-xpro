@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\FeeStatement;
+use Illuminate\Http\Request;
+use App\Http\Requests\StoreFeeStatementRequest;
 
 class FeeStatementController extends Controller
 {
@@ -15,7 +17,7 @@ class FeeStatementController extends Controller
     public function index(Request $request)
     {
         $fee_statement = FeeStatement::all();
-        return view('feestatement.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
+        return view('feestatements.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
     }
 
     /**
@@ -25,7 +27,8 @@ class FeeStatementController extends Controller
      */
     public function create()
     {
-        $fee_statement = new FeeStatement;
+        $students = User::all();
+        return view('feestatements.create', compact('students'));
     }
 
     /**
@@ -34,9 +37,12 @@ class FeeStatementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFeeStatementRequest $request)
     {
-        //
+        $validated = $request->validated();
+        FeeStatement::create($validated);
+     
+        return redirect()->route('feestatement.index')->with('success','Fee Statement created successfully.');
     }
 
     /**

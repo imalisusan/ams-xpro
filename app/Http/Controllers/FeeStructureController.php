@@ -33,7 +33,7 @@ class FeeStructureController extends Controller
      */
     public function create()
     {
-        return view('feestructures.add');
+        return view('feestructures.create');
         
     }
 
