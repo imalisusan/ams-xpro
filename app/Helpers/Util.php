@@ -35,9 +35,9 @@ class Util {
                             $total = $total + $marks;
                             $course['total'] = number_format((float)$total, 2, '.', ''); 
                             $course['grade'] = Util::get_grade($course['total']);
-                            $gpa_total = $gpa_total + $course['total']; 
                         }
                     }
+                    $gpa_total = $gpa_total + $course['total']; 
                 }
         } 
         
@@ -112,9 +112,9 @@ class Util {
                             $total = $total + $marks;
                             $course['total'] = number_format((float)$total, 2, '.', ''); 
                             $course['grade'] = Util::get_grade($course['total']);
-                            $gpa_total = $gpa_total + $course['total']; 
                         }
                     }
+                    $gpa_total =  $gpa_total + $course['total']; 
                 }
         } 
         return  $gpa_total;

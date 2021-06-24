@@ -8,7 +8,7 @@
                 rounded">
                     <option>Select an option</option>
                     @foreach($courses as $course)
-                        <option value="{{ $course->id }}"  @if ((isset($coursemodule) &&  $coursemodule->course_id == ($course->id ) || old('course_id') == $course->id )) 
+                        <option value="{{ $course->id }}"  @if ((isset($feestatement) &&  $feestatement->course_id == ($course->id ) || old('course_id') == $course->id )) 
                             selected @endif >{{ $course->name  }}</option>
                     @endforeach
                 </select>
@@ -20,7 +20,7 @@
             <x-label for="module name*" class="block uppercase text-xs font-bold mb-2" />
             <input type="text" name="name" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
             rounded py-3
-            px-4 mb-3" value="{{isset($coursemodule) ? $coursemodule->name : old('name') }}">
+            px-4 mb-3" value="{{isset($feestatement) ? $feestatement->name : old('name') }}">
             <x-error field="name" class="text-red-600" />
         </div>
     </div>
@@ -31,7 +31,7 @@
             <x-label for="weight*" class="block uppercase text-xs font-bold mb-2" />
                 <input type="number" name="weight" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
                 rounded py-3 px-4 mb-3"  step="0.1" max="1"
-                value="{{ isset($coursemodule) ? $coursemodule->weight :old('weight') }}" style="border:1px solid rgb(104, 104, 104);">
+                value="{{ isset($feestatement) ? $feestatement->weight :old('weight') }}" style="border:1px solid rgb(104, 104, 104);">
                 <x-error field="weight" class="text-red-600" />
         </div>
 

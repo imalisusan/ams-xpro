@@ -33374,6 +33374,54 @@ select {
   --tw-backdrop-sepia: sepia(100%);
 }
 
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.custom-table-hover:hover{
+  background-color: #fdeaea;
+}
+
+.custom-table-hover a:hover{
+  color: #ea2b2b;
+}
+
+.bg-strath-blue{
+  background-color: #3353a3;
+}
+
+.bg-strath-red{
+  background-color: #ea2b2b;
+}
+
+.bg-strath-gold{
+  background-color: #d4a95b;
+}
+
+.grid-container {
+  display: inline-grid;
+}
+
+.button-bg-strath-blue{
+  background-color:#3353a3;
+  color: white;
+}
+
+.button-bg-strath-blue:hover{
+  color:#3353a3;
+  background-color: white;
+  border-color:#3353a3;
+  font-weight:bold;
+}
+
+.custom-alert{
+  background: rgba(76, 175, 80, 0.3); /* Green background with 30% opacity */
+  cursor: pointer;
+  color:rgba(76, 175, 80);
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -195823,4 +195871,5 @@ select {
     --tw-backdrop-sepia: sepia(100%);
   }
 }
+
 
