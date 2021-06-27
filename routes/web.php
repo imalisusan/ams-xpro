@@ -37,9 +37,9 @@ Route::resources([
     'feestatement' => FeeStatementController::class,
 ]);
 
-Route::get('attendances/mark/{user}', [AttendanceController::class, 'mark'])->name('attendance.mark');
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
 Route::get('coursemarks/{course}/create',[CourseMarkController::class, 'create'])->name('coursemarks.create');
+Route::get('attendance/{course}/create',[AttendanceController::class, 'create'])->name('attendance.create');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
    

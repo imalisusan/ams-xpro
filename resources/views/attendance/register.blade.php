@@ -1,7 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Attendance') }} 
+            {{ __('Choose Student') }} &nbsp; &nbsp;
+           
         </h2>
     </x-slot>
 
@@ -18,8 +19,6 @@
                 <div
                     class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
                     <div class="flex justify-between">
-                      
-                       
                     </div>
                 </div>
                 <div
@@ -33,10 +32,10 @@
                                    <tr>
                                        <th
                                        class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                       Course Code</th>
+                                      Student ID</th>
                                        <th
                                        class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                       Coursename</th>
+                                       Student</th>
                                        <th
                                       class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
                                       Total Hours</th>
@@ -95,7 +94,6 @@
                            </div>
                        </div>
                </div>
-           </body>
                     </body>
                     <div class="my-4 work-sans">
                     </div>
@@ -105,3 +103,4 @@
     </div>
 
 </x-app-layout>
+

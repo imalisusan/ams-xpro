@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attendance;
 use App\Models\User;
+use App\Helpers\Util;
 use App\Models\Course;
+use App\Models\Attendance;
 use App\Models\CourseUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,37 +16,21 @@ class AttendanceController extends Controller
 {
     public function index(Request $request)
     {
-        $courses = Course::all();
-        foreach($courses as $course)
-        $attendances = Attendance::all();
-        foreach($attendances as $attendance)
-        {
-            $attendance["absent_classes"] = 0.0;
-            $attendance["total_hours"] = 0.0;
-            $attendance["percentage_absent"] = 0.0;
-            $attendance["absent_hrs"] = 0.0;
-        }
-        return view('attendance.index', compact('attendances', 'courses'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $courses = Util::get_courseattendance();
+        return view('attendance.index', compact( 'courses'));
     }
      
-    public function create(User $user)
+    public function create(Course $course)
     {
-        return view('attendance.create', compact('user'));
+        $users = User::all();
+        return view('attendance.create', compact('users', 'course'));
     }
-    public function store(StoreAttendanceRequest $request, User $user)
+    public function store(StoreAttendanceRequest $request)
     {
-       
         $validated = $request->validated();
-        dd($validated);
         Attendance::create($validated);
      
-        return redirect()->route('attendance.index')->with('success','Attendance created successfully.');
-    }
-
-    public function mark($id)
-    {
-        $user = User::find($id);
-        return view('attendance.create', compact('user'));
+        return redirect()->route('courses.show', $validated['course_id'])->with('success','Attendance added successfully.');
     }
 
     public function show(Attendance $attendance)

@@ -16,12 +16,21 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if ($message = Session::get('success'))
+            <x-alert type="success" class="border border-t-0  rounded-b bg-green-500 bg-opacity-25 px-4 py-3 text-green-700" />
+            @else
+                <x-alert type="danger" class="border border-t-0  rounded-b bg-red-500 bg-opacity-25 px-4 py-3 text-red-700" />
+            @endif
+            
             <div class="bg-white shadow-md rounded px-8 flex flex-col">
                 <section class=" text-gray-700 body-font">
                     <br><br>
                         <div class="relative" style=" float:right;">
                                 <a href="{{ route('coursemarks.create', $course->id) }}" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition
                                 duration-300 hover:bg-blue-700 hover:text-white focus:outline-none place-self-center" >Add Marks </a>
+                                <br><br>
+                                <a href="{{ route('attendance.create', $course->id) }}" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition
+                                duration-300 hover:bg-blue-700 hover:text-white focus:outline-none place-self-center" >Add Attendance </a>
                         </div>
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-8">
                      
@@ -154,7 +163,10 @@
                                     </h2><br>
                                     <thead>
                                         <tr>
-                                        <th
+                                            <th
+                                           class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           Student Name</th>
+                                            <th
                                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
                                            Date and Time</th>
                                             <th
@@ -163,13 +175,15 @@
                                            <th
                                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
                                           Status</th>
-                                           <th
-                                           class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                                           Actions</th>
                                         </tr>
                                     </thead>
                                     @foreach ($attendances as $attendance)
                                     <tbody class="bg-white">
+                                        <td
+                                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                        {{$attendance->user->name }}
+                                        </td>
+
                                         <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
                                         {{$attendance->date_time }}
@@ -177,16 +191,11 @@
 
                                         <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
-                                        {{$attendance->total_hours}}</td>
+                                        {{ $attendance->total_hours }} hrs </td>
 
                                         <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
                                         {{$attendance->status}}</td>
-                                        <td
-                                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
-                                        <a href="">Edit</a>
-                                        <a href="">Delete</a>
-                                        </td>
                                 
                                     </tbody>
                                     @endforeach
@@ -199,6 +208,8 @@
                         </div>
                     </div>
                     <!--End of Attendance-->
+
+                    
                 </body>
             </div>
         </div>

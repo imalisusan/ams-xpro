@@ -15,6 +15,7 @@ class AddTotalHoursToCoursesTable extends Migration
     {
         Schema::table('courses', function (Blueprint $table) {
             $table->integer('total_hours')->default('40');
+            $table->integer('total_classes')->default('10');
         });
     }
 
@@ -27,6 +28,7 @@ class AddTotalHoursToCoursesTable extends Migration
     {
         Schema::table('courses', function (Blueprint $table) {
             $table->dropcolumn('total_hours'); 
+            $table->dropcolumn('total_classes'); 
         });
     }
 }
