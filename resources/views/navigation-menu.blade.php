@@ -56,7 +56,7 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Fees Details') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('attendance.index') }}" :active="request()->routeIs('attendance.index')">
                         {{ __('Attendance') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
@@ -64,12 +64,6 @@
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Exam Card') }}
-                    </x-jet-nav-link>
-
-                       
-
-                    <x-jet-nav-link href="{{ route('attendance.index') }}" :active="request()->routeIs('attendance.index')">
-                        {{ __('Attendance') }}
                     </x-jet-nav-link>
 
                 </div>
