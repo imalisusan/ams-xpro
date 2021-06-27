@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Attendance;
 use App\Models\CourseMark;
 use App\Models\CourseModule;
 use Illuminate\Http\Request;
@@ -55,7 +56,16 @@ class CourseController extends Controller
                
             }
         }
-        return view('courses.show', compact('course', 'coursemodules', 'total'));
+
+        $attendances = Attendance::where('user_id', Auth::user()->id)->get();
+        foreach($attendances as $attendance)
+        {
+            $attendance["total_hours"] = 0.0;
+            $attendance["status"] = 0.0;
+        }
+       // dd($attendances);
+
+        return view('courses.show', compact('course', 'coursemodules', 'total', 'attendances'));
     } 
      
     public function edit(Course $course)
