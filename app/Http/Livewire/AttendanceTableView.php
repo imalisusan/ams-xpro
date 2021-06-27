@@ -2,19 +2,21 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Attendance;
-use App\Models\User;
-use App\Models\CourseUser;
 use App\Models\Course;
+use App\Models\Attendance;
+use App\Models\CourseUser;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
+use Illuminate\Support\Facades\Auth;
 use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
 class AttendanceTableView extends TableView
 {
     protected $paginate = 20;
+
+    public $searchBy = ['course.code', 'course.name', 'course.year'];
     /**
      * Sets a initial query with the data to fill the table
      *
@@ -22,7 +24,7 @@ class AttendanceTableView extends TableView
      */
     public function repository(): Builder
     {
-        return Attendance::query();
+        return CourseUser::query()->where('user_id', Auth::user()->id);
     }
 
     /**
@@ -33,11 +35,14 @@ class AttendanceTableView extends TableView
     public function headers(): array
     {
         return [
-            Header::title('Student ID')->sortBy('user_id'),
-            Header::title('Total Hours')->sortBy('totalhours'),
-            Header::title('Absent Classes')->sortBy('name'),
-            Header::title('Absent Hours')->sortBy('absenthours'),
-            Header::title('Percent Absent')->sortBy('percentabsent'),
+            Header::title('Subject Code')->sortBy('course.code'),
+            Header::title('Name')->sortBy('course.name'),
+            Header::title('Group')->sortBy('group'),
+            Header::title('Semester')->sortBy('semester'),
+            Header::title('Total Hours')->sortBy('attendances.totalhours'),
+            Header::title('Absent Classes')->sortBy('attendances.absentclasses'),
+            Header::title('Absent Hours')->sortBy('attendances.absenthours'),
+            Header::title('Percent Absent')->sortBy('attendances.percentabsent'),
             ];
     }
 
@@ -46,14 +51,17 @@ class AttendanceTableView extends TableView
      *
      * @param $model Current model for each row
      */
-    public function row(Attendance $attendance): array
-    {
+    public function row(CourseUser $courseuser): array
+    {   
         return [
-            $attendance->user_id,
-            $attendance->totalhours,
-            $attendance->absentclasses,
-            $attendance->absenthours,
-            $attendance->percentabsent,
+            $courseuser->course->code,
+            $courseuser->course->name,
+            $courseuser->course->group,
+            $courseuser->course->semester,
+            $courseuser->totalhours,
+            $courseuser->absentclasses,
+            $courseuser->absenthours,
+            $courseuser->percentabsent,
         ];
     }
 
