@@ -15,11 +15,6 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignId('user_id')->constrained();
-            $table->tinyInteger('totalhours')->default('0');
-            $table->tinyInteger('absentclasses')->default('0');
-            $table->tinyInteger('absenthours')->default('0');
-            $table->tinyInteger('percentabsent')->default('0');
             $table->timestamps();
         });
     }
