@@ -64,7 +64,7 @@ class UsersTableViews extends TableView
     protected function actionsByRow()
     {
         return [
-            new RedirectAction('attendance.register', 'Register attendance', 'clipboard'),
+            new RedirectAction('attendance.mark', 'Register attendance', 'clipboard'),
             new RedirectAction('attendance.edit', 'Edit attendance', 'edit'),
         ];
     }

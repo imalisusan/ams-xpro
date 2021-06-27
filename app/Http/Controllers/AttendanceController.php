@@ -15,6 +15,8 @@ class AttendanceController extends Controller
 {
     public function index(Request $request)
     {
+        $courses = Course::all();
+        foreach($courses as $course)
         $attendances = Attendance::all();
         foreach($attendances as $attendance)
         {
@@ -23,26 +25,51 @@ class AttendanceController extends Controller
             $attendance["percentage_absent"] = 0.0;
             $attendance["absent_hrs"] = 0.0;
         }
-        $courses = Course::all();
-        //dd($attendances);
         return view('attendance.index', compact('attendances', 'courses'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
      
-    public function create()
+    public function create(User $user)
     {
-        $courseusers = CourseUser::all();
-        return view('attendance.create', compact('courseusers'));
+        return view('attendance.create', compact('user'));
     }
-    public function store(StoreAttendanceRequest $request)
+    public function store(StoreAttendanceRequest $request, User $user)
     {
+       
         $validated = $request->validated();
+        dd($validated);
         Attendance::create($validated);
      
         return redirect()->route('attendance.index')->with('success','Attendance created successfully.');
     }
-    public function register()
+
+    public function mark($id)
     {
-        return view('attendance.register');
+        $user = User::find($id);
+        return view('attendance.create', compact('user'));
     }
+
+    public function show(Attendance $attendance)
+    {
+        return view('attendance.show',compact('attendance'));
+    } 
+
+    public function edit(Attendance $attendance)
+    {
+        
+    }
+    
+ 
+    public function update(StoreCourseRequest $request, Attendance $attendance)
+    {
+        
+    }
+   
+    public function destroy(Attendance $attendance)
+    {
+       
+    }
+
+
+
     
 }

@@ -28,7 +28,69 @@
                 <div
                     class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                     <body>
-                    
+                    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 min-w-full"> 
+                           
+                           <table class="min-w" id="marksTable"> 
+                           
+                               <thead>
+                                   <tr>
+                                       <th
+                                       class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
+                                       Course Code</th>
+                                       <th
+                                       class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
+                                       Coursename</th>
+                                       <th
+                                      class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                      Total Hours</th>
+                                      <th
+                                      class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                      Absent Classes</th>
+                                      <th
+                                      class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                      Absent Hours</th>
+                                      <th
+                                      class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                      Percentage Absent</th>
+                                   </tr>
+                               </thead>
+
+                               
+   
+                               <tbody class="bg-white"> 
+
+                                @foreach ($courses as $course)
+                                <tr>
+                                   <td
+                                   class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                   {{ $course->code }}</td>
+                                   <td
+                                   class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                   {{ $course->name }}</td>
+                                   <td
+                                   class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                   {{ $course->total_hours }} hrs </td>
+                                   <td
+                                   class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                   {{ $course->year }}</td>
+                                   <td
+                                   class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                   {{ $course->year }} hrs</td>
+                                   <td
+                                   class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                   {{ $course->year }}  % </td>
+                               </tr>
+
+                                @endforeach
+                               </tbody>
+                           </table>
+       
+                           
+                           <div class="my-4 work-sans">
+                           </div>
+                       </div>
+               </div>
+           </body>
                     </body>
                     <div class="my-4 work-sans">
                     </div>

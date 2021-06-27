@@ -24,11 +24,9 @@ class StoreAttendanceRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required',
-            'start_time' => 'required',
+            'date_time' => 'required',
             'total_hours' => 'required',
-            'present' => 'required',
-            'absent' => 'required',
+            'status' => 'required',
         ];
     }
 }

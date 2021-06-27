@@ -11,13 +11,10 @@ class Attendance extends Model
 
     protected $fillable = [
         'user_id',
-        'date',
-        'present',
-        'absent',
+        'date_time',
+        'start_time',
+        'status',
         'total_hours',
-        'percentabsent',
-        'absenthours',
-        'absentclasses',
 
     ];
     public function users()
