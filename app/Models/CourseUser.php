@@ -14,13 +14,16 @@ class CourseUser extends Model
         'user_id',
     ];
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
-
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+    public function attendance()
+    {
+        return $this->belongsTo(Attendance::class);
     }
 }
