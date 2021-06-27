@@ -19,10 +19,11 @@
                 <div
                     class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
                     <div class="flex justify-between">
-                        
+                    @role('lecturer')
                         <a type="button" href="{{ route('courses.create') }}"
                             class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
                             Add Course</a>
+                    @endrole
                        
                     </div>
                 </div>
