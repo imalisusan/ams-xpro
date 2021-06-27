@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Attendance') }}
+            {{ __('Attendance') }} 
         </h2>
     </x-slot>
 
@@ -28,7 +28,7 @@
                 <div
                     class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                     <body>
-                        @livewire('attendance-table-view')
+                    
                     </body>
                     <div class="my-4 work-sans">
                     </div>
@@ -38,4 +38,3 @@
     </div>
 
 </x-app-layout>
-
