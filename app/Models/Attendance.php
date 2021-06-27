@@ -10,8 +10,11 @@ class Attendance extends Model
     use HasFactory;
 
     protected $fillable = [
-        'totalhours',
         'user_id',
+        'date',
+        'present',
+        'absent',
+        'total_hours',
         'percentabsent',
         'absenthours',
         'absentclasses',
@@ -21,6 +24,12 @@ class Attendance extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+   
+
    
     
 
