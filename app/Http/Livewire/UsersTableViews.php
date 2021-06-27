@@ -3,10 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use App\Models\Course;
 use App\Models\CourseUser;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
+use Illuminate\Support\Facades\Auth;
 use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -14,7 +16,7 @@ class UsersTableViews extends TableView
 {
     protected $paginate = 20;
 
-    public $searchBy = ['name'];
+    public $searchBy = ['reg_id', 'name'];
     /**
      * Sets a initial query with the data to fill the table
      *
@@ -22,7 +24,7 @@ class UsersTableViews extends TableView
      */
     public function repository(): Builder
     {
-        return User::query();
+        return CourseUser::query()->where('user_id', Auth::user()->id);
     }
 
     /**
@@ -33,7 +35,12 @@ class UsersTableViews extends TableView
     public function headers(): array
     {
         return [
-            Header::title('Student Name')->sortBy('name'),
+                Header::title('Student ID')->sortBy('user.reg_id'),
+                Header::title('Student Name')->sortBy('user.name'),
+                Header::title('Course Code')->sortBy('course.code'),
+                Header::title('Course')->sortBy('course.name'),
+                Header::title('Group')->sortBy('group'),
+                Header::title('Semester')->sortBy('semester'),
             ];
     }
 
@@ -42,11 +49,15 @@ class UsersTableViews extends TableView
      *
      * @param $model Current model for each row
      */
-    public function row(User $user): array
+    public function row(CourseUser $users): array
     {
         return [
-            $user->name,
-
+            $users->user->reg_id,
+            $users->user->name,
+            $users->course->code,
+            $users->course->name,
+            $users->course->group,
+            $users->course->semester,
         ];
     }
 
@@ -59,4 +70,3 @@ class UsersTableViews extends TableView
     }
 
 }
-
