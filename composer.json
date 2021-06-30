@@ -6,17 +6,22 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "barryvdh/laravel-dompdf": "^0.9.0",
         "blade-ui-kit/blade-ui-kit": "^0.2.0",
+        "dompdf/dompdf": "^1.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
+        "goodnesskay/laravelpdfviewer": "^1.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel-views/laravel-views": "^2.2",
         "laravel/fortify": "^1.7",
         "laravel/framework": "^8.40",
         "laravel/jetstream": "^2.3",
         "laravel/sanctum": "^2.6",
+        "laravel/telescope": "^4.5",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.0"
+        "livewire/livewire": "^2.0",
+        "santigarcor/laratrust": "^6.3"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

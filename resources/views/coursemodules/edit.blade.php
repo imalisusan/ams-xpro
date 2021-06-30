@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div>
-                <form action="{{ route('coursemodules.update', $coursemodule->id) }}" method="POST">
+                <form action="{{ route('feestatements.update', $feestatement->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    @include('coursemodules._form')
+                    @include('feestatements._form')
                 </form>
             </div>
         </div>
