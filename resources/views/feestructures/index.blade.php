@@ -11,8 +11,10 @@
             <p><strong>Course Name: </strong><span class="float-right">BICS</span></p>
             <p><strong>Fee Balance: </strong><span class="float-right">0</span></p>
         </div> --}}
+        @role('admin')
         <div class="center-block mr-4 text"style="width:20%"><a class=" border sm:p-1 lg:p-3 rounded bg-strath-blue " style="color:white" href="{{ route('feestructures.create')}}">Upload New Fee Structure</a></div>
-        
+        @endrole
+
         <div class="container bg-white shadow-md rounded center-block"style="width:75%" >
         @if(session()->has('message'))
         <div class="alert alert-success custom-alert">
@@ -36,8 +38,10 @@
                     
                        <a class="p-2 px-4 link" href=" {{ route('feestructures.show',['feestructure'=>$firstyear->id]) }}">View</a>
                        <a class="p-2 px-4"href=" {{ route('feestructures.download',['file_path'=>$firstyear->file_path]) }}">Download</a>
+                       @role('admin')
                        <a class="p-2 px-4"href=" {{ route('feestructures.edit',['feestructure'=>$firstyear->id]) }}">Edit</a>
                        <a class="p-2 px-4"onclick="return confirm('Are you sure?')"href=" {{ route('feestructures.delete',['feestructure'=>$firstyear->id]) }}">Delete</a>
+                       @endrole
                     
                    </td>
                </tr>
@@ -49,8 +53,10 @@
                  <h3 >
                     <a class="p-2 px-4" href=" {{ route('feestructures.show',['feestructure'=>$secondyear->id]) }}">View</a>
                     <a class="p-2 px-4"href=" {{ route('feestructures.download',['file_path'=>$secondyear->file_path]) }}">Download</a>
+                    @role('admin')
                     <a class="p-2 px-4"href=" {{ route('feestructures.edit',['feestructure'=>$secondyear->id]) }}">Edit</a>
                     <a class="p-2 px-4"onclick="return confirm('Are you sure?')"href=" {{ route('feestructures.delete',['feestructure'=>$secondyear->id]) }}">Delete</a>
+                    @endrole
                  </h3>
                 </td>
                 </tr>
@@ -62,8 +68,10 @@
                  <h3 >
                     <a class="p-2 px-4" href=" {{ route('feestructures.show',['feestructure'=>$thirdyear->id]) }}">View</a>
                     <a class="p-2 px-4"href=" {{ route('feestructures.download',['file_path'=>$thirdyear->file_path]) }}">Download</a>
+                    @role('admin')
                     <a class="p-2 px-4"href=" {{ route('feestructures.edit',['feestructure'=>$thirdyear->id]) }}">Edit</a>
                     <a class="p-2 px-4"onclick="return confirm('Are you sure?')"href=" {{ route('feestructures.delete',['feestructure'=>$thirdyear->id]) }}">Delete</a>
+                    @endrole
                  </h3>
                 </td>
             </tr>
@@ -75,8 +83,10 @@
                  <h3 >
                     <a class="p-2 px-4" href=" {{ route('feestructures.show',['feestructure'=>$fourthyear->id]) }}">View</a>
                     <a class="p-2 px-4"href=" {{ route('feestructures.download',['file_path'=>$fourthyear->file_path]) }}">Download</a>
+                    @role('admin')
                     <a class="p-2 px-4"href=" {{ route('feestructures.edit',['feestructure'=>$fourthyear->id]) }}">Edit</a>
                     <a class="p-2 px-4"onclick="return confirm('Are you sure?')" href=" {{ route('feestructures.delete',['feestructure'=>$fourthyear->id]) }}">Delete</a>
+                    @endrole
                  </h3>
                 </td>
             </tr>
