@@ -3,12 +3,14 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Course Details') }}&nbsp;&nbsp;
           
-            <form class="inline" action="{{  route('courses.destroy', $course->id) }}" method="POST">                        
+            <form class="inline" action="{{  route('courses.destroy', $course->id) }}" method="POST">   
+            @role('admin')                     
                 <a href="{{ route('courses.edit', $course->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider">Edit</a>&nbsp;
                     @csrf
                     @method('DELETE')
                         
                         <input type="submit" value="Delete" class="bg-white   text-red-500 rounded transition duration-300  focus:outline-none place-self-center">
+            @endrole
                         
             </form>
         </h2>
@@ -20,8 +22,10 @@
                 <section class=" text-gray-700 body-font">
                     <br><br>
                         <div class="relative" style=" float:right;">
+                                 @role('lecturer')
                                 <a href="{{ route('coursemarks.create', $course->id) }}" class="px-5 bg-white py-2 border-blue-500 border text-blue-500 rounded transition
                                 duration-300 hover:bg-blue-700 hover:text-white focus:outline-none place-self-center" >Add Marks </a>
+                                @endrole
                         </div>
                     <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-8">
                      

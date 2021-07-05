@@ -1,9 +1,25 @@
 <x-app-layout>
 <header>
 <x-slot name="header">
+
+        @role('student')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center object-contain">
             {{ __('STUDENT PROFILE') }}
         </h2>
+        @endrole
+
+        @role('admin')
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center object-contain">
+            {{ __('ADMIN PROFILE') }}
+        </h2>
+        @endrole
+
+        @role('lecturer')
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center object-contain">
+            {{ __('LECTURER PROFILE') }}
+        </h2>
+         @endrole
+
     </x-slot>
     </header>
    
@@ -24,8 +40,10 @@
                         <td class="border px-4 py-2"><span>{{$user->reg_id}}</span></td>
                 </tr>
                 <tr>
+                    @role('student')
                         <td class="border px-4 py-2">Course Name</td>
                         <td class="border px-4 py-2"><span>{{$user->course_name}}</span></td>
+                    @endrole
                         </tr>
                         <tr>
                         <td class="border px-4 py-2">Name</td>
