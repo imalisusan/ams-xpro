@@ -54,7 +54,7 @@
                     <!-- End of Coursework Links -->
                     <!-- Fee Details Links -->
                     <div class="hidden sm:flex sm:items-center sm:ml-6">
-                        <x-jet-dropdown align="right" width="60">
+                        <x-jet-dropdown>
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
@@ -95,8 +95,6 @@
                         {{ __('Student Details') }}
                     </x-jet-nav-link>
                     @endrole
-
-                       
 
                 </div>
             </div>
