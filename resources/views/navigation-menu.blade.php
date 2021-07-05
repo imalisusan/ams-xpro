@@ -80,18 +80,17 @@
                     </div> 
                     <!-- End of Fees Details Links -->
 
-                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('attendance.index') }}" :active="request()->routeIs('attendance.index')">
                         {{ __('Attendance') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                    
+                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('student.progress') }}" :active="request()->routeIs('student.progress')">
                         {{ __('Progress Report') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('examcard') }}" :active="request()->routeIs('examcard')">
                         {{ __('Exam Card') }}
                     </x-jet-nav-link>
                     @role('admin')
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('student.profile') }}" :active="request()->routeIs('student.profile')">
                         {{ __('Student Details') }}
                     </x-jet-nav-link>
                     @endrole
