@@ -26,6 +26,29 @@
     </div>
 
     <div class="-mx-3 md:flex mb-6">
+        
+        <div class="md:w-1/2 px-3">
+            <x-label for="date*" class="block uppercase text-xs font-bold mb-2" />
+                <input type="datetime-local" name="date" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+                rounded py-3 px-4 mb-3"  step="0.1" max="1"
+                value="{{ isset($feestatement) ? $feestatement->weight :old('date') }}" style="border:1px solid rgb(104, 104, 104);">
+                <x-error field="date" class="text-red-600" />
+        </div>
+
+        <div class="md:w-1/2 px-3">
+            <x-label for="type*" class="block uppercase text-xs font-bold mb-2" />
+            <div class="relative">
+                <select name="type" placeholder="Select a question type" class="form-select block
+                appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8
+                rounded">
+                    <option>Select an option</option>
+                        <option value="Debit">Debit</option>
+                        <option value="Credit">Credit</option>
+                </select>
+            </div>
+                <x-error field="type" class="text-red-600" />
+        </div>
+    </div>
 
     <div class="-mx-3 md:flex mb-6">
         <div class="md:w-1/2 px-3">

@@ -10,9 +10,10 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\ProgressReportController;
-
-
+use \App\Http\Controllers\ExamCardController;
 use App\Http\Controllers\FeeStatementController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,7 @@ use App\Http\Controllers\FeeStatementController;
 Route::get('/', function () {
     return view('auth.login');
 });
+
 Route::resources([
     'courses' => CourseController::class,
     'courseusers' => CourseUserController::class,
@@ -42,9 +44,7 @@ Route::get('coursemarks/{course}/create',[CourseMarkController::class, 'create']
 Route::get('attendance/{course}/create',[AttendanceController::class, 'create'])->name('attendance.create');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-   
-Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
-
+    Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
 });
 Route::group([ 'middleware' => ['role:admin']], function(){
     Route::get('register', function () {
@@ -55,7 +55,6 @@ Route::group([ 'middleware' => ['role:admin']], function(){
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
@@ -72,3 +71,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('fees/feestatement', [FeeStatementController::class, 'index'])->name('fees.feestatement');
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/exam-card', [ExamCardController::class, 'show'])->name("examcard");
+    Route::get('/exam-card/notify', [ExamCardController::class, 'sendNotification']);
+    Route::get('/progress-report', [])->name("");
+});
