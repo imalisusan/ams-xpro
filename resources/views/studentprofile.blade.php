@@ -27,7 +27,7 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg h-80">
                 <div id="image" style="float:left; padding:50px;">
-                    <img src="{{ asset('assets/images/profile.svg') }}" class="block h-40 w-auto" />
+                    <img src="{{ asset('assets/images/profile.svg') }}" class="block h-40 w-auto" alt="."/>
                 </div>
                 
     <table align="right"  style="float:right;margin-right:20px;">
@@ -46,22 +46,28 @@
                     @endrole
                         </tr>
                         <tr>
-                        <td class="border px-4 py-2">Name</td>
-                        <td class="border px-4 py-2"><span>{{$user->name}}</span></td>
-                        </tr></tr>
-                        <td class="border px-4 py-2">Email</td>
-                        <td class="border px-4 py-2"><span>{{$user->email}}</span></td>
-                        </tr><tr>
-                        <td class="border px-4 py-2">Date of birth</td>
-                        <td class="border px-4 py-2"><span>{{$user->dob}}</span></td>
-                        </tr><tr>
-                        <td class="border px-4 py-2">Phone Number</td>
-                        <td class="border px-4 py-2"><span>{{$user->phone_no}}</span></td>
-                </tr>
-                </div>
-
- </table>
- </div>
- </div>
- </div>
- </x-app-layout>
+                            <td class="border px-4 py-2">Course Name</td>
+                            <td class="border px-4 py-2"><span>{{$user->course_name}}</span></td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">Name</td>
+                            <td class="border px-4 py-2"><span>{{$user->name}}</span></td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">Email</td>
+                            <td class="border px-4 py-2"><span>{{$user->email}}</span></td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">Date of birth</td>
+                            <td class="border px-4 py-2"><span>{{$user->dob}}</span></td>
+                        </tr>
+                        <tr>
+                            <td class="border px-4 py-2">Phone Number</td>
+                            <td class="border px-4 py-2"><span>{{$user->phone_no}}</span></td>
+                        </tr>
+                    </div>
+                </table>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
