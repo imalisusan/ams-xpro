@@ -1,18 +1,18 @@
-<nav x-data="{ open: false }" class="bg-blue-600 border-b border-black-100">
+<nav x-data="{ open: false }" class="bg-transparent border-b border-black-100 ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 object-contain">
             <div class="flex">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center font-bold">
+                <div class="flex-shrink-0 flex items-center font-medium">
                     <a href="{{ route('student.profile') }}">
                         <img src="{{ asset('assets/images/SU-Logo.svg') }}" class="block h-12 w-auto" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex  text-align:center text-gray-900 text-base font-bold">
-                    <x-jet-nav-link class="font-bold text-base" href="{{ route('student.profile') }}" :active="request()->routeIs('student.profile')">
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex  text-align:center text-gray-700 text-base font-small">
+                    <x-jet-nav-link class="font-medium text-sm" href="{{ route('student.profile') }}" :active="request()->routeIs('student.profile')">
                         {{ __('Home') }}
                     </x-jet-nav-link>
 
@@ -22,7 +22,7 @@
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
-                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black-900 bg-blue-600 hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150 text-base font-bold">
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-transparent hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                                             Coursework                                                                                                              
                                             <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -58,7 +58,7 @@
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
-                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-transparent hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
                                             Fees Details                                                                                                              
                                             <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -80,13 +80,13 @@
                     </div> 
                     <!-- End of Fees Details Links -->
 
-                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('attendance.index') }}" :active="request()->routeIs('attendance.index')">
+                    <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('attendance.index') }}" :active="request()->routeIs('attendance.index')">
                         {{ __('Attendance') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('student.progress') }}" :active="request()->routeIs('student.progress')">
+                    <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('student.progress') }}" :active="request()->routeIs('student.progress')">
                         {{ __('Progress Report') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link class="text-gray-900 text-base font-bold" href="{{ route('examcard') }}" :active="request()->routeIs('examcard')">
+                    <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('examcard') }}" :active="request()->routeIs('examcard')">
                         {{ __('Exam Card') }}
                     </x-jet-nav-link>
                     @role('admin')
@@ -111,7 +111,7 @@
                                 </button>
                             @else
                                 <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-900 bg-white hover:text-gray-700 focus:outline-none transition">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-900 bg-transparent hover:text-gray-700 focus:outline-none transition">
                                         {{ Auth::user()->name }}
 
                                         <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -124,7 +124,7 @@
 
                         <x-slot name="content">
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-base text-gray-900">
+                            <div class="block px-4 py-2 text-base text-gray-700">
                                 {{ __('Manage Account') }}
                             </div>
 
