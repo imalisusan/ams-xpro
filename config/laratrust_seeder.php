@@ -17,15 +17,23 @@ return [
             'payments' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'administrator' => [
+        'admin' => [
             'users' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'profile' => 'c,r,u,d',
+            'courses' => 'c,r,u,d'
         ],
         'user' => [
             'profile' => 'r,u',
+            'courses' => 'r,u',
+            'feestatement' => 'r',
+            'feestructure' => 'r'
         ],
         'student' => [
-            'courses' => 'c,r,u,d',
+            'profile' => 'r,u',
+            'courses' => 'r,u',
+            'feestatement' => 'r',
+            'feestructure' => 'r'
+            
         ],
 
         'lecturer' => [

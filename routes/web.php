@@ -46,7 +46,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
 
 });
-
+Route::group([ 'middleware' => ['role:admin']], function(){
+    Route::get('register', function () {
+        return view('auth.register');
+    })->name('register');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
