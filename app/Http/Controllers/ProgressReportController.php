@@ -33,4 +33,3 @@ class ProgressReportController extends Controller
         return $pdf->download('progressreport.pdf');
     }
 }
-

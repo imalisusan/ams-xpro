@@ -53,16 +53,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('progressreports/download', [ProgressReportController::class, 'pdfexport'])->name('progressreport.download');
 });
 
-
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/exam-card', [ExamCardController::class, 'show'])->name("");
-    Route::get('/progress-report', [])->name("");
-});
-
 Route::resource('feestructures',FeeStructureController::class);
 Route::get('feestructures/download/{file_path}',[FeeStructureController::class,'download'])->name('feestructures.download');
 Route::post('feestructures/update/{feestructure}',[FeeStructureController::class,'update'])->name('feestructures.update');
 Route::get('feestructures/delete/{feestructure}',[FeeStructureController::class,'destroy'])->name('feestructures.delete');
 Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('fees/feestatement', [FeeStatementController::class, 'index'])->name('fees.feestatement');
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/exam-card', [ExamCardController::class, 'show'])->name("");
+    Route::get('/exam-card/notify', [ExamCardController::class, 'sendNotification']);
+    Route::get('/progress-report', [])->name("");
 });
