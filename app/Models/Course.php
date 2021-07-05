@@ -33,4 +33,9 @@ class Course extends Model
     {
         return $this->hasMany(CourseMark::class);
     }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }

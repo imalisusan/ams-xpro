@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\ProgressReportController;
@@ -30,6 +31,7 @@ Route::get('/', function () {
 Route::resources([
     'courses' => CourseController::class,
     'courseusers' => CourseUserController::class,
+    'attendance' => AttendanceController::class,
     'coursemodules' => CourseModuleController::class,
     'coursemarks' => CourseMarkController::class,
     'feestatement' => FeeStatementController::class,
@@ -37,13 +39,18 @@ Route::resources([
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
 Route::get('coursemarks/{course}/create',[CourseMarkController::class, 'create'])->name('coursemarks.create');
+Route::get('attendance/{course}/create',[AttendanceController::class, 'create'])->name('attendance.create');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
    
 Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
 
 });
-
+Route::group([ 'middleware' => ['role:admin']], function(){
+    Route::get('register', function () {
+        return view('auth.register');
+    })->name('register');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

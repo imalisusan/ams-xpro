@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Helpers\Util;
+use App\Models\Attendance;
 use App\Models\CourseMark;
 use App\Models\CourseUser;
 use App\Models\CourseModule;
@@ -120,4 +121,52 @@ class Util {
         return  $gpa_total;
      }
 
+     static public function get_courseattendance()
+     {
+        $courses = CourseUser::where('user_id', Auth::user()->id)->get();
+        foreach ($courses as $course) 
+        {
+            $attendancerecords = Attendance::where([
+                ['course_id', $course->course_id],
+                ['user_id', Auth::user()->id],
+            ])->get();
+            $total_present = NULL;
+            $total_absent = NULL;
+            if($attendancerecords)
+                {
+                    foreach($attendancerecords as $attendancerecord)
+                    {
+                        if($attendancerecord->status == "Present")
+                        {
+                            $total_present = $total_present + $attendancerecord['total_hours'];
+                            $course['present_hours'] = $total_present; 
+                        }
+                        else
+                        {
+                            $total_absent = $total_absent + $attendancerecord['total_hours'];
+                            $course['absent_hours'] = $total_absent; 
+                        }
+
+                    }
+                    $course['total_hours'] =  $course['present_hours'] +  $course['absent_hours'];
+
+                        $course['absent_classes'] = Attendance::where([
+                            ['course_id', $course->course_id],
+                            ['status',  '=',"Absent"],
+                            ['user_id', Auth::user()->id]
+                   ])->count();
+
+                   if( $course['absent_classes'] > 0 )
+                   {
+                  
+                    $course['percent_absent'] =  ( $course['absent_hours'] /  $course['total_hours'] ) * 100;
+                   
+                   } 
+                }
+        } 
+        
+        return $courses;
+        
+     }
+     
     }
