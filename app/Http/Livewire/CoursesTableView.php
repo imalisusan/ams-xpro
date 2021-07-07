@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Actions\DeleteAction;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
+use Illuminate\Support\Facades\Auth;
 use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -60,12 +61,30 @@ class CoursesTableView extends TableView
 
     protected function actionsByRow()
     {
-        return [
-            new RedirectAction('courses.register', 'Register course', 'clipboard'),
-            new RedirectAction('courses.show', 'See course', 'maximize-2'),
-            new RedirectAction('courses.edit', 'Edit course', 'edit'),
-            new DeleteAction(),
-        ];
+      
+        $user = Auth::user();
+        if ($user->hasRole(['admin'])) {
+            return [
+                new RedirectAction('courses.show', 'See course', 'maximize-2'),
+                new RedirectAction('courses.edit', 'Edit course', 'edit'),
+                new DeleteAction(),
+            ];
+        } else if($user->hasRole(['lecturer']))
+        {
+            return [
+                new RedirectAction('courses.teach', 'Teach course', 'briefcase'),
+                new RedirectAction('courses.show', 'See course', 'maximize-2')
+            ];
+        }
+        else
+        {
+            return [
+                new RedirectAction('courses.register', 'Register for course', 'clipboard'),
+                new RedirectAction('courses.show', 'See course', 'maximize-2')
+            ];
+        }
+
+
     }
 
 }
