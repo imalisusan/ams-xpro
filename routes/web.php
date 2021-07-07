@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LecturerController;
 use \App\Http\Controllers\ExamCardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseMarkController;

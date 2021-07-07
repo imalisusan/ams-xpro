@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lecturer;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreLecturerRequest;
 
 class LecturerController extends Controller
 {
@@ -18,9 +22,11 @@ class LecturerController extends Controller
         return view('lecturers.create');
     }
 
-    public function store(StoreLecturerRequest $request): RedirectResponse
+    public function store(StoreLecturerRequest $request)
     {
         $validated = $request->validated();
+        $user_id = Auth::user()->id;
+        $validated['user_id'] = $user_id;
         Lecturer::create($validated);
 
         return redirect()->route('lecturers.index')->with('success','Lecturer created successfully.');
