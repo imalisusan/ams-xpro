@@ -1,17 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\StudentController;
+use \App\Http\Controllers\ExamCardController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
-use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseModuleController;
-use App\Http\Controllers\FeeStructureController;
-use App\Http\Controllers\ProgressReportController;
-use \App\Http\Controllers\ExamCardController;
 use App\Http\Controllers\FeeStatementController;
+use App\Http\Controllers\FeeStructureController;
+use App\Http\Controllers\CourseLecturerController;
+use App\Http\Controllers\ProgressReportController;
 
 
 
@@ -37,14 +38,18 @@ Route::resources([
     'coursemodules' => CourseModuleController::class,
     'coursemarks' => CourseMarkController::class,
     'feestatement' => FeeStatementController::class,
+    'lecturers' => LecturerController::class,
+    'courselecturers' => CourseLecturerController::class,
 ]);
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
+Route::get('/teach/{course}',[CourseLecturerController::class, 'store'])->name('courses.teach');
 Route::get('coursemarks/{course}/create',[CourseMarkController::class, 'create'])->name('coursemarks.create');
 Route::get('attendance/{course}/create',[AttendanceController::class, 'create'])->name('attendance.create');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
+    Route::get('mylessons', [CourseLecturerController::class, 'teach_courses'])->name('courses.teaching');
 });
 Route::group([ 'middleware' => ['role:admin']], function(){
     Route::get('register', function () {

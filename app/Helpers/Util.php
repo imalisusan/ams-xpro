@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Helpers\Util;
+use App\Models\Course;
 use App\Models\Attendance;
 use App\Models\CourseMark;
 use App\Models\CourseUser;
@@ -15,7 +16,12 @@ class Util {
 
     public static function get_course_units()
      {
-         return CourseUser::where('user_id', Auth::user()->id)->get();
+        $course_users = CourseUser::where('user_id', Auth::user()->id)->get();
+        foreach($course_users as $course_user)
+        {
+            $course_user = Course::find($course_user->course_id);
+        }
+         return $course_user;
      }
 
      public static function get_grade($mark): string
@@ -122,6 +128,40 @@ class Util {
                     $course['percent_absent'] =  ( $course['absent_hours'] /  $course['total_hours'] ) * 100;
                    
                    } 
+                }
+        } 
+        
+        return $courses;
+        
+     }
+
+     static public function get_coursemarks()
+     {
+        $courses = CourseUser::where('user_id', Auth::user()->id)->get();
+        $gpa_total = NULL; 
+        $gpa = NULL;
+        foreach ($courses as $course) 
+        {
+            $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
+            $total = NULL;
+            if($coursemodules)
+                {
+                    foreach($coursemodules as $coursemodule)
+                    {
+                        $coursemark = CourseMark::where([
+                            ['course_module_id', '=', $coursemodule->id],
+                            ['user_id', '=', Auth::user()->id],
+                        ])->first();
+                        if($coursemark)
+                        {
+                            $coursemodule['score'] = $coursemark->score;
+                            $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
+                            $total = $total + $marks;
+                            $course['total'] = number_format((float)$total, 2, '.', ''); 
+                            $course['grade'] = Util::get_grade($course['total']);
+                        }
+                    }
+                    $gpa_total = $gpa_total + $course['total']; 
                 }
         } 
         
