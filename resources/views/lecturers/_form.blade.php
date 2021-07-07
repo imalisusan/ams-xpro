@@ -23,15 +23,15 @@
         
         <div class="md:w-1/2 px-3">
             <x-label for="phone*" class="block uppercase text-xs font-bold mb-2" />
-                <input type="number" name="phone" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
-                rounded py-3 px-4 mb-3"  step="0.1" max="1"
+                <input type="text" name="phone" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+                rounded py-3 px-4 mb-3"
                 value="{{ isset($lecturer) ? $lecturer->phone :old('phone') }}" style="border:1px solid rgb(104, 104, 104);">
                 <x-error field="phone" class="text-red-600" />
         </div>
 
         <div class="md:w-1/2 px-3">
             <x-label for="address*" class="block uppercase text-xs font-bold mb-2" />
-                <input type="number" name="address" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+                <input type="text" name="address" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
                 rounded py-3 px-4 mb-3" 
                 value="{{ isset($lecturer) ? $lecturer->address :old('address') }}" style="border:1px solid rgb(104, 104, 104);">
                 <x-error field="address" class="text-red-600" />

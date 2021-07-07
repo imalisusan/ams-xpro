@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Lecturer;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreLecturerRequest;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 class LecturerController extends Controller
 {
@@ -27,7 +32,23 @@ class LecturerController extends Controller
         $validated = $request->validated();
         $user_id = Auth::user()->id;
         $validated['user_id'] = $user_id;
-        Lecturer::create($validated);
+
+        $saved = User::where('email', $validated['email'])->first();
+        if ($saved != null) {
+            $validated['user_id'] = $saved->id;
+            $widow = Lecturer::create($validated);
+            $saved->attachRole('lecturer');
+        } else {
+            $validated['password'] = Hash::make(Str::random());
+            $user = User::create($validated);
+            $user->attachRole('lecturer');
+
+            $validated['user_id'] = $user->id;
+            Lecturer::create($validated);
+
+           // Mail::to($user->email)->send(new ResetPassword($user));
+        }
+
 
         return redirect()->route('lecturers.index')->with('success','Lecturer created successfully.');
     }
