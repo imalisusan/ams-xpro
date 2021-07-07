@@ -44,15 +44,12 @@ class Util {
 
      public static function get_gpa()
      {
-         try
-         {
-             $gpa_total = self::get_gpa_total();
-             $courses = self::get_course_units();
+         
+             $gpa_total = Util::get_gpa_total();
+             $courses = Util::get_coursemarks();
              $no_of_courses = count($courses);
              return $gpa_total / $no_of_courses;
-         } catch (\Exception $e) {
-             return 0;
-         }
+    
      }
 
      public static function get_gpa_total(): int
@@ -134,6 +131,13 @@ class Util {
         return $courses;
         
      }
+
+     static public function get_gpa_grade($gpa)
+     {
+        $gpa_grade = Util::get_grade($gpa);
+        return $gpa_grade;
+     }
+
 
      static public function get_coursemarks()
      {
