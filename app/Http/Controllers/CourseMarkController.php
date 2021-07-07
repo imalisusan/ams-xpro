@@ -29,9 +29,18 @@ class CourseMarkController extends Controller
     public function store(StoreCourseMarkRequest $request)
     {
         $validated = $request->validated();
-        CourseMark::create($validated);
+
+        foreach ($validated['scores'] as $user_id => $score) {
+            $user = User::find($user_id);
+            CourseMark::create([
+                'course_id' => $validated['course_id'],
+                'course_module_id' => $validated['course_module_id'],
+                'user_id' => $user_id,
+                'score' => $score,
+            ]);
+        }
      
-        return redirect()->route('coursemarks.index')->with('success','CourseMark created successfully.');
+        return redirect()->route('courses.show', $validated['course_id'])->with('success','CourseMarks added successfully.');
     }
      
     public function show(CourseMark $coursemark)

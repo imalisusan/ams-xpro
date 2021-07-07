@@ -2,33 +2,28 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Course;
+use App\Models\Lecturer;
 use App\Models\CourseUser;
-use App\Actions\DeleteAction;
+use App\Models\CourseLecturer;
 use LaravelViews\Facades\Header;
 use LaravelViews\Views\TableView;
 use Illuminate\Support\Facades\Auth;
 use LaravelViews\Actions\RedirectAction;
 use Illuminate\Database\Eloquent\Builder;
 
-class MyCoursesTableView extends TableView
+class MyLessonsTableView extends TableView
 {
-    protected $paginate = 20;
-
-    public $searchBy = ['course.code', 'course.name', 'course.year'];
     /**
      * Sets a initial query with the data to fill the table
      *
      * @return Builder Eloquent query
      */
     public function repository(): Builder
-    { 
-        $courses = CourseUser::query()->where('user_id', Auth::user()->id);
-        foreach($courses as $course)
-        {
-            $course = Course::find($course->course_id);
-        }
-        return $courses;
+    {
+        $user_id = Auth::user()->id;
+        $lecturer = Lecturer::where('user_id', $user_id)->first();
+        $course_lecturers = CourseLecturer::query()->where('lecturer_id', $lecturer->id);
+        return $course_lecturers;
     }
 
     /**
@@ -53,23 +48,21 @@ class MyCoursesTableView extends TableView
      *
      * @param $model Current model for each row
      */
-    public function row(CourseUser $courseuser): array
-    {   
+    public function row(CourseLecturer $courselecturer): array
+    {
         return [
-            $courseuser->course->code,
-            $courseuser->course->name,
-            $courseuser->course->year,
-            $courseuser->course->credits,
-            $courseuser->course->group,
-            $courseuser->course->semester,
+            $courselecturer->course->code,
+            $courselecturer->course->name,
+            $courselecturer->course->year,
+            $courselecturer->course->credits,
+            $courselecturer->course->group,
+            $courselecturer->course->semester,
         ];
     }
-
     protected function actionsByRow()
     {
         return [
             new RedirectAction('courses.show', 'See course', 'maximize-2'),
         ];
     }
-
 }

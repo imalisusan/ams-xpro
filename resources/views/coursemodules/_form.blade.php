@@ -9,7 +9,7 @@
                     <option>Select an option</option>
                     @foreach($courses as $course)
                         <option value="{{ $course->id }}"  @if ((isset($feestatement) &&  $feestatement->course_id == ($course->id ) || old('course_id') == $course->id )) 
-                            selected @endif >{{ $course->name  }}</option>
+                            selected @endif >{{ $course->course->name  }}</option>
                     @endforeach
                 </select>
             </div>

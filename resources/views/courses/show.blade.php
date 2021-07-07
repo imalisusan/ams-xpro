@@ -108,6 +108,8 @@
                 </section>
  
                 <body>
+                <!-- Student Coursework Marks -->
+                @role('student')
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 min-w-full">
                         <!-- component -->
                         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
@@ -151,10 +153,12 @@
                             </div>
                         </div>
                     </div>
-
+                    @endrole
+                     <!--End of Coursework marks Student View -->
 
                     <br><br>`
-                    <!--Attendance -->
+                    <!--Attendance Student View -->
+                    @role('student')
 
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 min-w-full">
                         <!-- component -->
@@ -212,7 +216,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--End of Attendance-->
+                    @endrole
+                    <!--End of Attendance Student View-->
 
                     
                 </body>

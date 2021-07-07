@@ -1,22 +1,10 @@
+<label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+                    Please fill in all the fields *<br><br>
+</label>
 <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
-    <div class="-mx-3 md:flex mb-6">
-        <div class="md:w-1/2 px-3">
-            <x-label for="student name*" class="block uppercase text-xs font-bold mb-2" />
-            <div class="relative">
-                <select name="user_id" placeholder="Select a student" class="form-select block
-                appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8
-                rounded">
-                    <option>Select an option</option>
-                    @foreach($users as $user)
-                        <option value="{{ $user->id }}"  @if ((isset($coursemark) &&  $coursemark->user_id == ($user->id ) || old('user_id') == $user->id )) 
-                            selected @endif >{{ $user->name  }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <x-error field="user_id" class="text-red-600" />
-        </div>
 
-        <div class="md:w-1/2 px-3">
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/3 px-3">
             <x-label for="course module name*" class="block uppercase text-xs font-bold mb-2" />
             <div class="relative">
                 <select name="course_module_id" placeholder="Select a question type" class="form-select block
@@ -31,16 +19,34 @@
             </div>
             <x-error field="course_module_id" class="text-red-600" />
         </div>
-    </div>
+    </div><br>
+
     <div class="-mx-3 md:flex mb-6">
-        <div class="md:w-1/2 px-3">
-            <x-label for="score*" class="block uppercase text-xs font-bold mb-2" />
-                <input type="number" name="score" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
+        <div class="md:w-1/5 px-3">
+        <x-label for="student name*" class="block uppercase text-xs font-bold mb-2" /> 
+        </div>
+        <div class="md:w-1/4 px-3">
+        <x-label for="score*" class="block uppercase text-xs font-bold mb-2" /> 
+        </div>
+    </div>
+    
+    @foreach($users as $user)
+    <div class="-mx-3 md:flex mb-6">
+        <div class="md:w-1/5 px-3">
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
+                    {{$user->name}}
+        </label>
+            <x-error field="user_id" class="text-red-600" />
+        </div>
+        <div class="md:w-1/4 px-3">
+            
+                <input type="number" name="scores[{{ $user->id }}]" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
                 rounded py-3 px-4 mb-3"  step="0.5" 
                 value="{{ isset($coursemark) ? $coursemark->score :old('score') }}" style="border:1px solid rgb(104, 104, 104);">
                 <x-error field="score" class="text-red-600" />
         </div>
     </div>
+    @endforeach
     
 
     @if (isset($coursemark))

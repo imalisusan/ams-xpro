@@ -24,9 +24,19 @@ class Course extends Model
         return $this->hasMany(User::class);
     }
 
+    public function lecturers()
+    {
+        return $this->hasMany(Lecturer::class);
+    }
+
     public function course_users()
     {
         return $this->hasMany(CourseUser::class);
+    }
+
+    public function course_lecturer()
+    {
+        return $this->hasMany(CourseLecturer::class);
     }
 
     public function course_marks()

@@ -1,13 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Courses') }} &nbsp; &nbsp;
-            @role('student')
-            <a href="{{ route('courses.personal' ) }}" class=" text-blue-500 rounded  hover:text-black " title="Courses registered for">My Courses</a>
-            @endrole
-            @role('lecturer')
-            <a href="{{ route('courses.teaching' ) }}" class=" text-blue-500 rounded  hover:text-black " title="Courses you're teaching">My Courses</a>
-            @endrole
+            {{ __('Lecturers') }} 
         </h2>
     </x-slot>
 
@@ -24,10 +18,11 @@
                 <div
                     class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
                     <div class="flex justify-between">
-                    @role('admin')
-                        <a type="button" href="{{ route('courses.create') }}"
+                        
+                    @role('lecturer')
+                        <a type="button" href="{{ route('lecturers.create') }}"
                             class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
-                            Add Course</a>
+                            Add Lecturer</a>
                     @endrole
                        
                     </div>
@@ -35,7 +30,7 @@
                 <div
                     class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                     <body>
-                        @livewire('courses-table-view')
+                        @livewire('lecturers-table-view')
                     </body>
                     <div class="my-4 work-sans">
                     </div>
