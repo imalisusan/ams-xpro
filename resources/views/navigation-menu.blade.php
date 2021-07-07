@@ -33,20 +33,38 @@
                             
                             <x-slot name="content">
                                     <x-jet-dropdown-link  href="{{ route('courses.index') }}">
-                                        {{ __('Self Registration') }}
+                                   @role('lecturer')
+                                   {{ __('Teach') }}
+                                   @endrole
+
+                                   @role('student')
+                                   {{ __('Self Registration') }}
+                                   @endrole
                                     </x-jet-dropdown-link>
-                        
+
+                                    @role('student')
                                     <x-jet-dropdown-link href="{{ route('courses.personal') }}">
                                         {{ __('My Courses') }}
                                     </x-jet-dropdown-link>
-    
+                                    @endrole
+
+                                    @role('lecturer')
+                                    <x-jet-dropdown-link href="{{ route('courses.teaching') }}">
+                                        {{ __('My Courses') }}
+                                    </x-jet-dropdown-link>
+                                    @endrole
+                                    
+                                    @role('admin')
                                     <x-jet-dropdown-link href="{{ route('coursemarks.index') }}">
                                         {{ __('CourseWork Marks ') }}
                                     </x-jet-dropdown-link>
+                                    @endrole
 
-                                    <x-jet-dropdown-link href="{{ route('coursemodules.index') }}">
+                                    @role('lecturer')
+                                    <x-jet-dropdown-link href="{{ route('coursemodules.create') }}">
                                         {{ __('Course Modules') }}
                                     </x-jet-dropdown-link>
+                                    @endrole
                                     
                             </x-slot>
                         </x-jet-dropdown>
