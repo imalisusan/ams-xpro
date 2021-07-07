@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Lecturer;
 use App\Models\CourseModule;
 use Illuminate\Http\Request;
+use App\Models\CourseLecturer;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreCourseModuleRequest;
 
 class CourseModuleController extends Controller
@@ -19,16 +22,19 @@ class CourseModuleController extends Controller
     
     public function create()
     {
-        $courses = Course::all();
+        $user_id = Auth::user()->id;
+        $lecturer = Lecturer::where('user_id', $user_id)->first();
+        $courses = CourseLecturer::query()->where('lecturer_id', $lecturer->id)->get();
+
         return view('coursemodules.create', compact('courses'));
     }
     
     public function store(StoreCourseModuleRequest $request)
     {
         $validated = $request->validated();
-        CourseModule::create($validated);
+        $course = CourseModule::create($validated);
      
-        return redirect()->route('coursemodules.index')->with('success','CourseModule created successfully.');
+        return redirect()->route('coursemodules.show', $course->id)->with('success','CourseModule created successfully.');
     }
      
     public function show(CourseModule $coursemodule)
