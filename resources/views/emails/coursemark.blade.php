@@ -1,10 +1,10 @@
 @component('mail::message')
 Hello {{$name}},  <br>
-An account has been created for you on Strathmore University's AMS 
+Your courseworkmarks have been updated
 
-To activate your account, follow the link below
+To view them, follow the link below
 @component('mail::button', ['url' => $link])
-Activate Account
+View Marks
 @endcomponent
 
 Sincerely,  
