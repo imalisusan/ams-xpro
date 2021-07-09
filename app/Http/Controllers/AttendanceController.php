@@ -10,6 +10,7 @@ use App\Models\CourseUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\StoreAttendanceRequest;
 
 class AttendanceController extends Controller
@@ -28,8 +29,21 @@ class AttendanceController extends Controller
     public function store(StoreAttendanceRequest $request)
     {
         $validated = $request->validated();
-        Attendance::create($validated);
+
+        //dd($validated);
+        foreach ($validated['statuss'] as $user_id => $status) {
+            $user = User::find($user_id);
+            Attendance::create([
+                'course_id' => $validated['course_id'],
+                'date_time' => $validated['date_time'],
+                'total_hours' => $validated['total_hours'],
+                'user_id' => $user_id,
+                'status' => $status,
+            ]);
+        }
      
+       // dd($validated);
+
         return redirect()->route('courses.show', $validated['course_id'])->with('success','Attendance added successfully.');
     }
 
