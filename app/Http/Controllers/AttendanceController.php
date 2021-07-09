@@ -7,9 +7,11 @@ use App\Helpers\Util;
 use App\Models\Course;
 use App\Models\Attendance;
 use App\Models\CourseUser;
+use App\Mail\ResetPassword;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\StoreAttendanceRequest;
 
@@ -30,7 +32,6 @@ class AttendanceController extends Controller
     {
         $validated = $request->validated();
 
-        //dd($validated);
         foreach ($validated['statuss'] as $user_id => $status) {
             $user = User::find($user_id);
             Attendance::create([
@@ -40,9 +41,9 @@ class AttendanceController extends Controller
                 'user_id' => $user_id,
                 'status' => $status,
             ]);
+          
         }
      
-       // dd($validated);
 
         return redirect()->route('courses.show', $validated['course_id'])->with('success','Attendance added successfully.');
     }
