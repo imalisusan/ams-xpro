@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
+use App\Helpers\Util;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
+use Laratrust\Traits\LaratrustUserTrait;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
@@ -83,4 +84,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(CourseMark::class);
     }
+   
 }

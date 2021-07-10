@@ -30,8 +30,7 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
-
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
@@ -40,5 +39,9 @@ class CreateNewUser implements CreatesNewUsers
             'dob' => $input['dob'],
             'course_name' => $input['course_name'],
         ]);
+
+        Mail::to($user->email)->send(new ResetPassword($user));
+
+        return $user;
     }
 }

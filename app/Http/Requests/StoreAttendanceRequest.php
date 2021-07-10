@@ -26,8 +26,7 @@ class StoreAttendanceRequest extends FormRequest
         return [
             'date_time' => 'required',
             'total_hours' => 'required',
-            'status' => 'required',
-            'user_id' => 'required',
+            'statuss' => 'required',
             'course_id' => 'required',
         ];
     }
