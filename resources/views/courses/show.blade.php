@@ -156,7 +156,15 @@
                     @endrole
                      <!--End of Coursework marks Student View -->
 
-                    <br><br>`
+                    <br><br>
+
+                    @role('lecturer')
+                        @include('courses.lecturer_coursemarks')
+                    @endrole
+
+                    @role('lecturer')
+                        @include('courses.lecturer_attendance')
+                    @endrole
                     <!--Attendance Student View -->
                     @role('student')
 

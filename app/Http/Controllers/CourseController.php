@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Util;
 use App\Models\Course;
 use App\Models\Attendance;
 use App\Models\CourseMark;
 use App\Models\CourseModule;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
+use App\Helpers\LecturerUtil;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreCourseRequest;
-
-use App\Helpers\Util;
 
 class CourseController extends Controller
 {
@@ -59,11 +59,9 @@ class CourseController extends Controller
             }
         }
 
-        $attendances = Attendance::where([
-            ['user_id', Auth::user()->id],
-            ['course_id', $course->id],
-        ])->get();
-        return view('courses.show', compact('course', 'coursemodules', 'total', 'attendances'));
+        $attendances = LecturerUtil::get_students_attendance($course);
+        $studentmarks = LecturerUtil::get_students_coursemarks($course);
+        return view('courses.show', compact('course', 'coursemodules', 'total', 'attendances', 'studentmarks'));
     } 
      
     public function edit(Course $course)
