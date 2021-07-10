@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\CourseMark;
+use App\Mail\NewCourseMark;
 use App\Models\CourseModule;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreCourseMarkRequest;
 
 class CourseMarkController extends Controller
@@ -38,6 +40,8 @@ class CourseMarkController extends Controller
                 'user_id' => $user_id,
                 'score' => $score,
             ]);
+
+            Mail::to($user->email)->send(new NewCourseMark($user));
         }
      
         return redirect()->route('courses.show', $validated['course_id'])->with('success','CourseMarks added successfully.');
