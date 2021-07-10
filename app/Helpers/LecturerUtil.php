@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\User;
 use App\Helpers\Util;
 use App\Models\Course;
 use App\Models\Attendance;
@@ -68,30 +69,11 @@ class LecturerUtil {
        $students = CourseUser::where('course_id', $course->id)->get();
        foreach($students as $student)
        {
-           $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
-           $total = NULL;
-           if($coursemodules)
-               {
-                   foreach($coursemodules as $coursemodule)
-                   {
-                       $coursemark = CourseMark::where([
-                           ['course_module_id', '=', $coursemodule->id],
-                           ['user_id', '=', Auth::user()->id],
-                       ])->first();
-                       if($coursemark)
-                       {
-                           $coursemodule['score'] = $coursemark->score;
-                           $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
-                           $total = $total + $marks;
-                           $course['total'] = number_format((float)$total, 2, '.', ''); 
-                           $course['grade'] = Util::get_grade($course['total']);
-                       }
-                   }
-                   $gpa_total = $gpa_total + $course['total']; 
-               }
+          $user = User::find($student->user_id);
+          $marks = LecturerUtil::get_student_coursemarks($course, $user);
+                }
+       return $students;
        
     }
-       return $studentmarks;
-       
-    }
+
 }

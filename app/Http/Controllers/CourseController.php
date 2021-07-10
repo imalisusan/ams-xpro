@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Helpers\Util;
 use App\Models\Course;
 use App\Models\Attendance;
 use App\Models\CourseMark;
+use App\Models\CourseUser;
 use App\Models\CourseModule;
 use Illuminate\Http\Request;
 use App\Helpers\LecturerUtil;
@@ -60,8 +62,11 @@ class CourseController extends Controller
         }
 
         $attendances = LecturerUtil::get_students_attendance($course);
-        $studentmarks = LecturerUtil::get_students_coursemarks($course);
-        return view('courses.show', compact('course', 'coursemodules', 'total', 'attendances', 'studentmarks'));
+        $students = CourseUser::where('course_id', $course->id)->get();
+       
+        
+       // dd($students);
+        return view('courses.show', compact('course', 'coursemodules', 'total', 'attendances', 'students'));
     } 
      
     public function edit(Course $course)
