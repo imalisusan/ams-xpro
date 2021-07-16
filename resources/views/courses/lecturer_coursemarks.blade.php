@@ -68,6 +68,29 @@
 
                                     </tbody>
                                      @endforeach
+
+                                     <tr>
+                                        <th
+                                           class="px-6 py-3  border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           </th>
+                                        <th
+                                           class="px-6 py-3  border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           </th>
+                                           @foreach ($coursemodules as $coursemodule)
+                                            <td
+                                            class="px-6 py-3  border-gray-300 text-sm leading-4 text-blue-500 tracking-wider">
+                                        <a href="{{ route('coursemarks.edit', $coursemodule->id) }}">Edit</a>    
+                                        </td>
+                                           @endforeach
+                                           <th
+                                           class="px-6 py-3  border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           </th>
+                                           <th
+                                           class="px-6 py-3  border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           </th>
+                                        </tr>
+
+                                    </tbody>
                                 </table>
                         
                                 

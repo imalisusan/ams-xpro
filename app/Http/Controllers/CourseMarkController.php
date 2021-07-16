@@ -69,8 +69,33 @@ class CourseMarkController extends Controller
  
     public function update(StoreCourseMarkRequest $request, CourseMark $coursemark)
     {
-        $coursemark->update($request->validated());
-        return redirect()->route('coursemarks.show', $coursemark->id)->with('success','CourseMark updated successfully');
+        $validated = $request->validated();
+
+        $coursemodule = CourseModule::find($validated['course_module_id']);
+        $course_id = $validated['course_id'];
+        foreach ($validated['scores'] as $user_id => $score) 
+        {
+            $user = User::find($user_id);
+           
+            if($score > $coursemodule->maximum_score)
+            {
+                return redirect()->back()->withInput()->withErrors(["Please input the correct values for {$coursemodule->name}. Maximum score is  {$coursemodule->maximum_score}" ]);
+            }
+            else
+            {
+              
+                $validated = new CourseMark;
+                $validated->course_id = $course_id;
+                $validated->course_module_id = $coursemodule->id;
+                $validated->user_id = $user_id;
+                $validated->score = $score;
+            $coursemark->update($validated->toArray());
+
+           // Mail::to($user->email)->send(new NewCourseMark($user));
+            }
+        }
+
+        return redirect()->route('courses.show', $coursemark->course_id)->with('success','CourseMarks updated successfully');
     }
    
     public function destroy(CourseMark $coursemark)
