@@ -109,10 +109,7 @@ class FeeStatementController extends Controller
     {
         $feestatements = FeeStatement::where('user_id', Auth::user()->id)->get();
 
-       // $invoiced = FeeStatement::where('document_type', "Invoice")->sum();
-       // dd($invoiced);
-
-        $pdf = PDF::loadView('feestatements.pdf', compact('feestatements'));
-        return $pdf->download('pdf');
+        $feestatement = PDF::loadView('feestatements.pdf', compact('feestatements'));
+        return $feestatement->download('feestatement');
     }
 }
