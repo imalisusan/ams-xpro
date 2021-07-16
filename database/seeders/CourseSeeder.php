@@ -22,6 +22,7 @@ class CourseSeeder extends Seeder
                 'credits' => '3', 
                 'group' => 'ICS 3B May 2021',
                 'semester' => 'First Semester',
+                'description' => 'The Computer Science Project for ICS students',
             ],
 
             [
@@ -31,6 +32,7 @@ class CourseSeeder extends Seeder
                 'credits' => '3', 
                 'group' => 'ICS 3B May 2021',
                 'semester' => 'First Semester',
+                'description' => 'The Advanced Database Systems unit for ICS students',
             ],
 
             [
@@ -40,6 +42,7 @@ class CourseSeeder extends Seeder
                 'credits' => '3', 
                 'group' => 'ICS 3B May 2021',
                 'semester' => 'First Semester',
+                'description' => 'The Automata Theory and Computability unit for ICS students',
             ],
 
             [
@@ -49,6 +52,7 @@ class CourseSeeder extends Seeder
                 'credits' => '3', 
                 'group' => 'Apr21 SUBS/SCES/SIMS',
                 'semester' => 'First Semester',
+                'description' => 'The Great Books unit for ICS students',
             ],
 
             [
@@ -58,6 +62,7 @@ class CourseSeeder extends Seeder
                 'credits' => '3', 
                 'group' => 'ICS 3B May 2021',
                 'semester' => 'First Semester',
+                'description' => 'The Mobile Application Development unit for ICS students',
             ],
 
             [
@@ -67,6 +72,7 @@ class CourseSeeder extends Seeder
                 'credits' => '3', 
                 'group' => 'ICS 3B May 2021',
                 'semester' => 'First Semester',
+                'description' => 'The Operations Research unit for ICS students',
             ],
 
             [
@@ -76,6 +82,7 @@ class CourseSeeder extends Seeder
                 'credits' => '3', 
                 'group' => 'ICS 3B May 2021',
                 'semester' => 'First Semester',
+                'description' => 'The Human Computer Interaction unit for ICS students',
             ],
         ];
 
@@ -87,6 +94,7 @@ class CourseSeeder extends Seeder
                    'credits' => $course['credits'],
                    'group' => $course['group'],
                    'semester' => $course['semester'],
+                   'description' => $course['description'],
                  ]);
         }
     }
