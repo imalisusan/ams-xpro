@@ -34,6 +34,12 @@ class CourseMarkController extends Controller
 
         foreach ($validated['scores'] as $user_id => $score) {
             $user = User::find($user_id);
+            $coursemodule = CourseModule::find($validated['course_module_id']);
+            if($score > $coursemodule->maximum_score)
+            {
+                return redirect()->back()->withInput()->withErrors(["Please input the correct values for {$coursemodule->name}. Maximum score is  {$coursemodule->maximum_score}" ]);
+            }
+            else{
             CourseMark::create([
                 'course_id' => $validated['course_id'],
                 'course_module_id' => $validated['course_module_id'],
@@ -41,7 +47,8 @@ class CourseMarkController extends Controller
                 'score' => $score,
             ]);
 
-            Mail::to($user->email)->send(new NewCourseMark($user));
+           // Mail::to($user->email)->send(new NewCourseMark($user));
+        }
         }
      
         return redirect()->route('courses.show', $validated['course_id'])->with('success','CourseMarks added successfully.');

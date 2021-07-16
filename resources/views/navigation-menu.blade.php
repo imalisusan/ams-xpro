@@ -101,12 +101,14 @@
                     <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('attendance.index') }}" :active="request()->routeIs('attendance.index')">
                         {{ __('Attendance') }}
                     </x-jet-nav-link>
+                    @role('student')
                     <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('student.progress') }}" :active="request()->routeIs('student.progress')">
                         {{ __('Progress Report') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('examcard') }}" :active="request()->routeIs('examcard')">
                         {{ __('Exam Card') }}
                     </x-jet-nav-link>
+                    @endrole
                     @role('admin')
                     <x-jet-nav-link href="{{ route('student.profile') }}" :active="request()->routeIs('student.profile')">
                         {{ __('Student Details') }}

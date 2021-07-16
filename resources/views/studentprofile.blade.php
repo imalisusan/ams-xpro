@@ -36,7 +36,12 @@
                
                 <div id="table" style="margin-top:10px;">
                     <tr class = "content-center">
+                    @role('student')
                         <td class="border px-4 py-2 ">Admission Number</td>
+                    @endrole
+                    @role('lecturer')
+                        <td class="border px-4 py-2 ">Lecturer Number</td>
+                    @endrole
                         <td class="border px-4 py-2"><span>{{$user->reg_id}}</span></td>
                 </tr>
                 <tr>
@@ -45,10 +50,12 @@
                         <td class="border px-4 py-2"><span>{{$user->course_name}}</span></td>
                     @endrole
                         </tr>
+                        @role('lecturer')
                         <tr>
-                            <td class="border px-4 py-2">Course Name</td>
-                            <td class="border px-4 py-2"><span>{{$user->course_name}}</span></td>
+                            <td class="border px-4 py-2">Department Name</td>
+                            <td class="border px-4 py-2"><span>SCES</span></td>
                         </tr>
+                        @endrole
                         <tr>
                             <td class="border px-4 py-2">Name</td>
                             <td class="border px-4 py-2"><span>{{$user->name}}</span></td>
