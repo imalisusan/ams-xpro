@@ -72,6 +72,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('fees/feestatement', [FeeStatementController::class, 'index'])->name('fees.feestatement');
     Route::get('fees/credit', [FeeStatementController::class, 'credit'])->name('fees.credit');
     Route::get('fees/debit', [FeeStatementController::class, 'debit'])->name('fees.debit');
+    Route::get('fees/download', [FeeStatementController::class, 'fee_statement_export'])->name('fees.download'); 
 });
 
 

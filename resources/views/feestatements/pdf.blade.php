@@ -44,29 +44,70 @@
         </h1>
         
         <h2 class="styled-table th" style="color:#324B90">
-        Progress Report- {{ Auth::user()->reg_id }}- {{ Auth::user()->name}} 
+        Fee Statement- {{ Auth::user()->reg_id }}- {{ Auth::user()->name}} 
         </h2>
 
     <table class="styled-table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Credits</th>
-            <th>Score</th>
-            <th>Grade</th>
+            <th>Date</th>
+            <th>Document Number</th>
+            <th>Document Type</th>
+            <th>Type</th>
+            <th>Amount</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($courses as $course)
+        @php
+        $invoice = NULL;
+        $receipt = NULL;
+        @endphp
+        @foreach ($feestatements as $feestatement)
         <tr>
-            <td> {{ $course->course->name }}</td>
-            <td> {{ $course->course->year }}</td>
-            <td> {{ $course->course->credits }}</td>
-            <td> {{ $course->total }}</td>
-            <td> {{ $course->grade }}</td>
+            <td> {{ $feestatement->date}}</td>
+            <td> {{ $feestatement->document_number }}</td>
+            <td> {{ $feestatement->document_type }}</td>
+            <td> {{ $feestatement->type }}</td>
+            <td> {{ $feestatement->amount }}</td>
         </tr>
+        @php
+            
+            if($feestatement->document_type == "Receipt")
+            {
+                $receipt += $feestatement->amount; 
+            }
+            else
+            {
+                $invoice += $feestatement->amount; 
+            }
+            @endphp
         @endforeach
+       
+
+        @php 
+        $difference = $invoice-$receipt;
+        $difference=  substr($difference, 1);
+        
+
+        if($difference < 0)
+        {
+            $difference = "- ".$difference;
+        }
+        else
+        {
+            $difference = "+ ".$difference;
+        }
+
+        @endphp
+
+        <tr class="active-row">
+            <td>Total Invoiced</td>
+            <td>{{ $invoice }}</td>
+            <td>Total Paid</td>
+            <td>{{ $receipt }}</td>
+            <td>Difference</td>
+            <td>{{$difference}}</td>
+        </tr>
       
     </tbody>
 </table>
