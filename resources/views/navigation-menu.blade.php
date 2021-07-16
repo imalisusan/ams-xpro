@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center font-medium">
-                    <a href="{{ route('student.profile') }}">
-                        <img src="{{ url('https://lh3.googleusercontent.com/proxy/Ra1IEB4omXvOt5tP-z-nAQC4Dnez2zXq9Ti7RG3OWSXEMt37aDaFYj5h6sEhoupS3T3XRrDlBvIooW4AbkXCcLqlX0HsQrWJOdI6FndNQ-CWfS2YypR5POfVTOOTd5lbSmBmnpO5jysPt-YkwA') }}" 
+                <a href="{{ route('student.profile') }}">
+                        <img src="{{ url('https://lh3.googleusercontent.com/proxy/YpldMaKE6DfrSizfmJjyFYYuCwsUw3h3VqpA0Bw09WvfxxyqKTvZf6EhTLRwy86d1f1pNZ64PnNo8Awbg5AQAXAGsXb4oUPqUV2zttSV2UNvGyglE1UprXO8hUfZK2hUS5cKG3yXYC_f32Z9Ug') }}" 
                         class="block h-10 w-auto" />
                     </a>
                     <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('student.profile') }}" style="font-size:20px;">
@@ -113,11 +113,6 @@
                         {{ __('Exam Card') }}
                     </x-jet-nav-link>
                     @endrole
-                    @role('admin')
-                    <x-jet-nav-link href="{{ route('student.profile') }}" :active="request()->routeIs('student.profile')">
-                        {{ __('Student Details') }}
-                    </x-jet-nav-link>
-                    @endrole
 
                 </div>
             </div>
@@ -204,9 +199,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Welcome to your student profile') }}
-            </x-jet-responsive-nav-link>
+            
         </div>
 
         <!-- Responsive Settings Options -->

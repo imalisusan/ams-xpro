@@ -18,19 +18,24 @@
             class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
             Add Fee Statement</a>
             @endrole
+            <a type="button"  href="{{route('fees.download' )}}"  style="float:right; margin-right: 1%;"
+            class="px-5 py-2  border-green-500 border text-green-500 rounded transition duration-300 hover:bg-white-700 hover:text-white focus:outline-none place-self-center">    
+            Download PDF</a>
 
             <br><br>
             <form action="", method = "get"> 
                 <table class="mx-20">
                 <tr>
-                    <th class="border px-4 py-2 col-span-2">Date</th>
+                    <th class="border px-4 py-2 ">Date</th>
                     <th class="border px-4 py-2">Document Number</th>
                     <th class="border px-4 py-2">Document Type</th>
+                    <th class="border px-4 py-2">Type</th>
                     <th class="border px-4 py-2">Amount
-                    <select name="amount" id="amount-list" class="border-transparent" style="padding-left: 12px; padding-right: 40px"> 
-                    <option value="" selected class="px-4">All</option>
-                    <option value="debit" class="px-1" >Debit</option>
-                    <option value="credit" class="px-1">Credit</option>
+                    <select name="amount" id="amount-list" class="border-transparent" style="padding-left: 12px; padding-right: 40px" onchange="location = this.value;"> 
+                    <option value="{{ route('fees.feestatement') }}" selected class="px-4">All</option>
+                    <option value="{{ route('fees.debit') }}" class="px-1" >Debit</option>
+                    <option value="{{ route('fees.credit') }}" class="px-1">Credit</option>
+
                     </select>
                 </tr>
                 <tbody>
@@ -39,6 +44,7 @@
                         <td class="border text-center">{{$item->date}}</td>
                         <td class="border text-center">{{$item->document_number}}</td>
                         <td class="border text-center">{{$item->document_type}}</td>
+                        <td class="border text-center">{{$item->type}}</td>
                         <td class="border text-center">{{$item->amount}}</td>
                     </tr>
                     @endforeach

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\FeeStatement;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreFeeStatementRequest;
 
 class FeeStatementController extends Controller
@@ -16,7 +18,7 @@ class FeeStatementController extends Controller
      */
     public function index(Request $request)
     {
-        $fee_statement = FeeStatement::all();
+        $fee_statement = FeeStatement::where('user_id', Auth::user()->id)->get();
         return view('feestatements.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
     }
 
@@ -89,5 +91,25 @@ class FeeStatementController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function debit(Request $request)
+    {
+        $fee_statement = FeeStatement::where('type', "Debit")->get();
+        return view('feestatements.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
+    }
+
+    public function credit(Request $request)
+    {
+        $fee_statement = FeeStatement::where('type', "Credit")->get();
+        return view('feestatements.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
+    }
+
+    public function fee_statement_export()
+    {
+        $feestatements = FeeStatement::where('user_id', Auth::user()->id)->get();
+
+        $feestatement = PDF::loadView('feestatements.pdf', compact('feestatements'));
+        return $feestatement->download('feestatement');
     }
 }

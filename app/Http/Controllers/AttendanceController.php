@@ -53,9 +53,10 @@ class AttendanceController extends Controller
         return view('attendance.show',compact('attendance'));
     } 
 
-    public function edit(Attendance $attendance)
+    public function edit(Attendance $attendance, Course $course)
     {
-        
+        $users = User::all();
+        return view('attendance.edit', compact('users', 'course'));
     }
     
  
