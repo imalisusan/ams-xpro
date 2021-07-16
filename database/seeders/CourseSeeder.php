@@ -46,16 +46,6 @@ class CourseSeeder extends Seeder
             ],
 
             [
-                'code' => 'HHE 3107',
-                'name' => 'Great Books I',
-                'year' => '5',
-                'credits' => '3', 
-                'group' => 'Apr21 SUBS/SCES/SIMS',
-                'semester' => 'First Semester',
-                'description' => 'The Great Books unit for ICS students',
-            ],
-
-            [
                 'code' => 'ICS 3102',
                 'name' => 'Mobile Application Development',
                 'year' => '5',
@@ -83,6 +73,16 @@ class CourseSeeder extends Seeder
                 'group' => 'ICS 3B May 2021',
                 'semester' => 'First Semester',
                 'description' => 'The Human Computer Interaction unit for ICS students',
+            ],
+
+            [
+                'code' => 'HHE 3107',
+                'name' => 'Great Books I',
+                'year' => '5',
+                'credits' => '3', 
+                'group' => 'Apr21 SUBS/SCES/SIMS',
+                'semester' => 'First Semester',
+                'description' => 'The Great Books unit for ICS students',
             ],
         ];
 
