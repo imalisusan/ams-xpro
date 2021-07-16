@@ -58,24 +58,24 @@ Route::group([ 'middleware' => ['role:admin']], function(){
     })->name('register');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('/student/profile',[StudentController::class,'show'])->name('student.profile');
     Route::get('/student/progress',[ProgressReportController::class,'index'])->name('student.progress');
     Route::get('progressreports/download', [ProgressReportController::class, 'pdfexport'])->name('progressreport.download');
+
+    Route::resource('feestructures',FeeStructureController::class);
+    Route::get('feestructures/download/{file_path}',[FeeStructureController::class,'download'])->name('feestructures.download');
+    Route::post('feestructures/update/{feestructure}',[FeeStructureController::class,'update'])->name('feestructures.update');
+    Route::get('feestructures/delete/{feestructure}',[FeeStructureController::class,'destroy'])->name('feestructures.delete');
+    Route::get('fees/feestatement', [FeeStatementController::class, 'index'])->name('fees.feestatement');
+    Route::get('fees/credit', [FeeStatementController::class, 'credit'])->name('fees.credit');
+    Route::get('fees/debit', [FeeStatementController::class, 'debit'])->name('fees.debit');
+    Route::get('fees/download', [FeeStatementController::class, 'fee_statement_export'])->name('fees.download'); 
 });
 
-Route::resource('feestructures',FeeStructureController::class);
-Route::get('feestructures/download/{file_path}',[FeeStructureController::class,'download'])->name('feestructures.download');
-Route::post('feestructures/update/{feestructure}',[FeeStructureController::class,'update'])->name('feestructures.update');
-Route::get('feestructures/delete/{feestructure}',[FeeStructureController::class,'destroy'])->name('feestructures.delete');
-Route::middleware(['auth:sanctum', 'verified'])->group(function() {
-    Route::get('fees/feestatement', [FeeStatementController::class, 'index'])->name('fees.feestatement');
-});
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/exam-card', [ExamCardController::class, 'show'])->name("examcard");

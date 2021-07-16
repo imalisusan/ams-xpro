@@ -14,8 +14,8 @@
             <x-label for="course module name*" class="block uppercase text-xs font-bold mb-2" />
             <div class="relative">
                 <select name="course_module_id" placeholder="Select a question type" class="form-select block
-                appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8
-                rounded">
+                appearance-none w-1/2 bg-grey-lighter border border-none text-grey-darker py-3 px-4 pr-8
+                rounded" style="border-bottom:1px solid rgb(104, 104, 104); border-radius:0;">
                     <option>Select an option</option>
                     @foreach($coursemodules as $coursemodule)
                         <option value="{{ $coursemodule->id }}"  @if ((isset($coursemark) &&  $coursemark->course_module_id == ($coursemodule->id ) || old('course_module_id') == $coursemodule->id )) 
@@ -39,16 +39,21 @@
     @foreach($users as $user)
     <div class="-mx-3 md:flex mb-6">
         <div class="md:w-1/5 px-3">
-        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
-                    {{$user->name}}
+        <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-0 py-0 border-none" for="grid-first-name">
+         {{$user->id}}. {{$user->reg_id}} {{$user->name}}
         </label>
             <x-error field="user_id" class="text-red-600" />
         </div>
         <div class="md:w-1/4 px-3">
+        @php
+        if(isset($coursemark))
+        {$score = $coursemark->get_score($user->id, $coursemodule->id);}
+        
+        @endphp
             
-                <input type="number" name="scores[{{ $user->id }}]" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
-                rounded py-3 px-4 mb-3"  step="0.5" 
-                value="{{ isset($coursemark) ? $coursemark->score :old('score') }}" style="border:1px solid rgb(104, 104, 104);" min="0" 
+                <input type="number" name="scores[{{ $user->id }}]" class="form-input appearance-none block w-1/3 bg-grey-lighter text-grey-darker  border-none
+                rounded py-0 px-4 mb-0 mt-0 border-t-0"   step="0.5" 
+                value="{{ isset($coursemark) ? $score :old(scores[$user->id]) }}" style="border-bottom:1px solid rgb(104, 104, 104); border-radius:0;" min="0" 
                     />
                 <x-error field="score" class="text-red-600" />
         </div>
