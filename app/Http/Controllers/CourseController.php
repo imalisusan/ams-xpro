@@ -48,6 +48,8 @@ class CourseController extends Controller
             ])->first();
             $attendances = Util::get_student_attendance($course, $user);
             $attendance_percentage = Util::get_attendance_percentage($course, $user);
+            $coursemodules= $student->get_student_coursemarks($student->course_id, $student->user_id);
+            $coursemark= $student->get_student_grademarks($student->course_id, $student->user_id);
             
         return view('courses.show', compact('course', 'student', 'attendances', 'attendance_percentage'));
         }
