@@ -6,9 +6,13 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center font-medium">
                     <a href="{{ route('student.profile') }}">
-                        <img src="{{ asset('assets/images/SU-Logo.svg') }}" class="block h-12 w-auto" />
+                        <img src="{{ url('https://lh3.googleusercontent.com/proxy/Ra1IEB4omXvOt5tP-z-nAQC4Dnez2zXq9Ti7RG3OWSXEMt37aDaFYj5h6sEhoupS3T3XRrDlBvIooW4AbkXCcLqlX0HsQrWJOdI6FndNQ-CWfS2YypR5POfVTOOTd5lbSmBmnpO5jysPt-YkwA') }}" 
+                        class="block h-10 w-auto" />
                     </a>
-                </div>
+                    <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('student.profile') }}" style="font-size:20px;">
+                    {{ __('Strathmore University') }}
+                    </x-jet-nav-link>
+                </div>  &nbsp; &nbsp; &nbsp; &nbsp;
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex  text-align:center text-gray-700 text-base font-small">
