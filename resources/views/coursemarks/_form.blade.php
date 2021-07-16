@@ -1,3 +1,9 @@
+@if($errors->any())
+<h4  class="border border-t-0  rounded-b bg-red-500 bg-opacity-25 px-4 py-3 text-red-700">
+{{$errors->first()}}
+</h4>
+@endif
+
 <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
                     Please fill in all the fields *<br><br>
 </label>
@@ -42,7 +48,8 @@
             
                 <input type="number" name="scores[{{ $user->id }}]" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
                 rounded py-3 px-4 mb-3"  step="0.5" 
-                value="{{ isset($coursemark) ? $coursemark->score :old('score') }}" style="border:1px solid rgb(104, 104, 104);">
+                value="{{ isset($coursemark) ? $coursemark->score :old('score') }}" style="border:1px solid rgb(104, 104, 104);" min="0" 
+                    />
                 <x-error field="score" class="text-red-600" />
         </div>
     </div>
