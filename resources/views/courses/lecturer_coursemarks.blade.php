@@ -18,6 +18,9 @@
                                         <tr>
                                         <th
                                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           Student ID</th>
+                                        <th
+                                           class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
                                            Student Name</th>
                                            @foreach ($coursemodules as $coursemodule)
                                             <th
@@ -39,6 +42,9 @@
                                     $coursemodules= $student->get_student_coursemarks($student->course_id, $student->user_id);
                                     $coursemark= $student->get_student_grademarks($student->course_id, $student->user_id)
                                     @endphp
+                                    <td
+                                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                        {{ $student->user->reg_id }}</td>
                                     <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
                                         {{ $student->user->name }}</td>
