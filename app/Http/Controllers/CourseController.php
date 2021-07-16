@@ -51,7 +51,7 @@ class CourseController extends Controller
             $coursemodules= $student->get_student_coursemarks($student->course_id, $student->user_id);
             $coursemark= $student->get_student_grademarks($student->course_id, $student->user_id);
             
-        return view('courses.show', compact('course', 'student', 'attendances', 'attendance_percentage'));
+        return view('courses.show', compact('course', 'student', 'attendances', 'attendance_percentage', 'coursemodules', 'coursemark'));
         }
         
         $attendances = LecturerUtil::get_students_attendance($course);

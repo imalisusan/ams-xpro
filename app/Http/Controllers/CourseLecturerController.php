@@ -24,12 +24,20 @@ class CourseLecturerController extends Controller
         ])->first();
         if($saved == NULL)
         {
-            CourseLecturer::create($validated);
+            $course_count = CourseLecturer::where('lecturer_id', $validated['lecturer_id'])->count();
+            if($course_count == 3)
+            {
+                return redirect()->route('courses.index')->with('success','Sorry. You can\'t register to teach more than three courses.');
+            }
+            else
+            {
+                CourseLecturer::create($validated);
      
-            return redirect()->route('courses.index')->with('success','You\'ve registered to teach this course successfully.');
+                return redirect()->route('courses.index')->with('success','You\'ve registered to teach this course successfully.');
+            } 
         }
         else
-        {
+        { 
             return redirect()->route('courses.index')->with('success','You\'re already registered to teach this course.');
         }
         
