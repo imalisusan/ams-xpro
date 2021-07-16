@@ -83,6 +83,11 @@ class CourseMarkController extends Controller
             }
             else
             {
+                $coursemark = CourseMark::where([
+                    ['course_id', $course_id],
+                    ['course_module_id', $coursemodule->id],
+                    ['user_id', $user_id]
+                ])->first();
               
                 $validated = new CourseMark;
                 $validated->course_id = $course_id;
