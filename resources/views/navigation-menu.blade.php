@@ -113,11 +113,6 @@
                         {{ __('Exam Card') }}
                     </x-jet-nav-link>
                     @endrole
-                    @role('admin')
-                    <x-jet-nav-link href="{{ route('student.profile') }}" :active="request()->routeIs('student.profile')">
-                        {{ __('Student Details') }}
-                    </x-jet-nav-link>
-                    @endrole
 
                 </div>
             </div>
