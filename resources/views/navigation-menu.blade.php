@@ -16,7 +16,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex  text-align:center text-gray-700 text-base font-small">
-                    <x-jet-nav-link class="font-medium text-sm" href="{{ route('student.profile') }}" :active="request()->routeIs('student.profile')">
+                    <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('student.profile') }}">
                         {{ __('Home') }}
                     </x-jet-nav-link>
 
@@ -155,10 +155,16 @@
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
-
-                            <x-jet-responsive-nav-link href="{{ route('lecturers.create') }}" :active="request()->routeIs('lecturers.create')">
+                          
+                            @role('admin')
+                            <x-jet-dropdown-link href="{{ route('lecturers.create') }}">
                                   {{ __('Add Lecturer') }} 
-                            </x-jet-responsive-nav-link>
+                            </x-jet-dropdown-link>
+
+                            <x-jet-dropdown-link href="{{ route('register') }}">
+                                {{ __('Register new user') }}
+                            </x-jet-dropdown-link>
+                            @endrole
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
