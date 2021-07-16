@@ -11,6 +11,7 @@ use App\Models\CourseUser;
 use App\Models\CourseModule;
 use Illuminate\Http\Request;
 use App\Helpers\LecturerUtil;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreCourseRequest;
@@ -39,34 +40,22 @@ class CourseController extends Controller
 
     public function show(Request $request, Course $course)
     {
-        $coursemodules = CourseModule::where('course_id', $course->id)->get();
-        $total = NULL;
-        if($coursemodules)
-        {
-            foreach($coursemodules as $coursemodule)
-            {
-                $coursemark = CourseMark::where([
-                    ['course_module_id', '=', $coursemodule->id],
-                    ['user_id', '=', Auth::user()->id],
-                ])->first();
-                if($coursemark)
-                {
-                    $coursemodule['score'] = $coursemark->score;
-
-                    $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
-                    $total += $marks;
-                    $total = number_format((float)$total, 2, '.', '');
-                }
-
-            }
+        $user = User::find(Auth::user()->id);
+        if ($user->hasRole(['student'])) {
+            $student = CourseUser::where([
+                ['user_id', $user->id],
+                ['course_id', $course->id]
+            ])->first();
+            $attendances = Util::get_student_attendance($course, $user);
+            $attendance_percentage = Util::get_attendance_percentage($course, $user);
+            
+        return view('courses.show', compact('course', 'student', 'attendances', 'attendance_percentage'));
         }
-
+        
         $attendances = LecturerUtil::get_students_attendance($course);
         $students = CourseUser::where('course_id', $course->id)->get();
        
-        
-       // dd($students);
-        return view('courses.show', compact('course', 'coursemodules', 'total', 'attendances', 'students'));
+        return view('courses.show', compact('course', 'attendances', 'students'));
     } 
      
     public function edit(Course $course)

@@ -82,7 +82,10 @@ class CourseUser extends Model
                    $coursemark['total'] = number_format((float)$total, 2, '.', ''); 
                    $coursemark['grade'] = Util::get_grade($coursemark['total']);
                }
+               $coursemark = (object)$coursemark;
        return $coursemark;
        
     }
+
+    
 }

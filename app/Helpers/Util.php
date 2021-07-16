@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use App\Models\User;
 use App\Helpers\Util;
 use App\Models\Course;
 use App\Models\Attendance;
@@ -123,6 +124,7 @@ class Util {
                    {
                   
                     $course['percent_absent'] =  ( $course['absent_hours'] /  $course['total_hours'] ) * 100;
+                    $course['percent_absent'] = number_format((float)$course['percent_absent'], 2, '.', ''); 
                    
                    } 
                 }
@@ -170,6 +172,60 @@ class Util {
         } 
         
         return $courses;
+        
+     }
+
+     static public function get_student_attendance(Course $course, User $user)
+     {
+            $attendancerecords = Attendance::where([
+                ['course_id', $course->id],
+                ['user_id', $user->id],
+            ])->get();
+
+        return $attendancerecords;
+        
+     }
+
+     static public function get_attendance_percentage(Course $course, User $user)
+     {
+            $attendancerecords = Util::get_student_attendance($course, $user);
+            $total_present = NULL;
+            $total_absent = NULL;
+            if($attendancerecords)
+                {
+                    foreach($attendancerecords as $attendancerecord)
+                    {
+                        if($attendancerecord->status == "Present")
+                        {
+                            $total_present = $total_present + $attendancerecord['total_hours'];
+                            $course['present_hours'] = $total_present; 
+                        }
+                        else
+                        {
+                            $total_absent = $total_absent + $attendancerecord['total_hours'];
+                            $course['absent_hours'] = $total_absent; 
+                        }
+ 
+                    }
+                    $course['total_hours'] =  $course['present_hours'] +  $course['absent_hours'];
+ 
+                        $course['absent_classes'] = Attendance::where([
+                            ['course_id', $course->id],
+                            ['status',  '=',"Absent"],
+                            ['user_id', $user->id]
+                   ])->count();
+ 
+                   if( $course['absent_classes'] > 0 )
+                   {
+                  
+                    $course['percent_absent'] =  ( $course['absent_hours'] /  $course['total_hours'] ) * 100;
+                    $course['percent_absent'] = number_format((float)$course['percent_absent'], 2, '.', ''); 
+                   
+                   } 
+                }
+                $course = (object)$course;
+ 
+        return $course;
         
      }
      
