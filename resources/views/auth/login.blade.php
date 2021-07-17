@@ -1,5 +1,4 @@
 <x-guest-layout>
-<meta name="csrf-token" content="{{ csrf_token() }}">
     <x-jet-authentication-card>
         <x-slot name="logo">
             <a href="{{ route('student.profile') }}">
