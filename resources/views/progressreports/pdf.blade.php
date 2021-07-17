@@ -123,6 +123,7 @@
                 <tr>
                     <th>Subject Code</th>
                     <th>Name</th>
+                    <th>Type</th>
                     <th>Year</th>
                     <th>Credits</th>
                     <th>Score</th>
@@ -134,6 +135,7 @@
                 <tr>
                     <td> {{ $course->course->code }}</td>
                     <td> {{ $course->course->name }}</td>
+                    <td> {{ $course->course->type }}</td>
                     <td> {{ $course->course->year }}</td>
                     <td> {{ $course->course->credits }}</td>
                     <td> {{ $course->total }}</td>
