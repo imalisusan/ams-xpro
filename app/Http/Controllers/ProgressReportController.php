@@ -19,7 +19,9 @@ class ProgressReportController extends Controller
         $courses = Util::get_coursemarks();
         $gpa = Util::get_gpa();
         $gpa_grade = Util::get_grade($gpa);
-        return view('progressreports.index', compact('courses', 'gpa', 'gpa_grade'));
+        $gpa_total = Util::get_gpa_total();
+        $courses_count = Util::get_courses_count();
+        return view('progressreports.pdf', compact('courses', 'gpa', 'gpa_grade', 'gpa_total', 'courses_count'));
 
     }
 

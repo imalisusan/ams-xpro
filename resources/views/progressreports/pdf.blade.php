@@ -38,42 +38,117 @@
 }
 </style>
 </head>
-
-        <h1 class="styled-table th" style="font-size:15px;">
-             Strathmore University
-        </h1>
+           <div style="width:45%; height:40%;">
+            <div style="float:left;">
+                    <img src="{{ url('https://lh3.googleusercontent.com/proxy/YpldMaKE6DfrSizfmJjyFYYuCwsUw3h3VqpA0Bw09WvfxxyqKTvZf6EhTLRwy86d1f1pNZ64PnNo8Awbg5AQAXAGsXb4oUPqUV2zttSV2UNvGyglE1UprXO8hUfZK2hUS5cKG3yXYC_f32Z9Ug') }}" 
+                    class=""  style="width:15%; height:15% float:left; margin-top: 5%; margin-left: 10%;" />
+                    <h3 style=" float:right; font-size: 18px; margin-left: 0%; font-family: sans-serif; font-weight: normal;">
+                            Strathmore University <br>
+                        Progress Report <br>
+                         {{ Auth::user()->name}} - {{ Auth::user()->reg_id }} <br>
+                         Course:  {{ Auth::user()->course_name }} <br> 
+                         Fee Balance:  {{ Auth::user()->fee_balance()}} <br>
+                         Downloaded: 03-11-2020 09:14AM
+                    </h3>
+            </div>
         
-        <h2 class="styled-table th" style="color:#324B90">
-        Progress Report- {{ Auth::user()->reg_id }}- {{ Auth::user()->name}} 
-        </h2>
+           </div>
+            <br>
 
-    <table class="styled-table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Credits</th>
-            <th>Score</th>
-            <th>Grade</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($courses as $course)
-        <tr>
-            <td> {{ $course->course->name }}</td>
-            <td> {{ $course->course->year }}</td>
-            <td> {{ $course->course->credits }}</td>
-            <td> {{ $course->total }}</td>
-            <td> {{ $course->grade }}</td>
-        </tr>
-        @endforeach
-       
-        <tr class="active-row">
-            <td>Average GPA</td>
-            <td>{{$gpa}}</td>
-            <td>Mean Grade</td>
-            <td>{{$gpa_grade}}</td>
-        </tr>
-      
-    </tbody>
-</table>
+            <div id="averages">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align:center;">AVERAGES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td >Units Completed</td>
+                            <td style="border-right:1px solid #333;">{{$courses_count}}</td>
+                            <td>Total Marks</td>
+                            <td>{{$gpa_total}}</td>
+                        </tr>
+                        <tr>
+                            <td>Average Mark</td>
+                            <td style="border-right:1px solid #333;">{{$gpa}}</td>
+                            <td>Average Grade</td>
+                            <td>{{$gpa_grade}}</td>
+                        </tr>
+                        <tr>  
+                            <td style="border-right:1px solid #333;">Specialization</td>
+                            <td colspan="3"></td>           
+                        </tr>
+                        <tr>    
+                            <td>
+                            Minimum required credits: 168 <br>
+                            Minimum required compulsory credits: 108
+                            </td>
+                        </tr>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="key">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align:center;">KEY</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>OB</td>
+                            <td style="border-right:1px solid #333;">Obligatory/Compulsory Unit</td>
+                            <td>OP</td>
+                            <td>Optional/Elective Unit</td>
+                        </tr>
+                        <tr>
+                            <td>*</td>
+                            <td style="border-right:1px solid #333;">Repeat Course</td>
+                            <td>**</td>
+                            <td>Passed Retake Examination</td>
+                        </tr>
+                        <tr>             
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    <div id="table">
+            <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Name</th>
+                    <th>Year</th>
+                    <th>Credits</th>
+                    <th>Score</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($courses as $course)
+                <tr>
+                    <td> {{ $course->course->code }}</td>
+                    <td> {{ $course->course->name }}</td>
+                    <td> {{ $course->course->year }}</td>
+                    <td> {{ $course->course->credits }}</td>
+                    <td> {{ $course->total }}</td>
+                    <td> {{ $course->grade }}</td>
+                </tr>
+                @endforeach
+            
+                <tr class="active-row">
+                    <td></td>
+                    <td>Average GPA</td>
+                    <td>{{$gpa}}</td>
+                    <td>Mean Grade</td>
+                    <td>{{$gpa_grade}}</td>
+                </tr>
+            
+            </tbody>
+         </table>
+    </div>

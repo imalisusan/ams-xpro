@@ -21,7 +21,7 @@
                     <div class="flex justify-between" style="float:left;">
                     <a type="button"  href="{{route('progressreport.download', Auth::user()->id  )}}" 
                             class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-white-700 hover:text-white focus:outline-none place-self-center"
-                            style="color:#D92B30; border: solid 1px #D92B30"
+                           
                             >
                             
                             Download PDF</a>
