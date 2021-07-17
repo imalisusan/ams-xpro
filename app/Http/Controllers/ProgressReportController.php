@@ -32,4 +32,17 @@ class ProgressReportController extends Controller
         $progressreport = PDF::loadView('progressreports.pdf', compact('courses', 'gpa', 'gpa_grade'));
         return $progressreport->download('progressreport');
     }
+
+    public function twenty_19(Request $request)
+    {
+        $fee_statement = FeeStatement::where('created_at', "Debit")->get();
+        return view('feestatements.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
+    }
+
+    public function twenty_20(Request $request)
+    {
+        $fee_statement = FeeStatement::where('created_at', "Credit")->get();
+        return view('feestatements.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
+    }
+
 }
