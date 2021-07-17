@@ -24,7 +24,7 @@
                             Download PDF</a>
                             <select name="amount" id="amount-list" class="border-transparent" 
                             style="padding-left: 12px; padding-right: 40px; float:right;" onchange="location = this.value;"> 
-                    <option value="{{ route('student.progress') }}" selected class="px-4">All</option>
+                    <option value="{{ route('student.progress') }}" selected class="px-4">All Years</option>
                     <option value="{{ route('student.progress.year', 2019) }}" class="px-1" >2019</option>
                     <option value="{{ route('student.progress.year', 2020) }}" class="px-1">2020</option>
                     <option value="{{ route('student.progress.year', 2021) }}" class="px-1">2021</option>
