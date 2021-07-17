@@ -95,13 +95,19 @@ class FeeStatementController extends Controller
 
     public function debit(Request $request)
     {
-        $fee_statement = FeeStatement::where('type', "Debit")->get();
+        $fee_statement = FeeStatement::where([
+            ['type', "Debit"],
+            ['user_id', Auth::user()->id]
+        ])->get();
         return view('feestatements.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
     }
 
     public function credit(Request $request)
     {
-        $fee_statement = FeeStatement::where('type', "Credit")->get();
+        $fee_statement = FeeStatement::where([
+            ['type', "Credit"],
+            ['user_id', Auth::user()->id]
+        ])->get();
         return view('feestatements.index', compact('fee_statement'))->with('fee_statement', $fee_statement);
     }
 
