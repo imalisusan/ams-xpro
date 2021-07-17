@@ -45,15 +45,11 @@
             <x-error field="user_id" class="text-red-600" />
         </div>
         <div class="md:w-1/4 px-3">
-        @php
-        if(isset($coursemark))
-        {$score = $coursemark->get_score($user->id, $coursemodule->id);}
-        
-        @endphp
+      
             
                 <input type="number" name="scores[{{ $user->id }}]" class="form-input appearance-none block w-1/3 bg-grey-lighter text-grey-darker  border-none
                 rounded py-0 px-4 mb-0 mt-0 border-t-0"   step="0.5" 
-                value="{{ isset($coursemark) ? $score :old(scores[$user->id]) }}" style="border-bottom:1px solid rgb(104, 104, 104); border-radius:0;" min="0" 
+                value="{{ isset($coursemark) ? $coursemark->score :old('score') }}" style="border-bottom:1px solid rgb(104, 104, 104); border-radius:0;" min="0" max="60"
                     />
                 <x-error field="score" class="text-red-600" />
         </div>

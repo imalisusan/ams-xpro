@@ -1,7 +1,8 @@
 <x-guest-layout>
+<meta name="csrf-token" content="{{ csrf_token() }}">
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <a href="{{ route('dashboard') }}">
+            <a href="{{ route('student.profile') }}">
                     <img src="https://strathmore.edu/wp-content/uploads/2019/08/University-Logo-Black-12.png"  class="block h-20 w-auto"></a>
                     </a>
         </x-slot>

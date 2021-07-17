@@ -54,7 +54,20 @@
     </div>
 
     <div class="-mx-3 md:flex mb-6">
-        
+        <div class="md:w-1/2 px-3">
+            <x-label for="type*" class="block uppercase text-xs font-bold mb-2" />
+            <div class="relative">
+                <select name="type" placeholder="Select a question type" class="form-select block
+                appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8
+                rounded">
+                    <option>Select an option</option>
+                        <option value="OB">Obligatory</option>
+                        <option value="OP">Optional</option>
+                </select>
+            <x-error field="type" class="text-red-600" />
+        </div>
+        </div>
+
         <div class="md:w-1/2 px-3">
             <x-label for="description*" class="block uppercase text-xs font-bold mb-2" />
                 <input type="text" name="description" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red

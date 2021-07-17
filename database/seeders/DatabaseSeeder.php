@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CourseMarkSeeder::class);
         $this->call(AttendanceSeeder::class);
         $this->call(LaratrustSeeder::class);
+        $this->call(FeeStatementSeeder::class);
     }
 }
