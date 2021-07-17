@@ -40,6 +40,8 @@ class CreateNewUser implements CreatesNewUsers
             'course_name' => $input['course_name'],
         ]);
 
+        $user->attachRole('student');
+        
         Mail::to($user->email)->send(new ResetPassword($user));
 
         return $user;

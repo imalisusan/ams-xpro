@@ -109,7 +109,7 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $user) {
-            User::create([
+            $user = User::create([
                    'name' => $user['name'],
                    'reg_id' => $user['reg_id'],
                    'email' => $user['email'],
@@ -118,6 +118,8 @@ class UserSeeder extends Seeder
                    'course_name' => $user['course_name'],
                    'password' => Hash::make($user['password']),
                  ]);
+                 
+                 $user->attachRole('student');
         }
 
     }
