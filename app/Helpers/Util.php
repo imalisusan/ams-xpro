@@ -28,16 +28,16 @@ class Util {
      public static function get_grade($mark)
      {
         switch ($mark) {
-            case ($mark > 69):
+            case ($mark >= 70):
                 $grade = "A";
                 break;
-            case ($mark > 59):
+            case ($mark >= 60):
                 $grade = "B";
                 break;
-            case ($mark > 49):
+            case ($mark >= 50):
                 $grade = "C";
                 break;
-            case ($mark > 39):
+            case ($mark >= 40):
                 $grade = "D";
                 break;
             case ($mark < 40):
@@ -60,8 +60,16 @@ class Util {
         $courses = Util::get_coursemarks();
         $no_of_courses = count($courses);
         $gpa = $gpa_total / $no_of_courses;
+        $gpa = number_format((float)$gpa, 2, '.', ''); 
         return $gpa;
     
+     }
+     public static function get_courses_count()
+     {
+        $courses = Util::get_coursemarks();
+        $no_of_courses = count($courses);
+
+        return $no_of_courses;
      }
 
      public static function get_gpa_total()

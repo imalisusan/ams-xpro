@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\Util;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
@@ -85,4 +86,40 @@ class User extends Authenticatable
         return $this->hasMany(CourseMark::class);
     }
    
+    public function fee_balance()
+    {
+        $invoice_sum = NULL;
+        $receipt_sum = NULL;
+        $user = User::find(Auth::user()->id);
+        $invoices = FeeStatement::where([
+            ['document_type', "Invoice"],
+            ['user_id', $user->id]
+        ])->get();
+
+        foreach($invoices as $invoice)
+        {
+            $invoice_sum = $invoice_sum + $invoice['amount'];
+        }
+
+        $receipts = FeeStatement::where([
+            ['document_type', "Receipt"],
+            ['user_id', $user->id]
+        ])->get();
+
+        foreach($receipts as $receipt)
+        {
+            $receipt_sum = $receipt_sum + $receipt['amount'];
+        }
+
+        $fee_balance =$invoice_sum - $receipt_sum;
+        $fee_balance = number_format($fee_balance, 2, '.', ',');
+         if($fee_balance > 0)
+         {
+             return $fee_balance;
+         }
+         else
+         {
+             return 0;
+         }
+    }
 }
