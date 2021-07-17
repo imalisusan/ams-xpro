@@ -247,5 +247,41 @@ class Util {
         return $course;
         
      }
+
+     static public function get_coursemarks_year($year)
+     {
+        $courses = CourseUser::where('user_id', Auth::user()->id)->get();
+        $gpa_total = NULL; 
+        $gpa = NULL;
+        foreach ($courses as $course) 
+        {
+            $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
+            $total = NULL;
+            if($coursemodules)
+                {
+                    foreach($coursemodules as $coursemodule)
+                    {
+                        $coursemark = CourseMark::where([
+                            ['course_module_id', '=', $coursemodule->id],
+                            ['user_id', '=', Auth::user()->id],
+                            ['created_at','=', $year]
+                        ])->first();
+                        if($coursemark)
+                        {
+                            $coursemodule['score'] = $coursemark->score;
+                            $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
+                            $total = $total + $marks;
+                            $course['total'] = number_format((float)$total, 2, '.', ''); 
+                            $course['grade'] = Util::get_grade($course['total']);
+                        }
+                    }
+                    $gpa_total = $gpa_total + $course['total']; 
+                }
+        } 
+        
+        return $courses;
+        
+     }
+
      
     }

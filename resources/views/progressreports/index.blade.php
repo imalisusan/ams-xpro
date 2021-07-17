@@ -18,13 +18,18 @@
             <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
                 <div
                     class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
-                    <div class="flex justify-between" style="float:left;">
-                    <a type="button"  href="{{route('progressreport.download', Auth::user()->id  )}}" 
-                            class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-white-700 hover:text-white focus:outline-none place-self-center"
-                           
-                            >
-                            
+                    <div class="flex justify-between" >
+                    <a type="button"  href="{{route('progressreport.download', Auth::user()->id  )}}"  style="float:left;"
+                            class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-white-700 hover:text-white focus:outline-none place-self-center"> 
                             Download PDF</a>
+                            <select name="amount" id="amount-list" class="border-transparent" 
+                            style="padding-left: 12px; padding-right: 40px; float:right;" onchange="location = this.value;"> 
+                    <option value="{{ route('student.progress') }}" selected class="px-4">All</option>
+                    <option value="{{ route('student.progress.year', 2019) }}" class="px-1" >2019</option>
+                    <option value="{{ route('student.progress.year', 2020) }}" class="px-1">2020</option>
+                    <option value="{{ route('student.progress.year', 2021) }}" class="px-1">2021</option>
+
+                    </select>
                     </div>
                 </div>
                 <div
@@ -37,7 +42,12 @@
                                 Average GPA: {{ $gpa}} <br>
                                 Mean Grade: {{$gpa_grade}}
                                  </h2>
+                                 <h2 class="font-semibold text-xl text-gray-800 leading-tight" style="float:right; margin-right:38%; text-align:right;">
+                                Total Marks: {{ $gpa_total}} <br>
+                                Units Completed: {{$courses_count}}
+                                 </h2>
                                 <br><br><br>
+                    
                                     <thead>
                                         <tr>
                                             <th
@@ -46,6 +56,9 @@
                                             <th
                                             class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
                                             Coursename</th>
+                                            <th
+                                           class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                                           Type</th>
                                            <th
                                            class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
                                            Year</th>
@@ -73,6 +86,9 @@
                                         <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
                                         {{ $course->course->name }}</td>
+                                        <td
+                                        class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
+                                        {{ $course->course->type }}</td>
                                         <td
                                         class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-black-500 tracking-wider">
                                         {{ $course->course->year }}</td>
