@@ -9,9 +9,14 @@
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
+
 .header0{
     text-align: center;
     font-size: 1em;
+}
+
+.logo{
+    height: 50px;
 }
 
 .header1{
@@ -32,9 +37,6 @@
     margin-right: 292.437px;
 }
 
-.logo{
-    height: 50px;
-}
 .pri-header{
     background-color: #009fe5;
     color: white;

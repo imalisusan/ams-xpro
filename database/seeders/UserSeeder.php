@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'email' => 'imali.lungaho@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
                 'email' => 'susan.gicheha@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
                 'email' => 'katherine.mungayi@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
                 'email' => 'maya.bororio@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -58,7 +58,7 @@ class UserSeeder extends Seeder
                 'email' => 'victor.mutuku@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
                 'email' => 'nzalinzali.makutano@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -76,7 +76,7 @@ class UserSeeder extends Seeder
                 'email' => ' rosy.waruku@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -85,7 +85,7 @@ class UserSeeder extends Seeder
                 'email' => 'richard.githuba@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -94,7 +94,7 @@ class UserSeeder extends Seeder
                 'email' => 'caroline.mwangi319@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
             [
@@ -103,7 +103,7 @@ class UserSeeder extends Seeder
                 'email' => 'brian.muriithi@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
-                'course_name' => 'Informatics and Computer Science',
+                'course_name' => 'Bachelor of Informatics and Computer Science',
                 'password' => '12345678',
             ],
         ];
