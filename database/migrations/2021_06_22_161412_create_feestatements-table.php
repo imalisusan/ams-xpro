@@ -16,7 +16,7 @@ class CreateFeestatementsTable extends Migration
         Schema::create('fee_statements', function (Blueprint $table){
             $table->id();
             $table->foreignId('user_id');
-            $table->dateTime('date');
+            $table->date('date');
             $table->string('document_number')->nullable();
             $table->string('document_type')->nullable();
             $table->integer('amount');

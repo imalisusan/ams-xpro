@@ -30,6 +30,6 @@ class ProgressReportController extends Controller
         $gpa_grade = Util::get_grade($gpa);
 
         $progressreport = PDF::loadView('progressreports.pdf', compact('courses', 'gpa', 'gpa_grade'));
-        return $progressreport->download('progressreport');
+        return $progressreport->download('progressreport.pdf');
     }
 }

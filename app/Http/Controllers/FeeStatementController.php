@@ -110,6 +110,9 @@ class FeeStatementController extends Controller
         $feestatements = FeeStatement::where('user_id', Auth::user()->id)->get();
 
         $feestatement = PDF::loadView('feestatements.pdf', compact('feestatements'));
-        return $feestatement->download('feestatement');
+    
+        // return $feestatement->download('feestatements.pdf');
+        
+        return view('feestatements.pdf',compact('feestatements'))->with('feestatements', $feestatements);
     }
 }
