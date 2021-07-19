@@ -73,7 +73,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Rosy Waruku',
                 'reg_id' => '120749',
-                'email' => ' rosy.waruku@strathmore.edu',
+                'email' => 'rosy.waruku@strathmore.edu',
                 'phone_no' => '+254712345678', 
                 'dob' => '1999-06-07',
                 'course_name' => 'Bachelor of Informatics and Computer Science',
