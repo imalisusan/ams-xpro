@@ -87,7 +87,7 @@
             <div id="right">
                 Student Name: {{ Auth::user()->name }}
                 <br>
-                Statement Date: 
+                Statement Date: {{ date('d-m-Y') }}
             </div> 
         </h2>
 
