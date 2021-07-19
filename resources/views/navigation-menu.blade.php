@@ -109,7 +109,7 @@
                     <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('student.progress') }}" :active="request()->routeIs('student.progress')">
                         {{ __('Progress Report') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('examcard') }}" :active="request()->routeIs('examcard')">
+                    <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('examcards.index') }}" :active="request()->routeIs('examcards.index')">
                         {{ __('Exam Card') }}
                     </x-jet-nav-link>
                     @endrole

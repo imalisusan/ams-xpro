@@ -79,9 +79,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/exam-card', [ExamCardController::class, 'show'])->name("examcard");
+    Route::get('/exam-card', [ExamCardController::class, 'show'])->name("examcards.index");
     Route::get('/exam-card/notify', [ExamCardController::class, 'sendNotification']);
     Route::get('/progress-report', [])->name("");
     Route::get('examcard/download', [ExamCardController::class, 'download'])->name('examcard.download');
-    Route::get('examcard', [ExamCardController::class, 'index'])->name('examcards.index');
 });

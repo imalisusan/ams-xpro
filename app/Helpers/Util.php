@@ -240,6 +240,10 @@ class Util {
                     $course['percent_absent'] = number_format((float)$course['percent_absent'], 2, '.', ''); 
                    
                    } 
+                   if( $course['percent_absent'] == NULL)
+                   {
+                    $course['percent_absent'] = 0;
+                   }
                 }
                 $course = (object)$course;
  
