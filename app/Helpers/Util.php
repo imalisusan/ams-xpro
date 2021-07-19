@@ -3,7 +3,6 @@
 namespace App\Helpers;
 
 use App\Models\User;
-use App\Helpers\Util;
 use App\Models\Course;
 use App\Models\Attendance;
 use App\Models\CourseMark;
