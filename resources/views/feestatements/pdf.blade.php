@@ -47,6 +47,13 @@
     text-align: center
 }
 
+.center-text-data{
+    text-align: center;
+}
+
+.right-text-data{
+    text-align: right;
+}
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
@@ -116,20 +123,20 @@
         @endphp
         @foreach ($feestatements as $feestatement)
         <tr>
-            <td> {{ $feestatement->date}}</td>
-            <td> {{ $feestatement->document_number }}</td>
-            <td> {{ $feestatement->document_type }}</td>
-            <td> {{ $feestatement->type }}</td>
-            <td>
+            <td class="center-text-data"> {{ $feestatement->date}}</td>
+            <td class="center-text-data"> {{ $feestatement->document_number }}</td>
+            <td class="center-text-data"> {{ $feestatement->document_type }}</td>
+            <td class="center-text-data"> {{ $feestatement->type }}</td>
+            <td class="right-text-data">
                 @if ($feestatement->type == "Debit")
-                    {{$feestatement->amount}}
+                    {{number_format((double)$feestatement->amount, 2, '.', '')}}
                 @else
                     0.00
                 @endif
             </td>
-            <td>
+            <td class="right-text-data">
                 @if ($feestatement->type == "Credit")
-                {{$feestatement->amount}}
+                    {{number_format((double)$feestatement->amount, 2, '.', '')}}
             @else
                 0.00
             @endif
@@ -171,17 +178,17 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>{{ $invoice }}</td>
-            <td>{{ $receipt }}</td>
+            <td class="right-text-data">{{number_format((double)$invoice, 2, '.', '')}}</td>
+            <td class="right-text-data">{{number_format((double)$receipt, 2, '.', '')}}</td>
             
         </tr>
-        <tr>
+        <tr class="active-row">
             <td>Balance</td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td>{{$difference}}</td>
+            <td class="right-text-data">{{number_format((double)$difference, 2, '.', '')}}</td>
         </tr>
       
     </tbody>

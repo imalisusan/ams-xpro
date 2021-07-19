@@ -23,7 +23,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '1',
@@ -31,7 +31,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '1',
@@ -39,7 +39,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '1',
@@ -47,7 +47,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
 
             //User 2
@@ -57,7 +57,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '2',
@@ -65,7 +65,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '2',
@@ -73,7 +73,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '2',
@@ -81,7 +81,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             //User 3
             [
@@ -90,7 +90,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '3',
@@ -98,7 +98,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '3',
@@ -106,7 +106,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '3',
@@ -114,7 +114,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             //User 4
             [
@@ -123,7 +123,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '4',
@@ -131,7 +131,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '4',
@@ -139,7 +139,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '4',
@@ -147,7 +147,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             //User 5
             [
@@ -156,7 +156,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '5',
@@ -164,7 +164,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '5',
@@ -172,7 +172,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '5',
@@ -180,7 +180,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             //User 6
             [
@@ -189,7 +189,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '6',
@@ -197,7 +197,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '6',
@@ -205,7 +205,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '6',
@@ -213,7 +213,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             //User 7
             [
@@ -222,7 +222,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '7',
@@ -230,7 +230,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '7',
@@ -238,7 +238,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '7',
@@ -246,7 +246,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             //User 8
             [
@@ -255,7 +255,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '8',
@@ -263,7 +263,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '8',
@@ -271,7 +271,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '8',
@@ -279,7 +279,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             //User 9
             [
@@ -288,7 +288,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '9',
@@ -296,7 +296,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '9',
@@ -304,7 +304,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '9',
@@ -312,7 +312,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             //User 10
             [
@@ -321,7 +321,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127363',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '10',
@@ -329,7 +329,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '127456',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '10',
@@ -337,7 +337,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '128351',
                 'document_type' => 'Invoice', 
                 'type' => 'Debit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
             [
                 'user_id' => '10',
@@ -345,7 +345,7 @@ class FeeStatementSeeder extends Seeder
                 'document_number' => '129052',
                 'document_type' => 'Receipt', 
                 'type' => 'Credit',
-                'amount' => '100000',
+                'amount' => '100000.00',
             ],
 
         ];
