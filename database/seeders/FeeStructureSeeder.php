@@ -19,7 +19,7 @@ class FeeStructureSeeder extends Seeder
             [
                 'file_name' => 'sample.pdf',
                 'student_year' => '1',
-                'semester' => 'MAY2021',
+                'semester' => 'May 2021',
                 'sem_start_date' => '2021-07-19',
                 'sem_end_date' => '2021-07-19',
                 'file_path' => 'sample.pdf',
@@ -29,7 +29,7 @@ class FeeStructureSeeder extends Seeder
             [
                 'file_name' => 'sample.pdf',
                 'student_year' => '2',
-                'semester' => 'MAY2021',
+                'semester' => 'May 2021',
                 'sem_start_date' => '2021-07-19',
                 'sem_end_date' => '2021-07-19',
                 'file_path' => 'sample.pdf',
@@ -39,7 +39,7 @@ class FeeStructureSeeder extends Seeder
             [
                 'file_name' => 'sample.pdf',
                 'student_year' => '3',
-                'semester' => 'MAY2021',
+                'semester' => 'May 2021',
                 'sem_start_date' => '2021-07-19',
                 'sem_end_date' => '2021-07-19',
                 'file_path' => 'sample.pdf',
@@ -49,7 +49,7 @@ class FeeStructureSeeder extends Seeder
             [
                 'file_name' => 'sample.pdf',
                 'student_year' => '4',
-                'semester' => 'MAY2021',
+                'semester' => 'May 2021',
                 'sem_start_date' => '2021-07-19',
                 'sem_end_date' => '2021-07-19',
                 'file_path' => 'sample.pdf',
