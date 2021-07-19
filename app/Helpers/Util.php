@@ -3,7 +3,6 @@
 namespace App\Helpers;
 
 use App\Models\User;
-use App\Helpers\Util;
 use App\Models\Course;
 use App\Models\Attendance;
 use App\Models\CourseMark;
@@ -22,7 +21,7 @@ class Util {
         {
             $course_user = Course::find($course_user->course_id);
         }
-         return $course_user;
+         return $course_users;
      }
 
      public static function get_grade($mark)
@@ -241,6 +240,10 @@ class Util {
                     $course['percent_absent'] = number_format((float)$course['percent_absent'], 2, '.', ''); 
                    
                    } 
+                   if( $course['percent_absent'] == NULL)
+                   {
+                    $course['percent_absent'] = 0;
+                   }
                 }
                 $course = (object)$course;
  

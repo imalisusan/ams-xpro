@@ -35,7 +35,8 @@ class ProgressReportController extends Controller
         $courses_count = Util::get_courses_count();
 
         $progressreport = PDF::loadView('progressreports.pdf', compact('courses', 'gpa', 'gpa_grade', 'gpa_total', 'courses_count'));
-        return $progressreport->download('progressreport');
+        return $progressreport->download('progressreport.pdf');
+    
     }
 
     public function report_year(Request $request, int $year)
