@@ -3,7 +3,7 @@
 
 .styled-table {
     border-collapse: collapse;
-    margin: 25px auto 0 auto;
+    margin: 40px auto 0 auto;
     font-size: 0.9em;
     font-family: sans-serif;
     min-width: 400px;
