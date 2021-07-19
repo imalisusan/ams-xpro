@@ -117,6 +117,7 @@
     <tbody>
         
         @foreach ($courses as $course)
+        @if($course['status'] == 1)
         <tr>
             <td class="center-text-data"> {{ $course->course->code}}</td>
             <td class="center-text-data"> {{ $course->course->name }}</td>
@@ -124,6 +125,12 @@
             <td class="center-text-data"> {{ $course->course->year }}</td>
            
         </tr>
+        @else
+        <tr>
+            
+        </tr>
+        @endif
+
         @endforeach
         
    
