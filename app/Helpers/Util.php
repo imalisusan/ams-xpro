@@ -21,7 +21,7 @@ class Util {
         {
             $course_user = Course::find($course_user->course_id);
         }
-         return $course_user;
+         return $course_users;
      }
 
      public static function get_grade($mark)
