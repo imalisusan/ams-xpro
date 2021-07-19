@@ -24,5 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CourseMarkSeeder::class);
         $this->call(AttendanceSeeder::class);
         $this->call(FeeStatementSeeder::class);
+        $this->call(FeeStructureSeeder::class);
+
     }
 }

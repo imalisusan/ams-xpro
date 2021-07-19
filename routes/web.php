@@ -41,6 +41,7 @@ Route::resources([
     'feestatement' => FeeStatementController::class,
     'lecturers' => LecturerController::class,
     'courselecturers' => CourseLecturerController::class,
+    'feestructures' => FeeStructureController::class,
 ]);
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
@@ -66,7 +67,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('progressreports/download', [ProgressReportController::class, 'pdfexport'])->name('progressreport.download');
     Route::get('/student/progress/{year}',[ProgressReportController::class,'report_year'])->name('student.progress.year');
 
-    Route::resource('feestructures',FeeStructureController::class);
     Route::get('feestructures/download/{file_path}',[FeeStructureController::class,'download'])->name('feestructures.download');
     Route::post('feestructures/update/{feestructure}',[FeeStructureController::class,'update'])->name('feestructures.update');
     Route::get('feestructures/delete/{feestructure}',[FeeStructureController::class,'destroy'])->name('feestructures.delete');

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\FeeStatement;
 use Illuminate\Database\Seeder;
 
 class FeeStatementSeeder extends Seeder
@@ -38,7 +38,7 @@ class FeeStatementSeeder extends Seeder
         ];
 
         foreach ($fee_statements as $fee_statement) {
-            User::create([
+            FeeStatement::create([
                    'user_id' => $fee_statement['user_id'],
                    'date' => $fee_statement['date'],
                    'document_number' => $fee_statement['document_number'],
