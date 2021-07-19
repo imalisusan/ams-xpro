@@ -19,7 +19,7 @@ class CreateFeestatementsTable extends Migration
             $table->dateTime('date');
             $table->string('document_number')->nullable();
             $table->string('document_type')->nullable();
-            $table->integer('amount');
+            $table->double('amount');
             $table->string('type');
             $table->timestamps();
 
