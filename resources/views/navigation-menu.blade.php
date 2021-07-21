@@ -5,14 +5,12 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center font-medium">
-                <a href="{{ route('student.profile') }}">
-                        <img src="{{ url('https://lh3.googleusercontent.com/proxy/YpldMaKE6DfrSizfmJjyFYYuCwsUw3h3VqpA0Bw09WvfxxyqKTvZf6EhTLRwy86d1f1pNZ64PnNo8Awbg5AQAXAGsXb4oUPqUV2zttSV2UNvGyglE1UprXO8hUfZK2hUS5cKG3yXYC_f32Z9Ug') }}" 
-                        class="block h-10 w-auto" />
+                    <a href="{{ route('student.profile') }}">
+                        <x-jet-authentication-card-logo class="block h-9 w-auto" />
                     </a>
-                    <x-jet-nav-link class="text-gray-700 text-sm font-small" href="{{ route('student.profile') }}" style="font-size:20px;">
-                    {{ __('Strathmore University') }}
-                    </x-jet-nav-link>
-                </div>  &nbsp; &nbsp; &nbsp; &nbsp;
+                    
+                </div> 
+                <div style="width:30px;"></div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex  text-align:center text-gray-700 text-base font-small">
