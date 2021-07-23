@@ -71,7 +71,7 @@
                                                                 <div class="text-sm leading-5 text-gray-800">
                                                                     {{ $session->status }}
                                                                 </div>
-                                                            </div>
+        lara                                                    </div>
                                                         </div>
                                                     </td>
 
