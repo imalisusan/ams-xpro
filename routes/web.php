@@ -54,9 +54,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('mylessons', [CourseLecturerController::class, 'teach_courses'])->name('courses.teaching');
 });
 Route::group([ 'middleware' => ['role:admin']], function(){
-    Route::get('register', function () {
-        return view('auth.register');
-    })->name('register');
+    
 });
 
 
@@ -74,6 +72,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('fees/credit', [FeeStatementController::class, 'credit'])->name('fees.credit');
     Route::get('fees/debit', [FeeStatementController::class, 'debit'])->name('fees.debit');
     Route::get('fees/download', [FeeStatementController::class, 'fee_statement_export'])->name('fees.download'); 
+
+    Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
 });
 
 

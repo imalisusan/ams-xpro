@@ -22,59 +22,143 @@
 
     </x-slot>
     </header>
+    
    
-    <div class="py-12" >
-        <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg h-80">
-                <div id="image" style="float:left; padding:50px;">
-                    <img src="{{ asset('assets/images/profile.svg') }}" class="block h-40 w-auto" alt="."/>
-                </div>
+   
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white shadow-md rounded px-8 flex flex-col">
+                <section class=" text-gray-700 body-font">
+                    <div class="container px-5 py-8 mx-auto flex flex-wrap">
+                        <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow w-6/12 sm:w-4/12 ">
+
+
+                                     <!-- Profile Photo -->
+                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            <!-- Current Profile Photo -->
+                            <div class="mt-2" x-show="! photoPreview">
+                                <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" class="rounded-full h-40 w-40 object-cover">
+                            </div>
+                    @endif
+
+
                 
-    <table align="right"  style="float:right;margin-right:20px;">
-        <br>
-        <h1 class="text-center"> Welcome {{ $user->name }} <h1>
-               
-                <div id="table" style="margin-top:10px;">
-                    <tr class = "content-center">
-                    @role('student')
-                        <td class="border px-4 py-2 ">Admission Number</td>
-                    @endrole
-                    @role('lecturer')
-                        <td class="border px-4 py-2 ">Lecturer Number</td>
-                    @endrole
-                        <td class="border px-4 py-2"><span>{{$user->reg_id}}</span></td>
-                </tr>
-                <tr>
-                    @role('student')
-                        <td class="border px-4 py-2">Course Name</td>
-                        <td class="border px-4 py-2"><span>{{$user->course_name}}</span></td>
-                    @endrole
-                        </tr>
-                        @role('lecturer')
-                        <tr>
-                            <td class="border px-4 py-2">Department Name</td>
-                            <td class="border px-4 py-2"><span>SCES</span></td>
-                        </tr>
-                        @endrole
-                        <tr>
-                            <td class="border px-4 py-2">Name</td>
-                            <td class="border px-4 py-2"><span>{{$user->name}}</span></td>
-                        </tr>
-                        <tr>
-                            <td class="border px-4 py-2">Email</td>
-                            <td class="border px-4 py-2"><span>{{$user->email}}</span></td>
-                        </tr>
-                        <tr>
-                            <td class="border px-4 py-2">Date of birth</td>
-                            <td class="border px-4 py-2"><span>{{$user->dob}}</span></td>
-                        </tr>
-                        <tr>
-                            <td class="border px-4 py-2">Phone Number</td>
-                            <td class="border px-4 py-2"><span>{{$user->phone_no}}</span></td>
-                        </tr>
+
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                   
+                                    @role('student')
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Admission Number</h2>
+                                    @endrole
+                                    @role('lecturer')
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Lecturer Number</h2>
+                                    @endrole
+                                    <p class="leading-relaxed text-base">{{ $user->reg_id }}</p>
+                                  
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Full Name</h2>
+                                    <p class="leading-relaxed text-base">{{ $user->name }}
+                                    </p>
+                                   
+                                </div>
+                            </div>
+
+                            
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Email
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->email }}
+                                    </p>
+                                
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Phone Number
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->phone_no }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+
+                            
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Course Name
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->course_name }}
+                                    </p>
+                                
+                                </div>
+                            </div>
+
+                            
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Date of Birth
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->dob }}
+                                    </p>
+                                
+                                </div>
+                            </div>
+
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Address
+                                    </h2>
+                                    <p class="leading-relaxed text-base">Ole Sangale Road, off Langata Road, in Madaraka Estate</p>
+                
+                                </div>
+                            </div>
+
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Religion
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                       Christianity 
+                                    </p>
+                    
+                                </div>
+                            </div>
+
+
+                        </div>
                     </div>
-                </table>
+                </section>
+
             </div>
         </div>
     </div>
+
+
+
+
+    @role('student')
+        @include('students.mentor-sessions')
+    @endrole
 </x-app-layout>
