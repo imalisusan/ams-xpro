@@ -16,6 +16,6 @@ class StudentController extends Controller
         //Remove this line once mentor functionality is done
         $sessions = Attendance::where('user_id', $user->id)->get();
     
-        return view('studentprofile', compact('user', 'sessions'));
+        return view('students.profile', compact('user', 'sessions'));
     }
 }
