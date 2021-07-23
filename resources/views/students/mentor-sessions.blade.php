@@ -82,11 +82,12 @@
                                                             class="mr-2 px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View
 
                                                         </a>
+                                                        @role('mentor')
+                                                            <a href="{{ route('student.profile') }}"
+                                                                class="mr-2 px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">Update
 
-                                                        <a href="{{ route('student.profile') }}"
-                                                            class="mr-2 px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">Update
-
-                                                        </a>
+                                                            </a>
+                                                        @endrole
 
 
                                                     </td>
