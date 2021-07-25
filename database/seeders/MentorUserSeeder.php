@@ -17,141 +17,61 @@ class MentorUserSeeder extends Seeder
         $mentorusers = [
             [
                 'mentor_id' => '1',
-                'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '1',
-                'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '1',
-                'user_id' => '3',
+                'user_id' => '10',
             ],
 
-            //Lecturer 2
+            //Mentor 2
             [
                 'mentor_id' => '2',
-                'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '2',
-                'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '3',
-                'user_id' => '3',
+                'user_id' => '9',
             ],
 
-            //Lecturer 3
+            //Mentor 3
             [
                 'mentor_id' => '3',
-                'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '3',
-                'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '3',
-                'user_id' => '3',
+                'user_id' => '8',
             ],
 
-            //Lecturer 4
+            //Mentor 4
             [
                 'mentor_id' => '4',
-                'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '4',
-                'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '4',
-                'user_id' => '3',
+                'user_id' => '7',
             ],
 
-            //Lecturer 5
+            //Mentor 5
             [
                 'mentor_id' => '5',
-                'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '5',
-                'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '5',
-                'user_id' => '3',
+                'user_id' => '6',
             ],
 
-            //Lecturer 6
+            //Mentor 6
             [
                 'mentor_id' => '6',
-                'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '6',
-                'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '6',
-                'user_id' => '3',
+                'user_id' => '5',
             ],
 
-            //Lecturer 7
+            //Mentor 7
             [
                 'mentor_id' => '7',
-                'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '7',
-                'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '7',
-                'user_id' => '3',
+                'user_id' => '4',
             ],
 
-            //Lecturer 8
-            [
-                'mentor_id' => '8',
-                'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '8',
-                'user_id' => '2',
-            ],
+            //Mentor 8
             [
                 'mentor_id' => '8',
                 'user_id' => '3',
             ],
 
-            //Lecturer 9
-            [
-                'mentor_id' => '9',
-                'user_id' => '1',
-            ],
+            //Mentor 9
             [
                 'mentor_id' => '9',
                 'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '9',
-                'user_id' => '3',
             ],
 
-            //Lecturer 10
+            //Mentor 10
             [
                 'mentor_id' => '10',
                 'user_id' => '1',
-            ],
-            [
-                'mentor_id' => '10',
-                'user_id' => '2',
-            ],
-            [
-                'mentor_id' => '10',
-                'user_id' => '3',
             ],
           
                   
