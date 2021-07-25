@@ -10,22 +10,18 @@
                                     <div class="flex justify-between">
 
                                         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                                            {{ __('Mentoring Sessions with ') }} Mentor Name
+                                            {{ __('Mentoring Sessions with ') }} {{$mentor->mentor->name}}
                                         </h2>
+                                        @role('mentor')
+                                        <a type="button" href="{{ route('mentoringsessions.create', $user->id) }}"
+                                            class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
+                                            Add Mentoring Session</a>
+                                        @endrole
                                     </div>
                                 </div>
                                 <div
                                     class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
-                                    <div class="flex justify-between">
-
-                                       @role('mentor')
-                                       <a type="button" href="#"
-                                            class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none place-self-center">Add
-                                            Session</a>
-                                       @endrole
-
-
-                                    </div>
+                                
                                 </div>
                                 <div
                                     class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
@@ -60,7 +56,7 @@
                                                         <div class="flex items-center">
                                                             <div>
                                                                 <div class="text-sm leading-5 text-gray-800">
-                                                                    {{ $session->total_hours }}
+                                                                    {{ $session->total_hours }} hrs
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -69,28 +65,24 @@
                                                         <div class="flex items-center">
                                                             <div>
                                                                 <div class="text-sm leading-5 text-gray-800">
-                                                                    {{ $session->status }}
+                                                                    {{ $session->comments }}
                                                                 </div>
                                                        </div>
                                                         </div>
                                                     </td>
 
-                                                    
+                                                    @role('mentor')
                                                     <td
                                                         class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                                                        <a href="{{ route('student.profile') }}"
+                                                        <a href="{{ route('mentoringsessions.show', $session->id) }}"
                                                             class="mr-2 px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">View
-
                                                         </a>
-                                                        @role('mentor')
-                                                            <a href="{{ route('student.profile') }}"
-                                                                class="mr-2 px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">Update
-
-                                                            </a>
-                                                        @endrole
-
-
+                                                        
+                                                        <a href="{{ route('mentoringsessions.update', $session->id) }}"
+                                                            class="mr-2 px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">Update
+                                                        </a>
                                                     </td>
+                                                    @endrole
                                                 </tr>
 
                                             @endforeach

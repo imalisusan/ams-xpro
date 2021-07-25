@@ -106,7 +106,7 @@
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Course Name
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                        {{ $user->course_name }}
+                                        {{ $user->degree->name }}
                                     </p>
                                 
                                 </div>
@@ -129,7 +129,7 @@
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Address
                                     </h2>
-                                    <p class="leading-relaxed text-base">Ole Sangale Road, off Langata Road, in Madaraka Estate</p>
+                                    <p class="leading-relaxed text-base">{{$user->address}}</p>
                 
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Religion
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                       Christianity 
+                                     {{$user->religion}}
                                     </p>
                     
                                 </div>
