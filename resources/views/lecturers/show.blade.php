@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Course Module Details') }}&nbsp;&nbsp;
+            {{ __('Lecturer Details') }}&nbsp;&nbsp;
           
             <form class="inline" action="{{  route('lecturers.destroy', $lecturer->id) }}" method="POST">                        
                 <a href="{{ route('lecturers.edit', $lecturer->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider">Edit</a>&nbsp;
