@@ -57,6 +57,6 @@ class MentoringSessionController extends Controller
     {
         $mentoringsession->delete();
     
-        return redirect()->route('mentoringsessions.index')->with('success','MentoringSession deleted successfully');
+        return redirect()->route('student.profile')->with('success','MentoringSession deleted successfully');
     }
 }

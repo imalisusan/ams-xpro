@@ -9,7 +9,7 @@
             
 
             <div>
-                <form action="{{ route('students.store') }}" method="POST">
+                <form action="{{ route('sore') }}tudents.st" method="POST">
                     @csrf
                 @include('students._form')
                 </form>
