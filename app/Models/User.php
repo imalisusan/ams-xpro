@@ -34,7 +34,22 @@ class User extends Authenticatable
         'reg_id',
         'phone_no',
         'dob',
-        'course_name',
+        'degree_id',
+        'gender',
+        'religion',
+        'high_school',
+        'primary_school',
+        'address',
+        'residence',
+        'fathers_name',
+        'fathers_occupation',
+        'fathers_phone_number',
+        'mothers_name',
+        'mothers_occupation',
+        'mothers_phone_number',
+        'guardians_name',
+        'guardians_occupation',
+        'guardians_phone_number',
     ];
 
     /**
@@ -70,6 +85,11 @@ class User extends Authenticatable
     public function courses()
     {
         return $this->hasMany(Course::class);
+    }
+
+    public function degree()
+    {
+        return $this->belongsTo(Degree::class);
     }
 
     public function course_users()

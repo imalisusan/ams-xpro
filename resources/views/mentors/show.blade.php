@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Lecturer Details') }}&nbsp;&nbsp;
+            {{ __('Mentor Details') }}&nbsp;&nbsp;
           
-            <form class="inline" action="{{  route('lecturers.destroy', $lecturer->id) }}" method="POST">                        
-                <a href="{{ route('lecturers.edit', $lecturer->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider">Edit</a>&nbsp;
+            <form class="inline" action="{{  route('mentors.destroy', $mentor->id) }}" method="POST">                        
+                <a href="{{ route('mentors.edit', $mentor->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider">Edit</a>&nbsp;
                     @csrf
                     @method('DELETE')
                         
@@ -27,7 +27,7 @@
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Name</h2>
-                                    <p class="leading-relaxed text-base">{{ $lecturer->name }}
+                                    <p class="leading-relaxed text-base">{{ $mentor->name }}
                                     </p>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Phone
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                        {{  $lecturer->phone }}
+                                        {{  $mentor->phone }}
                                     </p>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Joined On</h2>
-                                    <p class="leading-relaxed text-base">{{ $lecturer->created_at->calendar() }}
+                                    <p class="leading-relaxed text-base">{{ $mentor->created_at->calendar() }}
                                     </p>
                                 </div>
                             </div>
@@ -55,8 +55,8 @@
                         <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
-                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Module Name</h2>
-                                    <p class="leading-relaxed text-base">{{ $lecturer->email }}
+                                    <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Email</h2>
+                                    <p class="leading-relaxed text-base">{{ $mentor->email }}
                                     </p>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font font-medium mb-3 font-bold">Address</h2>
-                                    <p class="leading-relaxed text-base">{{ $lecturer->address }}
+                                    <p class="leading-relaxed text-base">{{ $mentor->address }}
                                     </p>
                                 </div>
                             </div>

@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
         $this->call(LaratrustSeeder::class);
+        $this->call(DegreeSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(LecturerSeeder::class);
         $this->call(CourseSeeder::class);
@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AttendanceSeeder::class);
         $this->call(FeeStatementSeeder::class);
         $this->call(FeeStructureSeeder::class);
-
+        $this->call(MentorSeeder::class);
+        $this->call(MentorUserSeeder::class);
+        $this->call(MentoringSessionSeeder::class);
     }
 }

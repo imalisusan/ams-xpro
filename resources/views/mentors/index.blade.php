@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Lecturers') }} 
+            {{ __('Mentors') }} 
         </h2>
     </x-slot>
 
@@ -20,9 +20,9 @@
                     <div class="flex justify-between">
                         
                     @role('admin')
-                        <a type="button" href="{{ route('lecturers.create') }}"
+                        <a type="button" href="{{ route('mentors.create') }}"
                             class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
-                            Add Lecturer</a>
+                            Add Mentor</a>
                     @endrole
                        
                     </div>
@@ -30,7 +30,7 @@
                 <div
                     class="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
                     <body>
-                        @livewire('lecturers-table-view')
+                        @livewire('mentors-table-view')
                     </body>
                     <div class="my-4 work-sans">
                     </div>
