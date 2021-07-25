@@ -41,7 +41,7 @@ class StudentController extends Controller
             $user = User::create($validated);
             $user->attachRole('student');
 
-           // Mail::to($user->email)->send(new ResetPassword($user));
+            Mail::to($user->email)->send(new ResetPassword($user));
         }
 
 
