@@ -45,7 +45,7 @@
         <div class="md:w-1/2 px-3">
             <x-label for="phone number*" class="block uppercase text-xs font-bold mb-2" />
             <input type="tel" name="phone_no"
-                value="{{ isset($student) ? $student->phone_number : old('phone_no') }}" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border
+                value="{{ isset($student) ? $student->phone_no : old('phone_no') }}" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border
             border-grey-lighter rounded py-3 px-4">
             <x-error field="phone_no" class="text-red-600" />
 

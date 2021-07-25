@@ -44,7 +44,7 @@ class StoreStudentRequest extends FormRequest
             'mothers_phone_number' => 'nullable',
             'guardians_name' => 'nullable',
             'guardians_occupation' => 'nullable',
-            'guardians_phone_numnber' => 'nullable',
+            'guardians_phone_number' => 'nullable',
            
         ];
     }

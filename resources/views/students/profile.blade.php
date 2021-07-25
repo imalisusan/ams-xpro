@@ -1,6 +1,15 @@
 <x-app-layout>
 <header>
-<x-slot name="header">
+<x-slot name="header"> 
+    <form class="inline" action="{{  route('students.destroy', $user->id) }}" method="POST"  style="float:right";  >                        
+                <a href="{{ route('students.edit', $user->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider"  
+                >Edit</a>&nbsp;
+                    @csrf
+                  @role('admin')
+                   @method('DELETE')  
+                        <input type="submit" value="Delete" class="bg-white   text-red-500 rounded transition duration-300  focus:outline-none place-self-center">        
+                @endrole
+            </form>
 
         @role('student')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center object-contain">
@@ -85,6 +94,50 @@
                                 </div>
                             </div>
 
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">High School
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->high_school }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Father's Name
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->fathers_name }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Mother's Name
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->mothers_name }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Guardian's Name
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->guardians_name }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
@@ -143,6 +196,50 @@
                                      {{$user->religion}}
                                     </p>
                     
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Primary School
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->primary_school }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Father's Phone Number
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->fathers_phone_number }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Mother's Phone Number
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->mothers_phone_number }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+
+                            <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Guardian's Phone Number
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->guardians_phone_number }}
+                                    </p>
+                                 
                                 </div>
                             </div>
 

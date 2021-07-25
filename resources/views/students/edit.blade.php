@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div>
-                <form action="{{ route('students.update', $student->id) }}" method="POST">
+                <form action="{{ route('students.update', Auth::user()->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     @include('students._form')

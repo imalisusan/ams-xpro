@@ -64,15 +64,18 @@ class StudentController extends Controller
 
     public function edit(User $user)
     {
-        $student = $user;
-        return view('students.edit',compact('student'));
+        $student = User::find(Auth::user()->id);
+        $degrees = Degree::all();
+        return view('students.edit',compact('student', 'degrees'));
     }
 
 
-    public function update(StoreStudentRequest $request, User $user)
+    public function update(StoreStudentRequest $request, $id)
     {
-        $mentor->update($request->validated());
-        return redirect()->route('students.profile')->with('success','Student updated successfully');
+        $user = User::find($id);
+        $user->update($request->validated());
+        $validated = $request->validated();
+        return redirect()->route('student.profile')->with('success','Student updated successfully');
     }
 
     public function destroy(User $user)

@@ -8,8 +8,7 @@
                     @csrf
                     @method('DELETE')
                         
-                        <input type="submit" value="Delete" class="bg-white   text-red-500 rounded transition duration-300  focus:outline-none place-self-center">
-                        
+                        <input type="submit" value="Delete" class="bg-white   text-red-500 rounded transition duration-300  focus:outline-none place-self-center">        
             </form>
         </h2>
     </x-slot>
