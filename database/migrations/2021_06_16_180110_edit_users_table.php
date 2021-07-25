@@ -14,10 +14,10 @@ class EditUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('reg_id')->unique()->after('id')->nullable();
+            $table->foreignId('reg_id')->unique()->after('id')->nullable();
             $table->text('phone_no')->after('email')->nullable();
-            $table->string('dob')->nullable();
-            $table->string('course_name')->nullable();
+            $table->string('dob')->after('phone_no')->nullable();
+            $table->foreignId('degree_id')->constrained()->after('dob')->nullable();
         });
     }
 
@@ -32,7 +32,7 @@ class EditUsersTable extends Migration
             $table->dropcolumn('reg_id');
             $table->dropcolumn('phone_no');
             $table->dropcolumn('dob');
-            $table->dropcolumn('course_name');
+            $table->dropcolumn('degree_id');
         });
     }
 }
