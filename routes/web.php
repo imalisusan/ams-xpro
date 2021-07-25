@@ -3,17 +3,21 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DegreeController;
+use App\Http\Controllers\MentorController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LecturerController;
 use \App\Http\Controllers\ExamCardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\MentorUserController;
 use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\FeeStatementController;
 use App\Http\Controllers\FeeStructureController;
 use App\Http\Controllers\CourseLecturerController;
 use App\Http\Controllers\ProgressReportController;
+use App\Http\Controllers\MentoringSessionController;
 
 
 
@@ -34,6 +38,7 @@ Route::get('/', function () {
 
 Route::resources([
     'courses' => CourseController::class,
+    'degrees' => DegreeController::class,
     'courseusers' => CourseUserController::class,
     'attendance' => AttendanceController::class,
     'coursemodules' => CourseModuleController::class,
@@ -42,19 +47,25 @@ Route::resources([
     'lecturers' => LecturerController::class,
     'courselecturers' => CourseLecturerController::class,
     'feestructures' => FeeStructureController::class,
+    'mentors' => MentorController::class,
+    'mentoringsessions' => MentoringSessionController::class,
+    'students' => StudentController::class,
+
 ]);
 
 Route::get('/register/{course}',[CourseUserController::class, 'store'])->name('courses.register');
 Route::get('/teach/{course}',[CourseLecturerController::class, 'store'])->name('courses.teach');
+Route::get('/mentor/{user}',[MentorUserController::class, 'store'])->name('students.mentor');
 Route::get('coursemarks/{course}/create',[CourseMarkController::class, 'create'])->name('coursemarks.create');
 Route::get('attendance/{course}/create',[AttendanceController::class, 'create'])->name('attendance.create');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
     Route::get('mylessons', [CourseLecturerController::class, 'teach_courses'])->name('courses.teaching');
+    Route::get('mentees', [MentorUserController::class, 'mentees'])->name('mentors.mentees');
 });
 Route::group([ 'middleware' => ['role:admin']], function(){
-    
+    Route::get('students/create',[StudentController::class, 'create'])->name('students.create'); 
 });
 
 

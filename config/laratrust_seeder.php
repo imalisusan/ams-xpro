@@ -44,7 +44,7 @@ return [
         'mentor' => [
             'mentors' => 'c,r,u,d',
             'mentorusers' => 'c,r,u,d',
-            'mentorsessions' => 'c,r,u,d',
+            'mentoringsessions' => 'c,r,u,d',
         ]
     ],
 
