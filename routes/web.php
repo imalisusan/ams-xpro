@@ -52,9 +52,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'mentors' => MentorController::class,
         'mentoringsessions' => MentoringSessionController::class,
         'students' => StudentController::class,
-    
+
     ]);
-    
+
     Route::get('mycourses', [CourseUserController::class, 'registered_courses'])->name('courses.personal');
     Route::get('mylessons', [CourseLecturerController::class, 'teach_courses'])->name('courses.teaching');
     Route::get('mentees', [MentorUserController::class, 'mentees'])->name('mentors.mentees');
@@ -77,7 +77,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('fees/feestatement', [FeeStatementController::class, 'index'])->name('fees.feestatement');
     Route::get('fees/credit', [FeeStatementController::class, 'credit'])->name('fees.credit');
     Route::get('fees/debit', [FeeStatementController::class, 'debit'])->name('fees.debit');
-    Route::get('fees/download', [FeeStatementController::class, 'fee_statement_export'])->name('fees.download'); 
+    Route::get('fees/download', [FeeStatementController::class, 'fee_statement_export'])->name('fees.download');
 
     Route::get('/exam-card', [ExamCardController::class, 'show'])->name("examcards.index");
     Route::get('/exam-card/notify', [ExamCardController::class, 'sendNotification']);
@@ -86,6 +86,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 
 Route::group([ 'middleware' => ['role:admin']], function(){
-    Route::get('students/create',[StudentController::class, 'create'])->name('students.create'); 
-    Route::put('students/{user}',[StudentController::class, 'update'])->name('students.update'); 
+    Route::get('students/create',[StudentController::class, 'create'])->name('students.create');
+    Route::put('students/{user}',[StudentController::class, 'update'])->name('students.update');
 });

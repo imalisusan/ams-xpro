@@ -24,7 +24,7 @@ class Util {
          return $course_users;
      }
 
-     public static function get_grade($mark)
+     public static function get_grade($mark): string
      {
         switch ($mark) {
             case ($mark >= 70):
@@ -42,41 +42,38 @@ class Util {
             case ($mark < 40):
                 $grade = "E";
                 break;
-                    
+
             default:
                 $grade = "Null";
                 break;
         }
 
         return $grade;
-        
+
      }
 
      public static function get_gpa()
      {
-         
+
         $gpa_total = Util::get_gpa_total();
         $courses = Util::get_coursemarks();
         $no_of_courses = count($courses);
         $gpa = $gpa_total / $no_of_courses;
-        $gpa = number_format((float)$gpa, 2, '.', ''); 
-        return $gpa;
-    
+         return number_format((float)$gpa, 2, '.', '');
+
      }
      public static function get_courses_count()
      {
         $courses = Util::get_coursemarks();
-        $no_of_courses = count($courses);
-
-        return $no_of_courses;
+         return count($courses);
      }
 
      public static function get_gpa_total()
      {
         $courses = CourseUser::where('user_id', Auth::user()->id)->get();
-        $gpa_total = NULL; 
+        $gpa_total = NULL;
         $gpa = NULL;
-        foreach ($courses as $course) 
+        foreach ($courses as $course)
         {
             $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
             $total = NULL;
@@ -93,40 +90,41 @@ class Util {
                             $coursemodule['score'] = $coursemark->score;
                             $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
                             $total = $total + $marks;
-                            $course['total'] = number_format((float)$total, 2, '.', ''); 
+                            $course['total'] = number_format((float)$total, 2, '.', '');
                             $course['grade'] = Util::get_grade($course['total']);
                         }
                     }
-                    $gpa_total =  $gpa_total + $course['total']; 
+                    $gpa_total =  $gpa_total + $course['total'];
                 }
-        } 
+        }
         return  $gpa_total;
      }
 
      static public function get_courseattendance()
      {
         $courses = CourseUser::where('user_id', Auth::user()->id)->get();
-        foreach ($courses as $course) 
+        foreach ($courses as $course)
         {
-            $attendancerecords = Attendance::where([
+            $attendanceRecords = Attendance::where([
                 ['course_id', $course->course_id],
                 ['user_id', Auth::user()->id],
             ])->get();
+
             $total_present = NULL;
             $total_absent = NULL;
-            if($attendancerecords)
+            if($attendanceRecords)
                 {
-                    foreach($attendancerecords as $attendancerecord)
+                    foreach($attendanceRecords as $attendancerecord)
                     {
                         if($attendancerecord->status == "Present")
                         {
                             $total_present = $total_present + $attendancerecord['total_hours'];
-                            $course['present_hours'] = $total_present; 
+                            $course['present_hours'] = $total_present;
                         }
                         else
                         {
                             $total_absent = $total_absent + $attendancerecord['total_hours'];
-                            $course['absent_hours'] = $total_absent; 
+                            $course['absent_hours'] = $total_absent;
                         }
 
                     }
@@ -140,16 +138,16 @@ class Util {
 
                    if( $course['absent_classes'] > 0 )
                    {
-                  
+
                     $course['percent_absent'] =  ( $course['absent_hours'] /  $course['total_hours'] ) * 100;
-                    $course['percent_absent'] = number_format((float)$course['percent_absent'], 2, '.', ''); 
-                   
-                   } 
+                    $course['percent_absent'] = number_format((float)$course['percent_absent'], 2, '.', '');
+
+                   }
                 }
-        } 
-        
+        }
+
         return $courses;
-        
+
      }
 
      static public function get_gpa_grade($gpa)
@@ -162,9 +160,9 @@ class Util {
      static public function get_coursemarks()
      {
         $courses = CourseUser::where('user_id', Auth::user()->id)->get();
-        $gpa_total = NULL; 
+        $gpa_total = NULL;
         $gpa = NULL;
-        foreach ($courses as $course) 
+        foreach ($courses as $course)
         {
             $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
             $total = NULL;
@@ -181,82 +179,78 @@ class Util {
                             $coursemodule['score'] = $coursemark->score;
                             $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
                             $total = $total + $marks;
-                            $course['total'] = number_format((float)$total, 2, '.', ''); 
+                            $course['total'] = number_format((float)$total, 2, '.', '');
                             $course['grade'] = Util::get_grade($course['total']);
                         }
                     }
-                    $gpa_total = $gpa_total + $course['total']; 
+                    $gpa_total = $gpa_total + $course['total'];
                 }
-        } 
-        
+        }
+
         return $courses;
-        
+
      }
 
      static public function get_student_attendance(Course $course, User $user)
      {
-            $attendancerecords = Attendance::where([
-                ['course_id', $course->id],
-                ['user_id', $user->id],
-            ])->get();
+         return Attendance::where([
+             ['course_id', $course->id],
+             ['user_id', $user->id],
+         ])->get();
 
-        return $attendancerecords;
-        
      }
 
-     static public function get_attendance_percentage(Course $course, User $user)
+     static public function get_attendance_percentage(Course $course, User $user): object
      {
-            $attendancerecords = Util::get_student_attendance($course, $user);
+            $attendanceRecords = Util::get_student_attendance($course, $user);
             $total_present = NULL;
             $total_absent = NULL;
-            if($attendancerecords)
+            if($attendanceRecords)
                 {
-                    foreach($attendancerecords as $attendancerecord)
+                    foreach($attendanceRecords as $attendancerecord)
                     {
                         if($attendancerecord->status == "Present")
                         {
                             $total_present = $total_present + $attendancerecord['total_hours'];
-                            $course['present_hours'] = $total_present; 
+                            $course['present_hours'] = $total_present;
                         }
                         else
                         {
                             $total_absent = $total_absent + $attendancerecord['total_hours'];
-                            $course['absent_hours'] = $total_absent; 
+                            $course['absent_hours'] = $total_absent;
                         }
- 
+
                     }
+
                     $course['total_hours'] =  $course['present_hours'] +  $course['absent_hours'];
- 
-                        $course['absent_classes'] = Attendance::where([
+
+                    $course['absent_classes'] = Attendance::where([
                             ['course_id', $course->id],
                             ['status',  '=',"Absent"],
                             ['user_id', $user->id]
                    ])->count();
- 
+
                    if( $course['absent_classes'] > 0 )
                    {
-                  
-                    $course['percent_absent'] =  ( $course['absent_hours'] /  $course['total_hours'] ) * 100;
-                    $course['percent_absent'] = number_format((float)$course['percent_absent'], 2, '.', ''); 
-                   
-                   } 
+
+                        $course['percent_absent'] =  ( $course['absent_hours'] /  $course['total_hours'] ) * 100;
+                        $course['percent_absent'] = number_format((float)$course['percent_absent'], 2, '.', '');
+
+                   }
                    if( $course['percent_absent'] == NULL)
                    {
-                    $course['percent_absent'] = 0;
+                        $course['percent_absent'] = 0;
                    }
                 }
-                $course = (object)$course;
- 
-        return $course;
-        
+         return (object) $course;
      }
 
      static public function get_coursemarks_year($year)
      {
         $courses = CourseUser::where('user_id', Auth::user()->id)->get();
-        $gpa_total = NULL; 
+        $gpa_total = NULL;
         $gpa = NULL;
-        foreach ($courses as $course) 
+        foreach ($courses as $course)
         {
             $coursemodules = CourseModule::where('course_id', $course->course_id)->get();
             $total = NULL;
@@ -274,17 +268,17 @@ class Util {
                             $coursemodule['score'] = $coursemark->score;
                             $marks =  ($coursemodule['score'] * ( $coursemodule['weight'] * 100)) /  $coursemodule['maximum_score'];
                             $total = $total + $marks;
-                            $course['total'] = number_format((float)$total, 2, '.', ''); 
+                            $course['total'] = number_format((float)$total, 2, '.', '');
                             $course['grade'] = Util::get_grade($course['total']);
                         }
                     }
-                    $gpa_total = $gpa_total + $course['total']; 
+                    $gpa_total = $gpa_total + $course['total'];
                 }
-        } 
-        
+        }
+
         return $courses;
-        
+
      }
 
-     
+
     }

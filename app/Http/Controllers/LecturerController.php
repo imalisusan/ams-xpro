@@ -56,8 +56,8 @@ class LecturerController extends Controller
     public function show(Request $request, Lecturer $lecturer)
     {
         return view('lecturers.show', compact('lecturer'));
-    } 
-     
+    }
+
     public function edit(Lecturer $lecturer)
     {
         return view('lecturers.edit',compact('lecturer'));
@@ -76,6 +76,4 @@ class LecturerController extends Controller
 
         return redirect()->route('lecturers.index')->with('success','Lecturer deleted successfully');
     }
-
-   
 }

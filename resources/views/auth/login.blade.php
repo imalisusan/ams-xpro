@@ -1,9 +1,13 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <a href="{{ route('student.profile') }}">
-                    <img src="https://strathmore.edu/wp-content/uploads/2019/08/University-Logo-Black-12.png"  class="block h-20 w-auto"></a>
-                    </a>
+            <a href="https://strathmore.edu/">
+                <img
+                    src="https://strathmore.edu/wp-content/uploads/2019/08/University-Logo-Black-12.png"
+                    class="block h-20 w-auto"
+                    alt="University Log"
+                />
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

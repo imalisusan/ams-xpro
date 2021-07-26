@@ -1,13 +1,13 @@
 <x-app-layout>
 <header>
-<x-slot name="header"> 
-    <form class="inline" action="{{  route('students.destroy', $user->id) }}" method="POST"  style="float:right";  >                        
-                <a href="{{ route('students.edit', $user->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider"  
+<x-slot name="header">
+    <form class="inline" action="{{  route('students.destroy', $user->id) }}" method="POST"  style="float:right";  >
+                <a href="{{ route('students.edit', $user->id)  }}" class="border-gray-300 text-left  leading-4 text-blue-500 tracking-wider"
                 >Edit</a>&nbsp;
                     @csrf
                   @role('admin')
-                   @method('DELETE')  
-                        <input type="submit" value="Delete" class="bg-white   text-red-500 rounded transition duration-300  focus:outline-none place-self-center">        
+                   @method('DELETE')
+                        <input type="submit" value="Delete" class="bg-white   text-red-500 rounded transition duration-300  focus:outline-none place-self-center">
                 @endrole
             </form>
 
@@ -31,9 +31,9 @@
 
     </x-slot>
     </header>
-    
-   
-   
+
+
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-md rounded px-8 flex flex-col">
@@ -54,14 +54,14 @@
                     @endif
 
 
-                
+
 
                                 </div>
                             </div>
 
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
-                                   
+
                                     @role('student')
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Admission Number</h2>
                                     @endrole
@@ -69,7 +69,7 @@
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Lecturer Number</h2>
                                     @endrole
                                     <p class="leading-relaxed text-base">{{ $user->reg_id }}</p>
-                                  
+
                                 </div>
                             </div>
 
@@ -78,11 +78,11 @@
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Full Name</h2>
                                     <p class="leading-relaxed text-base">{{ $user->name }}
                                     </p>
-                                   
+
                                 </div>
                             </div>
 
-                            
+
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Email
@@ -90,7 +90,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->email }}
                                     </p>
-                                
+
                                 </div>
                             </div>
 
@@ -101,7 +101,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->high_school }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 
@@ -112,7 +112,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->fathers_name }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 
@@ -123,7 +123,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->mothers_name }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 
@@ -134,7 +134,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->guardians_name }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 
@@ -149,23 +149,23 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->phone_no }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 
-                            
+
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Course Name
                                     </h2>
                                     <p class="leading-relaxed text-base">
-                                        {{ $user->degree->name }}
+                                        {{ isset($user->degree->name) ? $user->degree->name : "" }}
                                     </p>
-                                
+
                                 </div>
                             </div>
 
-                            
+
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Date of Birth
@@ -173,7 +173,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->dob }}
                                     </p>
-                                
+
                                 </div>
                             </div>
 
@@ -183,7 +183,7 @@
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Address
                                     </h2>
                                     <p class="leading-relaxed text-base">{{$user->address}}</p>
-                
+
                                 </div>
                             </div>
 
@@ -195,7 +195,7 @@
                                     <p class="leading-relaxed text-base">
                                      {{$user->religion}}
                                     </p>
-                    
+
                                 </div>
                             </div>
 
@@ -206,7 +206,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->primary_school }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 
@@ -217,7 +217,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->fathers_phone_number }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 
@@ -228,7 +228,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->mothers_phone_number }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 
@@ -239,7 +239,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $user->guardians_phone_number }}
                                     </p>
-                                 
+
                                 </div>
                             </div>
 

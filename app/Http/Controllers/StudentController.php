@@ -47,18 +47,21 @@ class StudentController extends Controller
 
         return redirect()->route('students.index')->with('success','Student created successfully.');
     }
-    
+
     public function show()
     {
         $user = Auth::user();
 
         $mentor = MentorUser::where('user_id', $user->id)->first();
 
-        $sessions = MentoringSession::where([
-            ['user_id', $mentor->user_id],
-            ['mentor_id', $mentor->mentor_id],
-        ])->get();
-    
+        $sessions = Null;
+        if (isset($mentor)) {
+            $sessions = MentoringSession::where([
+                ['user_id', $mentor->user_id],
+                ['mentor_id', $mentor->mentor_id],
+            ])->get();
+        }
+
         return view('students.profile', compact('user', 'sessions', 'mentor'));
     }
 

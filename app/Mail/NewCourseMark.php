@@ -30,14 +30,14 @@ class NewCourseMark extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): self
     {
         return $this
-        ->subject('New Course Mark Added')
-        ->markdown('emails.coursemark')
-        ->with([
-            'name' => $this->user->name,
-            'link' => route('courses.index'),
-        ]);
+            ->subject('New Course Mark Added')
+            ->markdown('emails.coursemark')
+            ->with([
+                'name' => $this->user->name,
+                'link' => route('courses.index'),
+            ]);
     }
 }
