@@ -35,7 +35,7 @@ class NewFeeInvoice extends Mailable
         ->markdown('emails.fee')
         ->with([
             'name' => $this->user->name,
-            'link' => route('fees/feestatement'),
+            'link' => route('fees.feestatement'),
         ]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Degree;
+use App\Mail\NewFeeInvoice;
 use App\Models\FeeStatement;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -34,19 +36,38 @@ class FeeStatementController extends Controller
         return view('feestatements.create', compact('students'));
     }
 
+    public function create_invoice()
+    {
+        $degrees = Degree::all();
+        return view('feestatements.invoice', compact('degrees'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function store_invoice(StoreFeeStatementRequest $request)
+    {
+        $validated = $request->validated();
+            $users = User::where('degree_id', $validated['degree_id'])->get();
+            foreach($users as $user)
+            {
+                Mail::to($user->email)->send(new NewFeeInvoice($user));
+            }
+        
+        return redirect()->route('feestatement.index')->with('success','Fee Statement created successfully.');
+    }
+
     public function store(StoreFeeStatementRequest $request)
     {
         $validated = $request->validated();
         FeeStatement::create($validated);
 
-        Mail::to($user->email)->send(new NewFeeInvoice($user));
-     
+        $user = User::find($validated['user_id']);
+        Mail::to($user->email)->send(new NewFeeReceipt($user));
+        
         return redirect()->route('feestatement.index')->with('success','Fee Statement created successfully.');
     }
 
@@ -56,9 +77,9 @@ class FeeStatementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(FeeStatement $fee_statement)
     {
-        return view('feestatement.show');
+        return view('feestatements.show', compact('fee_statement'));
 
     }
 
@@ -68,9 +89,9 @@ class FeeStatementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(FeeStatement $fee_statement)
     {
-        //
+        return view('feestatements.edit', compact('fee_statement'));
     }
 
     /**
@@ -80,9 +101,10 @@ class FeeStatementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FeeStatement $fee_statement)
     {
-        //
+        $fee_statement->update($request->validated());
+        return redirect()->route('feestatement.show', $fee_statement->id)->with('success','Fee Record updated successfully');
     }
 
     /**
@@ -91,9 +113,11 @@ class FeeStatementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(FeeStatement $fee_statement)
     {
-        //
+        $fee_statement->delete();
+
+        return redirect()->route('feestatements.index')->with('success','Fee Record deleted successfully');
     }
 
     public function debit(Request $request)

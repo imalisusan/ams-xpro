@@ -56,14 +56,13 @@ class CourseMarkController extends Controller
                         'score' => $score,
                     ]);
         
-                // Mail::to($user->email)->send(new NewCourseMark($user, $course));
+                 Mail::to($user->email)->send(new NewCourseMark($user, $course));
                 }
                 else
                 {
                     return redirect()->route('courses.show', $validated['course_id'])->with('danger','CourseMarks already exist.');
                 }
 
-          
         }
         }
      
