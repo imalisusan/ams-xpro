@@ -22,9 +22,9 @@
                     <a type="button"  href="{{route('progressreport.download', Auth::user()->id  )}}"  style="float:left;"
                             class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-white-700 hover:text-white focus:outline-none place-self-center"> 
                             Download PDF</a>
-                            <select name="amount" id="amount-list" class="border-transparent" 
+                            <select name="year" id="amount-list" class="border-transparent" 
                             style="padding-left: 12px; padding-right: 40px; float:right;" onchange="location = this.value;"> 
-                    <option value="{{ route('student.progress') }}" selected class="px-4">All Years</option>
+                    <option value="{{ route('student.progress') }}" class="px-1">All Years</option>
                     <option value="{{ route('student.progress.year', 2019) }}" class="px-1" >2019</option>
                     <option value="{{ route('student.progress.year', 2020) }}" class="px-1">2020</option>
                     <option value="{{ route('student.progress.year', 2021) }}" class="px-1">2021</option>
