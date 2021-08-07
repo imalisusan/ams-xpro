@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Degree;
 use App\Mail\NewFeeInvoice;
+use App\Mail\NewFeeReceipt;
 use App\Models\FeeStatement;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
