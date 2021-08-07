@@ -152,7 +152,11 @@
                                     
                                     <x-jet-dropdown-link href="{{ route('degrees.index')}}" >
                                         {{ __('Degrees') }}
-                                    </x-jet-dropdown-link>  
+                                    </x-jet-dropdown-link> 
+
+                                    <x-jet-dropdown-link href="/laratrust">
+                                        {{ __('Roles & Permissions') }}
+                                    </x-jet-dropdown-link>
                             </x-slot>
                         </x-jet-dropdown>
                     </div> 

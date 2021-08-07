@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Fee Statement ') }}
+            {{ __('Edit Fee Statement Invoice') }}
         </h2>
     </x-slot>
 
@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div>
-                <form action="{{ route('feestatements.update', $feestatement->id) }}" method="POST">
+                <form action="{{ route('feeinvoices.update', $feestatement->id) }}" method="POST">
                     @csrf
                     @method('PUT')
-                    @include('feestatements._form')
+                    @include('feeinvoices._form')
                 </form>
             </div>
         </div>

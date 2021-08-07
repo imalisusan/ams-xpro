@@ -3,26 +3,22 @@
 namespace App\Mail;
 
 use App\Models\User;
-use App\Models\Course;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class NewCourseMark extends Mailable
+class NewFeeReceipt extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $user;
-    public $course;
-
-
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user, Course $course)
+    public function __construct(User $user)
     {
         $this->user = $user;
     }
@@ -35,11 +31,11 @@ class NewCourseMark extends Mailable
     public function build()
     {
         return $this
-        ->subject('New Course Mark Added')
-        ->markdown('emails.coursemark')
+        ->subject('New Fee Receipt Added')
+        ->markdown('emails.fee_receipt')
         ->with([
             'name' => $this->user->name,
-            'link' => route('courses.show', $course->id),
+            'link' => route('fees.feestatement'),
         ]);
     }
 }

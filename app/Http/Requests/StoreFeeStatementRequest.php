@@ -24,12 +24,13 @@ class StoreFeeStatementRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
+            'user_id' => 'nullable',
             'amount' => 'required',
             'date' => 'required',
             'type' => 'required',
             'document_type' => 'required',
             'document_number' => 'required',
+            'degree_id' => 'nullable',
         ];
     }
 }

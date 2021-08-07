@@ -11,6 +11,7 @@ use \App\Http\Controllers\ExamCardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\MentorUserController;
 use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\FeeStatementController;
@@ -52,6 +53,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'mentors' => MentorController::class,
         'mentoringsessions' => MentoringSessionController::class,
         'students' => StudentController::class,
+        'feeinvoices' => FeeInvoiceController::class,
     
     ]);
     
@@ -79,10 +81,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('fees/debit', [FeeStatementController::class, 'debit'])->name('fees.debit');
     Route::get('fees/download', [FeeStatementController::class, 'fee_statement_export'])->name('fees.download'); 
 
-    Route::get('/exam-card', [ExamCardController::class, 'show'])->name("examcards.index");
+    Route::get('/exam-card', [ExamCardController::class, 'index'])->name("examcards.index");
     Route::get('/exam-card/notify', [ExamCardController::class, 'sendNotification']);
     Route::get('/progress-report', [])->name("");
-    Route::get('examcard/download', [ExamCardController::class, 'download'])->name('examcard.download');
+    Route::get('examcard/download', [ExamCardController::class, 'download'])->name('examcards.download');
 });
 
 Route::group([ 'middleware' => ['role:admin']], function(){

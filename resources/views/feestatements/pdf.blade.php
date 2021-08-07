@@ -91,7 +91,7 @@
             <div id="left">
                 Admission No: {{ Auth::user()->reg_id }}
                 <br>
-                Program: All 
+                Program: {{ Auth::user()->degree->name}} 
             </div>
             <div id="right">
                 Student Name: {{ Auth::user()->name }}
