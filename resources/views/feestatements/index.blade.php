@@ -14,7 +14,7 @@
                 <br> &nbsp;&nbsp; &nbsp;
 
                 @role('admin')
-                <a type="button" href="{{ route('feestatement.create_invoice') }}"
+                <a type="button" href="{{ route('feeinvoices.create') }}"
             class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
             Add Fee Invoice</a>
             @endrole

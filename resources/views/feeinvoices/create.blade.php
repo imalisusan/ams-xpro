@@ -9,9 +9,9 @@
             
 
             <div>
-                <form action="{{ route('feestatement.store_invoice') }}" method="POST">
+                <form action="{{ route('feeinvoices.store') }}" method="POST">
                     @csrf
-                @include('feestatements._form_invoice')
+                @include('feeinvoices._form')
                 </form>
             </div>
         </div>

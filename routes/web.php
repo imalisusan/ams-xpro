@@ -11,6 +11,7 @@ use \App\Http\Controllers\ExamCardController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CourseMarkController;
 use App\Http\Controllers\CourseUserController;
+use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\MentorUserController;
 use App\Http\Controllers\CourseModuleController;
 use App\Http\Controllers\FeeStatementController;
@@ -52,6 +53,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'mentors' => MentorController::class,
         'mentoringsessions' => MentoringSessionController::class,
         'students' => StudentController::class,
+        'feeinvoices' => FeeInvoiceController::class,
     
     ]);
     
@@ -78,8 +80,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('fees/credit', [FeeStatementController::class, 'credit'])->name('fees.credit');
     Route::get('fees/debit', [FeeStatementController::class, 'debit'])->name('fees.debit');
     Route::get('fees/download', [FeeStatementController::class, 'fee_statement_export'])->name('fees.download'); 
-    Route::get('feestatement/add',[FeeStatementController::class, 'create_invoice'])->name('feestatement.create_invoice');
-    Route::post('feestatement/add/invoice',[FeeStatementController::class, 'store_invoice'])->name('feestatement.store_invoice');
 
     Route::get('/exam-card', [ExamCardController::class, 'index'])->name("examcards.index");
     Route::get('/exam-card/notify', [ExamCardController::class, 'sendNotification']);
