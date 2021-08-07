@@ -79,10 +79,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('fees/debit', [FeeStatementController::class, 'debit'])->name('fees.debit');
     Route::get('fees/download', [FeeStatementController::class, 'fee_statement_export'])->name('fees.download'); 
 
-    Route::get('/exam-card', [ExamCardController::class, 'show'])->name("examcards.index");
+    Route::get('/exam-card', [ExamCardController::class, 'index'])->name("examcards.index");
     Route::get('/exam-card/notify', [ExamCardController::class, 'sendNotification']);
     Route::get('/progress-report', [])->name("");
-    Route::get('examcard/download', [ExamCardController::class, 'download'])->name('examcard.download');
+    Route::get('examcard/download', [ExamCardController::class, 'download'])->name('examcards.download');
 });
 
 Route::group([ 'middleware' => ['role:admin']], function(){

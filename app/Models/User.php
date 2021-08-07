@@ -133,13 +133,7 @@ class User extends Authenticatable
 
         $fee_balance =$invoice_sum - $receipt_sum;
         $fee_balance = number_format($fee_balance, 2, '.', ',');
-         if($fee_balance > 0)
-         {
-             return $fee_balance;
-         }
-         else
-         {
-             return 0;
-         }
+        
+        return $fee_balance;
     }
 }

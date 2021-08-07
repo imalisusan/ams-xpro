@@ -15,11 +15,11 @@
 
                 @role('admin')
                 <a type="button" href="{{ route('feestatement.create') }}"
-            class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
+            class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-grey focus:outline-none place-self-center">
             Add Fee Statement</a>
             @endrole
             <a type="button"  href="{{route('fees.download' )}}"  style="float:right; margin-right: 1%;"
-            class="px-5 py-2  border-green-500 border text-green-500 rounded transition duration-300 hover:bg-white-700 hover:text-white focus:outline-none place-self-center">    
+            class="px-5 py-2  border-green-500 border text-green-500 rounded transition duration-300 hover:bg-white-700 hover:text-grey focus:outline-none place-self-center">    
             Download PDF</a>
 
             <br><br>
