@@ -7,6 +7,7 @@ use App\Models\FeeStatement;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreFeeStatementRequest;
 
 class FeeStatementController extends Controller
@@ -43,6 +44,8 @@ class FeeStatementController extends Controller
     {
         $validated = $request->validated();
         FeeStatement::create($validated);
+
+        Mail::to($user->email)->send(new NewFeeInvoice($user));
      
         return redirect()->route('feestatement.index')->with('success','Fee Statement created successfully.');
     }
