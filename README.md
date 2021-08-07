@@ -23,7 +23,7 @@ An improved Academic Management System for Strathmore University. This improved 
 
 ## Installation
 
-You will first ofa all need to install composer dependencies that rely the application relies on. Run the follwoing command:
+You will first of all need to install composer dependencies that rely the application relies on. Run the follwoing command:
 
 composer install
 
