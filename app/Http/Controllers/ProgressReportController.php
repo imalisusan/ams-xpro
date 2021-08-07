@@ -43,10 +43,10 @@ class ProgressReportController extends Controller
     public function report_year(Request $request, int $year)
     {
         $courses = CourseMarkUtil::get_coursemarks($year);
-        $gpa = Util::get_gpa($year);
-        $gpa_grade = Util::get_grade($gpa);
-        $gpa_total = Util::get_gpa_total($year);
-        $courses_count = Util::get_courses_count($year);
+        $gpa = Util::get_gpa();
+        $gpa_grade = Util::get_grade();
+        $gpa_total = Util::get_gpa_total();
+        $courses_count = Util::get_courses_count();
         return view('progressreports.index', compact('courses', 'gpa', 'gpa_grade', 'gpa_total', 'courses_count'));
     }
 
