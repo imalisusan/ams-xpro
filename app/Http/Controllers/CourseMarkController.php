@@ -31,7 +31,7 @@ class CourseMarkController extends Controller
     public function store(StoreCourseMarkRequest $request)
     {
         $validated = $request->validated();
-
+        $course = Course::find($validated['course_id']);
         foreach ($validated['scores'] as $user_id => $score) {
             $user = User::find($user_id);
             $coursemodule = CourseModule::find($validated['course_module_id']);
@@ -40,14 +40,29 @@ class CourseMarkController extends Controller
                 return redirect()->back()->withInput()->withErrors(["Please input the correct values for {$coursemodule->name}. Maximum score is  {$coursemodule->maximum_score}" ]);
             }
             else{
-            CourseMark::create([
-                'course_id' => $validated['course_id'],
-                'course_module_id' => $validated['course_module_id'],
-                'user_id' => $user_id,
-                'score' => $score,
-            ]);
 
-           // Mail::to($user->email)->send(new NewCourseMark($user));
+                $existing_mark = CourseMark::where([
+                    'course_id' => $course->id,
+                    'user_id' => $user->id,
+                    'course_module_id' => $coursemodule->id
+                    ])->first();
+
+                if(empty($existing_mark))
+                {
+                    CourseMark::create([
+                        'course_id' => $validated['course_id'],
+                        'course_module_id' => $validated['course_module_id'],
+                        'user_id' => $user_id,
+                        'score' => $score,
+                    ]);
+        
+                 Mail::to($user->email)->send(new NewCourseMark($user, $course));
+                }
+                else
+                {
+                    return redirect()->route('courses.show', $validated['course_id'])->with('danger','CourseMarks already exist.');
+                }
+
         }
         }
      
@@ -73,6 +88,7 @@ class CourseMarkController extends Controller
 
         $coursemodule = CourseModule::find($validated['course_module_id']);
         $course_id = $validated['course_id'];
+        $course = Course::find($course_id);
         foreach ($validated['scores'] as $user_id => $score) 
         {
             $user = User::find($user_id);
@@ -96,7 +112,7 @@ class CourseMarkController extends Controller
                 $validated->score = $score;
             $coursemark->update($validated->toArray());
 
-           // Mail::to($user->email)->send(new NewCourseMark($user));
+           Mail::to($user->email)->send(new NewCourseMark($user, $course));
             }
         }
 

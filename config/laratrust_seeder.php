@@ -39,6 +39,12 @@ return [
         'lecturer' => [
             'courses' => 'c,r,u,d',
             'coursemarks' => 'c,r,u,d',
+        ],
+
+        'mentor' => [
+            'mentors' => 'c,r,u,d',
+            'mentorusers' => 'c,r,u,d',
+            'mentoringsessions' => 'c,r,u,d',
         ]
     ],
 

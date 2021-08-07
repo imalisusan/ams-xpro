@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\User;
+use App\Models\Course;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -13,6 +14,7 @@ class NewCourseMark extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
+    public $course;
 
 
     /**
@@ -20,7 +22,7 @@ class NewCourseMark extends Mailable
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(User $user, Course $course)
     {
         $this->user = $user;
     }
@@ -37,7 +39,7 @@ class NewCourseMark extends Mailable
         ->markdown('emails.coursemark')
         ->with([
             'name' => $this->user->name,
-            'link' => route('courses.index'),
+            'link' => route('courses.show', $course->id),
         ]);
     }
 }

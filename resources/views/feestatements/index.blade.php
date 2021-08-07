@@ -14,13 +14,22 @@
                 <br> &nbsp;&nbsp; &nbsp;
 
                 @role('admin')
-                <a type="button" href="{{ route('feestatement.create') }}"
+                <a type="button" href="{{ route('feeinvoices.create') }}"
             class="px-5 py-2 border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">
-            Add Fee Statement</a>
+            Add Fee Invoice</a>
             @endrole
-            <a type="button"  href="{{route('fees.download' )}}"  style="float:right; margin-right: 1%;"
-            class="px-5 py-2  border-green-500 border text-green-500 rounded transition duration-300 hover:bg-white-700 hover:text-white focus:outline-none place-self-center">    
+           
+           @role('student')
+           <a type="button"  href="{{route('fees.download' )}}"  style="float:right; margin-right: 1%;"
+            class="px-5 py-2  border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">    
             Download PDF</a>
+           @endrole
+
+            @role('admin')
+            <a type="button"  href="{{route('feestatement.create' )}}"  style="float:right; margin-right: 1%;"
+            class="px-5 py-2  border-green-500 border text-green-500 rounded transition duration-300 hover:bg-green-700 hover:text-white focus:outline-none place-self-center">    
+            Add Fee Receipt</a>
+            @endrole
 
             <br><br>
             <form action="", method = "get"> 

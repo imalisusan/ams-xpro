@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Mail;
 
 class ExamCardController extends Controller
 {
-    public function show()
+    public function index(Request $request)
     {
-        $user = Auth::user();
-        $balance = $user->fee_balance();
-   
+      
         return view('examcards.index');
     }
 
@@ -30,25 +28,40 @@ class ExamCardController extends Controller
 
     public function download()
     {
-        $user = User::find(Auth::user()->id);
+        $user = Auth::user();
+        $balance = $user->fee_balance();
+       // dd($balance);
 
-        $courses = Util::get_course_units();
-        foreach($courses as $course)
+        if($balance > 0)
         {
-            $course_unit = Course::find($course->course_id);
-            $attendance_percentage = Util::get_attendance_percentage($course_unit, $user);
-            $percent_absent =  $attendance_percentage['percent_absent'];
-            if($percent_absent > 23)
-            {
-                $course['status'] = 0;
-            }
-            else
-            {
-                $course['status'] = 1;
-            }
+           return redirect()->route('examcards.index')->with('danger','You have a fee balance. You cannot download the exam card.');
         }
+        else
+        {
+            $user = User::find(Auth::user()->id);
 
-        return view('examcards.download', compact('user', 'courses'));
+            $courses = Util::get_course_units();
+            foreach($courses as $course)
+            {
+                $course_unit = Course::find($course->course_id);
+                $attendance_percentage = Util::get_attendance_percentage($course_unit, $user);
+                $percent_absent =  $attendance_percentage['percent_absent'];
+                if($percent_absent > 23)
+                {
+                    $course['status'] = 0;
+                }
+                else
+                {
+                    $course['status'] = 1;
+                }
+            }
+            //return view('examcards.pdf', compact('user', 'courses'));
+
+            $examcard = PDF::loadView('examcards.pdf', compact('user', 'courses'));
+            return $examcard->download('examcard.pdf');
+        }
+      
     
     }
+   
 }

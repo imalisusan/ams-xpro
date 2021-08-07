@@ -94,7 +94,7 @@
             <div id="left">
                 Admission No: {{ Auth::user()->reg_id }}
                 <br>
-                Course: {{ Auth::user()->course_name }}
+                Course: {{ Auth::user()->degree->name }}
                 
             </div>
             <div id="right">
@@ -126,9 +126,7 @@
            
         </tr>
         @else
-        <tr>
-            
-        </tr>
+      
         @endif
 
         @endforeach

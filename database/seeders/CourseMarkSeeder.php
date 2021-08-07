@@ -72,7 +72,87 @@ class CourseMarkSeeder extends Seeder
                 'user_id' => '1',
                 'score' => '26',
             ],
-
+            [
+                'course_id' => '3',
+                'course_module_id' => '12',
+                'user_id' => '1',
+                'score' => '45',
+            ],
+            // 
+            [
+                'course_id' => '4',
+                'course_module_id' => '13',
+                'user_id' => '1',
+                'score' => '21',
+            ],
+            [
+                'course_id' => '4',
+                'course_module_id' => '14',
+                'user_id' => '1',
+                'score' => '21',
+            ],
+            [
+                'course_id' => '4',
+                'course_module_id' => '15',
+                'user_id' => '1',
+                'score' => '26',
+            ],
+            [
+                'course_id' => '4',
+                'course_module_id' => '16',
+                'user_id' => '1',
+                'score' => '51',
+            ],
+             //
+             [
+                'course_id' => '5',
+                'course_module_id' => '17',
+                'user_id' => '1',
+                'score' => '21',
+            ],
+            [
+                'course_id' => '5',
+                'course_module_id' => '18',
+                'user_id' => '1',
+                'score' => '21',
+            ],
+            [
+                'course_id' => '5',
+                'course_module_id' => '19',
+                'user_id' => '1',
+                'score' => '26',
+            ],
+            [
+                'course_id' => '5',
+                'course_module_id' => '20',
+                'user_id' => '1',
+                'score' => '48',
+            ],
+            //
+            [
+                'course_id' => '6',
+                'course_module_id' => '21',
+                'user_id' => '1',
+                'score' => '21',
+            ],
+            [
+                'course_id' => '6',
+                'course_module_id' => '22',
+                'user_id' => '1',
+                'score' => '21',
+            ],
+            [
+                'course_id' => '6',
+                'course_module_id' => '23',
+                'user_id' => '1',
+                'score' => '26',
+            ],
+            [
+                'course_id' => '6',
+                'course_module_id' => '24',
+                'user_id' => '1',
+                'score' => '45',
+            ],
 
             //User 2
             [
