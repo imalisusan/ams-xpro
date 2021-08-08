@@ -25,7 +25,7 @@ class NewCourseMark extends Mailable
     public function __construct(User $user, Course $course)
     {
         $this->user = $user;
-         $this->course = course;
+         $this->course = $course;
     }
 
     /**
