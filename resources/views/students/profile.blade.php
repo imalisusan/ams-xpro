@@ -11,24 +11,22 @@
                 @endrole
             </form>
 
-        @role('student')
+       
         <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center object-contain">
-            {{ __('STUDENT PROFILE') }}
-        </h2>
-        @endrole
+            @role('student')
+                {{ __('STUDENT ') }}
+            @endrole
 
-        @role('admin')
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center object-contain">
-            {{ __('ADMIN PROFILE') }}
-        </h2>
-        @endrole
+            @role('admin')
+                {{ __('ADMIN ') }}
+            @endrole
 
-        @role('lecturer')
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center object-contain">
-            {{ __('LECTURER PROFILE') }}
+            @role('lecturer')
+                {{ __('LECTURER ') }}
+            @endrole
+            PROFILE
         </h2>
-         @endrole
-
+   
     </x-slot>
     </header>
     

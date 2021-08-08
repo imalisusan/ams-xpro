@@ -15,6 +15,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <link rel="icon" href="{{ asset('assets/images/SU-Logo-1.svg') }}">
+
         @livewireStyles
         @laravelViewsStyles
 
