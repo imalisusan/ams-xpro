@@ -153,7 +153,7 @@
                                 </div>
                             </div>
 
-                            
+                            @role('student')
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Course Name
@@ -164,6 +164,7 @@
                                 
                                 </div>
                             </div>
+                            
 
                             
                             <div class="flex  mb-10 lg:items-start items-center">
@@ -176,7 +177,7 @@
                                 
                                 </div>
                             </div>
-
+                            @endrole
 
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
@@ -244,6 +245,32 @@
                                 </div>
                             </div>
 
+                        @endrole
+
+                        @role('mentor')
+                        <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Joined On
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->created_at->calendar() }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
+                        @endrole
+
+                        @role('admin')
+                        <div class="flex  mb-10 lg:items-start items-center">
+                                <div class="flex-grow">
+                                    <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Joined On
+                                    </h2>
+                                    <p class="leading-relaxed text-base">
+                                        {{ $user->created_at->calendar() }}
+                                    </p>
+                                 
+                                </div>
+                            </div>
                         @endrole
                         </div>
                     </div>
