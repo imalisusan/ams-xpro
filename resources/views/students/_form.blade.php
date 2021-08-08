@@ -124,7 +124,7 @@
     <div class="-mx-3 md:flex mb-6">
         <div class="md:w-1/2 px-3 mb-6 md:mb-0">
             <x-label for="primary school*" class="block uppercase text-xs font-bold mb-2" />
-            <input type="text" name="high_school"
+            <input type="text" name="primary_school"
                 value="{{ isset($student) ? $student->primary_school : old('primary_school') }}" class="form-input appearance-none block w-full bg-grey-lighter text-grey-darker border border-red
             rounded py-3 px-4 mb-3">
             <x-error field="primary_school" class="text-red-600" />
