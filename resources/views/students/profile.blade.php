@@ -92,6 +92,7 @@
                                 </div>
                             </div>
 
+                            @role('student')
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">High School
@@ -135,6 +136,7 @@
                                  
                                 </div>
                             </div>
+                            @endrole
 
                         </div>
 
@@ -197,6 +199,7 @@
                                 </div>
                             </div>
 
+                        @role('student')
                             <div class="flex  mb-10 lg:items-start items-center">
                                 <div class="flex-grow">
                                     <h2 class="text-gray-900 text-lg title-font mb-3 font-bold">Primary School
@@ -241,7 +244,7 @@
                                 </div>
                             </div>
 
-
+                        @endrole
                         </div>
                     </div>
                 </section>
