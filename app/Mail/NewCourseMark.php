@@ -25,6 +25,7 @@ class NewCourseMark extends Mailable
     public function __construct(User $user, Course $course)
     {
         $this->user = $user;
+        $this->course = $course;
     }
 
     /**
@@ -39,7 +40,7 @@ class NewCourseMark extends Mailable
         ->markdown('emails.coursemark')
         ->with([
             'name' => $this->user->name,
-            'link' => route('courses.show', $course->id),
+            'link' => route('courses.show', $this->course->id),
         ]);
     }
 }
