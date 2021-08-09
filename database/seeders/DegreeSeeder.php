@@ -74,6 +74,10 @@ class DegreeSeeder extends Seeder
             [
                 'name' => 'Bachelor of Science in Electrical and Electronics Engineering',
                 'description' => 'Lorem Ipsum'
+            ],
+            [
+                'name' => 'None',
+                'description' => 'Lorem Ipsum'
             ]
             ];
             

@@ -32,6 +32,7 @@ class MentorController extends Controller
         $validated = $request->validated();
         $user_id = Auth::user()->id;
         $validated['user_id'] = $user_id;
+        $validated['degree_id'] = 16;
 
         $saved = User::where('email', $validated['email'])->first();
         if ($saved != null) {

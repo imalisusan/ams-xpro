@@ -30,6 +30,7 @@ class LecturerController extends Controller
     public function store(StoreLecturerRequest $request)
     {
         $validated = $request->validated();
+        
         $user_id = Auth::user()->id;
         $validated['user_id'] = $user_id;
 
@@ -40,6 +41,7 @@ class LecturerController extends Controller
             $saved->attachRole('lecturer');
         } else {
             $validated['password'] = Hash::make(Str::random());
+            $validated['degree_id'] = 16;
             $user = User::create($validated);
             $user->attachRole('lecturer');
 
